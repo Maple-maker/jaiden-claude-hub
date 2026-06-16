@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Plugins &amp; marketplaces: install a whole toolkit at once · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
+section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
+pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
+.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<body><div class="wrap">
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Plugins &amp; marketplaces: install a whole toolkit at once</h1><p class="subtitle">A plugin bundles skills, tools, and connectors into one installable package — and the official marketplace already has 100+. Here's how to browse, install, and vet them as a non-developer.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>What a plugin actually is</li><li>Browse a marketplace</li><li>Install in seconds</li><li>Vet before you trust</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>What a plugin actually is</h2><p>A single skill teaches Claude one way of working. A plugin goes bigger: it bundles skills, tools, and connectors together into one package built around a job or an app. Instead of adding capabilities one at a time, you install the whole bundle and get everything it includes.</p><p>Think toolbox, not tool. If a skill is a wrench, a plugin is the full kit for a particular kind of work.</p><div class="callout c-amber"><strong>The idea</strong>A plugin is a bundle — skills + tools + connectors — you install in one move.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Browse a marketplace</h2><p>Plugins live in marketplaces — curated catalogs you can search. The official one already has around 100 plugins: roughly a third built by Anthropic and the rest from trusted partners like GitHub, Figma, Linear, Supabase, and Stripe. You search by the job you're trying to do, not by reading code.</p><p>It's effectively an app store for your AI assistant: browse, read what each one does, and pick the ones that match your work.</p><div class="callout c-blue"><strong>Why it matters</strong>You discover capabilities you didn't know to ask for — and skip the manual setup.</div></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Install in seconds</h2><p>Installing is the easy part. You pick a plugin, add it, and it's ready — no setup files to edit, no code to write. The capability simply shows up and Claude can use it. For a non-developer this is the whole appeal: power without configuration.</p><p>Add what a real task needs rather than collecting plugins for their own sake. A lean, intentional set beats a cluttered one.</p><pre>Browse the marketplace -&gt; pick a plugin
+-&gt; install -&gt; it's ready.
+No config files. No code.</pre></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Vet before you trust</h2><p>A plugin can do more than a single skill, so it deserves the same care — a bit more, if anything. Prefer official plugins and known partners, check the permissions it asks for like you would any download, and start with one so you can see how it behaves before adding more.</p><p>Same five-check instinct as installing a skill: source, maintainer, permissions, network, and a careful first run.</p><div class="callout c-green"><strong>Start here</strong>Install ONE official plugin that matches a real task this week. Use it, then decide what to add next.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The plugin starter shortlist</h2><p>A short, sane list of plugin categories to look at first — plus how to vet any plugin before you install it.</p><div class="grid"><div class="gp"><b>›</b> What's a plugin</div><div class="gp"><b>›</b> Where to browse</div><div class="gp"><b>›</b> Categories to start</div><div class="gp"><b>›</b> Official vs partner</div><div class="gp"><b>›</b> Vetting steps</div><div class="gp"><b>›</b> Permissions check</div><div class="gp"><b>›</b> Start-with-one rule</div><div class="gp"><b>›</b> Red flags</div><div class="gp"><b>›</b> Upkeep</div><div class="gp"><b>›</b> Examples</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download plugin-starter-shortlist.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Plugins — Starter Shortlist
+
+## What a plugin is
+A bundle of skills + tools + connectors, installed in one move.
+Browse them in a marketplace (the official one has 100+).
+
+## Categories worth a first look (match to YOUR work)
+- The apps you already use daily (search the marketplace by name)
+- Writing / docs helpers
+- Project + task management connectors
+- File / data organization
+- Anything tied to a tool you open every day
+
+## How to vet ANY plugin before installing
+1. Source — official marketplace or a known partner?
+2. Maintainer — real, active, with a track record?
+3. Permissions — only what the job needs?
+4. Network — does it reach out, and to where?
+5. First run — try it on low-stakes work and watch it.
+
+## Red flags
+- Unknown publisher, vague description
+- Asks for far more access than it needs
+- No docs on what it actually does
+
+## The one rule
+Install ONE plugin that fixes a real task this week.
+Use it for a few days before adding the next.
+Lean and intentional beats a cluttered toolbox.
+</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='plugin-starter-shortlist.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>

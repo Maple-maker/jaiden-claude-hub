@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Command, skill, subagent, or hook — which one do you need? · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
+section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
+pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
+.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<body><div class="wrap">
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Command, skill, subagent, or hook — which one do you need?</h1><p class="subtitle">Claude can be extended four ways and they look confusingly similar. Here's the plain-English map: a command is a saved prompt, a skill is real know-how, a subagent is isolated work, and a hook is an enforced rule.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>Slash command — a saved prompt</li><li>Skill — real domain know-how</li><li>Subagent — isolated, parallel work</li><li>Hook — an enforced rule</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Slash command — a saved prompt</h2><p>A slash command is just a prompt template you've saved so you can reuse it. No logic, no files — only words you'd otherwise retype. If you find yourself pasting the same instructions over and over, that's a command waiting to happen.</p><p>It's the simplest of the four, so it should be your first reach. Most 'I wish Claude remembered to do X' moments are solved here.</p><div class="callout c-amber"><strong>Use when</strong>You keep retyping the same prompt and just want a shortcut for it.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Skill — real domain know-how</h2><p>A skill steps up from words to a way of working. Use one when there's actual domain logic involved — a process, a format, helper files — that Claude should follow whenever the situation comes up. Unlike a command you trigger by name, a skill triggers itself when it recognizes a relevant task.</p><p>If a command is 'say these words,' a skill is 'here's how we do this kind of job, including the templates.'</p><div class="callout c-blue"><strong>Use when</strong>There's real logic or helper files, and you want it to kick in automatically.</div></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Subagent — isolated, parallel work</h2><p>A subagent is a helper Claude spins up with its own context window to handle a chunk of work without cluttering the main conversation. It's ideal for isolated side-quests — go research this, audit that — or for running several pieces of work in parallel.</p><p>The big win is a clean context: the subagent's verbose digging stays in its own space and you just get the summary back.</p><pre>Main agent: "Research the three options,
+  each in its own subagent,
+  then give me one comparison."</pre></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Hook — an enforced rule</h2><p>A hook is code that runs automatically at specific moments — before a tool runs, when a session ends, after a subagent finishes. Use it when you need a guarantee, not a polite request: 'always run tests before stopping,' 'never edit generated files.'</p><p>This is the most technical of the four. Most non-developers won't need hooks often — but it's worth knowing they exist for the day 'please remember' stops being enough.</p><div class="callout c-green"><strong>Use when</strong>You need a rule enforced every single time, with no reliance on Claude remembering.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The Claude extension decision map</h2><p>A one-page map for picking command vs skill vs subagent vs hook — with a quick question to ask yourself for each.</p><div class="grid"><div class="gp"><b>›</b> Command rule</div><div class="gp"><b>›</b> Skill rule</div><div class="gp"><b>›</b> Subagent rule</div><div class="gp"><b>›</b> Hook rule</div><div class="gp"><b>›</b> Quick questions</div><div class="gp"><b>›</b> Start-simple note</div><div class="gp"><b>›</b> Command example</div><div class="gp"><b>›</b> Skill example</div><div class="gp"><b>›</b> Subagent example</div><div class="gp"><b>›</b> Hook example</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download extension-decision-map.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Claude Extension — Decision Map
+
+Ask the questions top to bottom. Stop at the first YES.
+
+## 1. Command  (a saved prompt)
+"Am I just retyping the same prompt?"
+-&gt; YES: make a slash command. Done.
+
+## 2. Skill  (real know-how)
+"Is there a process, format, or helper file involved,
+ and I want it to kick in automatically?"
+-&gt; YES: make a skill.
+
+## 3. Subagent  (isolated work)
+"Do I want a focused helper with its own context,
+ or to run pieces in parallel?"
+-&gt; YES: use a subagent.
+
+## 4. Hook  (enforced rule)
+"Do I need a rule enforced EVERY time, guaranteed?"
+-&gt; YES: use a hook (most technical).
+
+---
+## Start simple
+Default to a command. Only climb the ladder when the
+task actually needs more. Most people over-build.
+
+## Examples
+- Command: /standup -&gt; "summarize my day in 5 bullets"
+- Skill: an "invoices" skill that knows your format + template
+- Subagent: "research these 3 tools, return one comparison"
+- Hook: before stopping, run tests; block if they fail
+</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='extension-decision-map.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>

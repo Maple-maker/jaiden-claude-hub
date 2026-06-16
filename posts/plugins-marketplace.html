@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PLUGINS — Carousel · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>:root{--bg:#0D0D0D;--orange:#C4522A;--orange-light:#E8784A;--cream:#F2EDE4;--muted:rgba(242,237,228,.45);--ghost:rgba(196,82,42,.06);--codebg:#1C1008;--border:rgba(196,82,42,.25)}
+*{box-sizing:border-box;margin:0;padding:0}html,body{background:#191919;min-height:100%;font-family:'DM Sans',sans-serif}#root{display:flex;flex-direction:column;align-items:center;padding:32px 0 64px}
+.stage{position:relative;display:flex;align-items:center;justify-content:center;gap:28px}
+.slide{width:1024px;height:1024px;background:var(--bg);color:var(--cream);position:relative;overflow:hidden;flex:0 0 auto;display:flex;flex-direction:column;padding:64px 72px}
+.hdr,.ftr{display:flex;align-items:center;justify-content:space-between}.hdr{padding-bottom:18px;border-bottom:1px solid var(--border)}.ftr{padding-top:18px;border-top:1px solid var(--border);margin-top:auto}
+.hdr-left{display:flex;align-items:center;gap:12px}.mono{font-family:'DM Mono',monospace;color:var(--muted);font-size:18px}.mono-up{font-family:'DM Mono',monospace;color:var(--muted);font-size:15px;text-transform:uppercase;letter-spacing:.12em}
+.body{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.headline{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:170px;line-height:.86;letter-spacing:-.03em;text-transform:uppercase}.headline .accent{color:var(--orange-light)}
+.subline{font-size:32px;color:var(--muted);margin-top:36px;max-width:80%}.tags{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}.tag{font-family:'DM Mono',monospace;font-size:16px;color:var(--orange-light);border:1px solid var(--border);background:var(--ghost);padding:10px 18px;border-radius:999px;letter-spacing:.05em}
+.ghostnum{position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:420px;color:rgba(242,237,228,.05);z-index:1;line-height:1}
+.steplabel{font-family:'DM Mono',monospace;font-size:16px;color:var(--orange-light);text-transform:uppercase;letter-spacing:.18em}.steptitle{font-family:'Playfair Display',serif;font-weight:800;font-size:72px;line-height:1.05;margin-top:18px}.steptitle .it{font-style:italic;color:var(--orange-light);font-weight:700}
+.rule{width:52px;height:4px;background:var(--orange);margin:30px 0 34px;border-radius:2px}.bullets{display:flex;flex-direction:column;gap:18px;max-width:80%}.bullet{display:flex;align-items:flex-start;gap:18px;font-size:30px;line-height:1.3}.dot{width:10px;height:10px;border-radius:50%;background:var(--orange);margin-top:13px;flex:0 0 auto}
+.code{font-family:'DM Mono',monospace;font-size:24px;color:var(--orange-light);background:var(--codebg);border:1px solid var(--border);padding:2px 10px;border-radius:6px}.callout{margin-top:36px;font-size:25px;font-weight:500;line-height:1.35;border-left:4px solid var(--orange);background:var(--ghost);padding:20px 26px;border-radius:0 8px 8px 0;max-width:82%}
+.savenudge{font-family:'DM Mono',monospace;font-size:16px;color:var(--orange-light);text-transform:uppercase;letter-spacing:.16em}.ctabig{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:150px;line-height:.9;text-transform:uppercase;margin-top:18px}.ctabig .accent{color:var(--orange-light)}.ctabody{font-size:27px;color:var(--muted);margin-top:30px;max-width:80%}.ctafollow{margin-top:28px;font-size:23px;line-height:1.34;border-left:4px solid var(--orange);padding:12px 24px;max-width:80%}
+.navbtn{width:60px;height:60px;border-radius:50%;background:var(--ghost);border:1px solid var(--border);color:var(--orange-light);font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 auto}.navbtn:disabled{opacity:.25}.dots{display:flex;gap:10px;justify-content:center;margin-top:30px}.dot-ind{height:10px;width:10px;border-radius:999px;background:rgba(242,237,228,.25);cursor:pointer}.dot-ind.on{width:28px;background:var(--orange-light)}.hint{color:var(--muted);font-family:'DM Mono',monospace;font-size:13px;margin-top:14px}</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+const DATA = {
+  "handle": "@jaidenrabatin",
+  "topic": "PLUGINS",
+  "subtitle": "INSTALL A TOOLKIT",
+  "ctaWord": "PLUGINS",
+  "hook": {
+    "headlineLines": [
+      [
+        "INSTALL A",
+        "dark"
+      ],
+      [
+        "WHOLE AI",
+        "accent"
+      ],
+      [
+        "TOOLKIT IN",
+        "dark"
+      ],
+      [
+        "ONE CLICK",
+        "accent"
+      ]
+    ],
+    "subline": "Stop adding tools one by one. Grab a bundle.",
+    "tags": [
+      "100+ PLUGINS",
+      "ONE CLICK",
+      "NO CODE"
+    ]
+  },
+  "steps": [
+    {
+      "n": "01",
+      "label": "STEP 01",
+      "titleParts": [
+        [
+          "A plugin "
+        ],
+        [
+          "bundles the work",
+          "it"
+        ]
+      ],
+      "bullets": [
+        [
+          {
+            "t": "Skills, tools, and connectors in one package."
+          }
+        ],
+        [
+          {
+            "t": "Install the bundle, not each piece."
+          }
+        ],
+        [
+          {
+            "t": "Built for one job or one app."
+          }
+        ]
+      ],
+      "callout": "It's a toolbox, not a single tool.",
+      "term": {
+        "title": "plugin",
+        "lines": [
+          {
+            "t": "= skills",
+            "c": 1
+          },
+          {
+            "t": "+ tools",
+            "c": 1
+          },
+          {
+            "t": "+ connectors",
+            "c": 1
+          }
+        ]
+      }
+    },
+    {
+      "n": "02",
+      "label": "STEP 02",
+      "titleParts": [
+        [
+          "Browse a "
+        ],
+        [
+          "marketplace",
+          "it"
+        ]
+      ],
+      "bullets": [
+        [
+          {
+            "t": "The official marketplace has 100+ plugins."
+          }
+        ],
+        [
+          {
+            "t": "Anthropic-built plus trusted partners."
+          }
+        ],
+        [
+          {
+            "t": "Search by the job you need done."
+          }
+        ]
+      ],
+      "callout": "An app store for your AI assistant.",
+      "term": {
+        "title": "marketplace",
+        "lines": [
+          {
+            "t": "101 plugins",
+            "c": 1
+          },
+          {
+            "t": "33 official",
+            "c": 1
+          },
+          {
+            "t": "68 partner",
+            "c": 1
+          }
+        ]
+      }
+    },
+    {
+      "n": "03",
+      "label": "STEP 03",
+      "titleParts": [
+        [
+          "Install in "
+        ],
+        [
+          "seconds",
+          "it"
+        ]
+      ],
+      "bullets": [
+        [
+          {
+            "t": "Pick a plugin, install, done."
+          }
+        ],
+        [
+          {
+            "t": "No setup files, no code to write."
+          }
+        ],
+        [
+          {
+            "t": "It's ready the moment it's added."
+          }
+        ]
+      ],
+      "callout": "Capability without the configuration.",
+      "term": {
+        "title": "install",
+        "lines": [
+          {
+            "t": "/plugin add github",
+            "p": 1
+          },
+          {
+            "t": "installed",
+            "c": 1
+          },
+          {
+            "t": "ready to use",
+            "c": 1
+          }
+        ]
+      }
+    },
+    {
+      "n": "04",
+      "label": "STEP 04",
+      "titleParts": [
+        [
+          "Vet before "
+        ],
+        [
+          "you trust",
+          "it"
+        ]
+      ],
+      "bullets": [
+        [
+          {
+            "t": "Prefer official or known partners."
+          }
+        ],
+        [
+          {
+            "t": "Check permissions like any download."
+          }
+        ],
+        [
+          {
+            "t": "Start with one, not ten."
+          }
+        ]
+      ],
+      "callout": "A bundle is powerful — review it like one.",
+      "term": {
+        "title": "vet",
+        "lines": [
+          {
+            "t": "source: official",
+            "c": 1
+          },
+          {
+            "t": "perms: sensible",
+            "c": 1
+          },
+          {
+            "t": "add one, test it",
+            "c": 1
+          }
+        ]
+      }
+    }
+  ],
+  "cta": {
+    "saveReminder": "Save this before you set up your Claude toolkit.",
+    "body": "Comment PLUGINS and I'll DM you the full breakdown + a starter plugin shortlist. Free.",
+    "follow": "Follow @jaidenrabatin to build your AI toolkit the easy way."
+  }
+};
+const Star=({size=18,c="var(--orange)"})=>{const a=Array.from({length:14});return(<svg width={size} height={size} viewBox="0 0 100 100" style={{display:'block'}}>{a.map((_,i)=>{const an=(i/14)*Math.PI*2;return <rect key={i} x="48.5" y="6" width="3" height="38" rx="1.5" fill={c} transform={"rotate("+(an*180/Math.PI)+" 50 50)"}/>;})}<circle cx="50" cy="50" r="9" fill={c}/></svg>);};
+const Header=({i,t})=>(<div className="hdr"><div className="hdr-left"><Star size={18}/><span className="mono">{DATA.handle}</span></div><span className="mono">{String(i+1).padStart(2,'0')} / {String(t).padStart(2,'0')}</span></div>);
+const Footer=({last})=>(<div className="ftr"><span className="mono-up">{DATA.topic} · {DATA.subtitle}</span><span className="mono-up">{last?"★ FOLLOW":"SWIPE →"}</span></div>);
+const seg=(b,k)=>b.map((s,j)=> s.c!=null? <span className="code" key={j}>{s.c}</span> : <span key={j}>{s.t}</span>);
+function Slide({i,t}){const total=t;
+ if(i===0)return(<div className="slide"><Header i={i} t={total}/><div className="body"><h1 className="headline">{DATA.hook.headlineLines.map((l,k)=><div key={k} className={l[1]==='accent'?'accent':''}>{l[0]}</div>)}</h1><p className="subline">{DATA.hook.subline}</p><div className="tags">{DATA.hook.tags.map((x,k)=><span className="tag" key={k}>{x}</span>)}</div><div style={{position:'absolute',left:0,bottom:0,display:'flex',flexDirection:'column',gap:14}}><Star size={26}/><Star size={26}/></div></div><Footer/></div>);
+ if(i===total-1)return(<div className="slide"><Header i={i} t={total}/><div className="body"><div className="savenudge">{DATA.cta.saveReminder}</div><h1 className="ctabig">COMMENT<br/><span className="accent">"{DATA.ctaWord}"</span><br/>BELOW</h1><p className="ctabody">{DATA.cta.body}</p><div className="ctafollow">{DATA.cta.follow}</div></div><Footer last/></div>);
+ const st=DATA.steps[i-1];return(<div className="slide"><Header i={i} t={total}/><div className="ghostnum">{st.n}</div><div className="body"><div className="steplabel">{st.label}</div><h2 className="steptitle">{st.titleParts.map((p,k)=><span key={k} className={p[1]==='it'?'it':''}>{p[0]}</span>)}</h2><div className="rule"></div><div className="bullets">{st.bullets.map((b,k)=><div className="bullet" key={k}><span className="dot"></span><span>{seg(b)}</span></div>)}</div><div className="callout">{st.callout}</div></div><Footer/></div>);}
+function App(){const total=2+DATA.steps.length;const[i,setI]=React.useState(0);const[s,setS]=React.useState(1);
+ React.useEffect(()=>{const f=()=>{const a=Math.min(window.innerWidth-180,window.innerHeight-160);setS(Math.min(1,a/1024));};f();window.addEventListener('resize',f);return()=>window.removeEventListener('resize',f);},[]);
+ React.useEffect(()=>{const k=(e)=>{if(e.key==='ArrowRight')setI(p=>Math.min(total-1,p+1));if(e.key==='ArrowLeft')setI(p=>Math.max(0,p-1));};window.addEventListener('keydown',k);return()=>window.removeEventListener('keydown',k);},[total]);
+ return(<React.Fragment><div className="stage"><button className="navbtn" disabled={i===0} onClick={()=>setI(p=>Math.max(0,p-1))}>←</button><div style={{width:1024*s,height:1024*s,flex:'0 0 auto'}}><div style={{transform:'scale('+s+')',transformOrigin:'top left'}}><Slide i={i} t={total}/></div></div><button className="navbtn" disabled={i===total-1} onClick={()=>setI(p=>Math.min(total-1,p+1))}>→</button></div><div className="dots">{Array.from({length:total}).map((_,d)=><div key={d} className={"dot-ind"+(d===i?" on":"")} onClick={()=>setI(d)}></div>)}</div><div className="hint">← / → · slide {i+1} of {total} · 1024×1024</div></React.Fragment>);}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>
