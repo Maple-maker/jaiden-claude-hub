@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Jaiden Rabatin — Claude guides, templates & tutorials</title>
+<meta name="description" content="Free guides, templates, and tutorials for getting the most out of Claude &amp; Claude Code — no CS degree required."/>
+<meta property="og:title" content="Jaiden Rabatin — Claude guides & templates"/>
+<meta property="og:description" content="Free guides, templates, and tutorials for getting the most out of Claude &amp; Claude Code — no CS degree required."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0D0D0D;--orange:#C4522A;--orange-light:#E8784A;--cream:#F2EDE4;--muted:rgba(242,237,228,.55);--ghost:rgba(196,82,42,.07);--border:rgba(196,82,42,.25);--card:#151515;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px 80px}
+  header.top{display:flex;align-items:center;gap:10px;justify-content:center;padding:32px 0 8px}
+  header.top span{font-family:'DM Mono',monospace;color:var(--muted);font-size:15px}
+  .hero{text-align:center;padding:24px 8px 8px}
+  .hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,12vw,76px);line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
+  .hero h1 .o{color:var(--orange-light)}
+  .hero .tag{font-size:clamp(17px,4.5vw,21px);margin-top:14px;color:var(--cream)}
+  .hero .sub{font-size:15px;color:var(--muted);margin:12px auto 0;max-width:440px}
+  .cta{display:flex;flex-direction:column;gap:12px;margin:28px auto 8px;max-width:440px}
+  .big{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:#190a04;font-weight:700;font-size:18px;padding:18px 22px;border-radius:14px;text-decoration:none;transition:.15s}
+  .big:hover{background:var(--orange-light);transform:translateY(-1px)}
+  .row{display:flex;gap:12px}
+  .row a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ghost);border:1px solid var(--border);color:var(--cream);font-weight:600;font-size:15px;padding:14px;border-radius:12px;text-decoration:none;transition:.15s}
+  .row a:hover{background:rgba(196,82,42,.15)}
+  .section-label{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.15em;font-size:13px;color:var(--orange-light);text-align:center;margin:48px 0 6px}
+  .section-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:22px}
+  .grid{display:grid;gap:14px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px}
+  .card h3{font-size:19px;font-weight:700;line-height:1.25;margin-bottom:6px}
+  .card p{font-size:14px;color:var(--muted);margin-bottom:14px}
+  .card-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .btn{font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px;text-decoration:none}
+  .btn-primary{background:var(--orange);color:#190a04}
+  .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--cream)}
+  .kw{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);margin-left:auto}
+  .kw b{color:var(--orange-light)}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:56px}
+  footer a{color:var(--orange-light);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true"><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(0 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(25.71428571428571 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(51.42857142857142 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(77.14285714285714 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(102.85714285714285 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(128.57142857142858 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(154.28571428571428 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(180 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(205.7142857142857 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(231.42857142857144 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(257.14285714285717 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(282.85714285714283 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(308.57142857142856 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(334.2857142857143 50 50)"/><circle cx="50" cy="50" r="9" fill="#E8784A"/></svg><span>@jaidenrabatin</span></header>
+
+  <section class="hero">
+    <h1>Make Claude<br/><span class="o">Do The Work</span></h1>
+    <p class="tag">Plain-English Claude systems that do real work.</p>
+    <p class="sub">Free guides, templates, and tutorials for getting the most out of Claude &amp; Claude Code — no CS degree required.</p>
+    <div class="cta">
+      <a class="big" href="#guides">&#8595;&nbsp; Free Guides &amp; Templates</a>
+      <div class="row">
+        <a href="https://youtube.com/@jaidenrabatin" target="_blank" rel="noopener">&#9654;&nbsp; YouTube</a>
+        <a href="https://instagram.com/jaidenrabatin" target="_blank" rel="noopener">&#9728;&nbsp; Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-label" id="guides">Free Guides &amp; Templates</h2>
+  <p class="section-sub">Every one comes with a downloadable resource for your Claude Code sandbox.</p>
+  <div class="grid">
+      <article class="card">
+        <h3>Turn on Claude Skills and stop getting generic output</h3>
+        <p>Skills are the feature that makes Claude follow your standards. They're built in, free, and off by default. Here's how to switch them on and start using them today.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/skills-101.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/skills-101.html">View carousel</a>
+          <span class="kw">Comment <b>ENABLE</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Build your first Claude Skill with no code</h3>
+        <p>The built-in skill-creator turns a plain-English description into a working skill. If you can explain a process to a coworker, you can build one. Here's the whole flow.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/skill-creator.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/skill-creator.html">View carousel</a>
+          <span class="kw">Comment <b>CREATOR</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Write skill triggers that fire on their own</h3>
+        <p>A brilliant skill that lives in a menu you never open is worse than a mediocre one that auto-triggers. The difference is the description. Here's how to write one that works.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/trigger-design.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/trigger-design.html">View carousel</a>
+          <span class="kw">Comment <b>TRIGGER</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Turn any good chat into a reusable skill</h3>
+        <p>Your best Claude chats are skills you haven't saved yet. With one click you can package a workflow you already solved and rerun it whenever you need it.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/chat-to-skill.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/chat-to-skill.html">View carousel</a>
+          <span class="kw">Comment <b>REUSE</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Bundle your skills into a shareable plugin</h3>
+        <p>A single skill helps you. A plugin helps your whole team. Here's how to package a set of skills into one install and distribute your standards.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/skills-to-plugin.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/skills-to-plugin.html">View carousel</a>
+          <span class="kw">Comment <b>PLUGIN</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Teach Claude the why, not just the what</h3>
+        <p>Anthropic's alignment research found that explaining the reasons behind good behavior generalizes better than showing examples of it. The same idea makes your prompts and skills far more reliable.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/teach-the-why.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/teach-the-why.html">View carousel</a>
+          <span class="kw">Comment <b>WHY</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Dynamic Workflows: run hundreds of agents in one session</h3>
+        <p>Claude Opus 4.8 introduced Dynamic Workflows — Claude Code's orchestration layer for jobs too big for a single pass. It writes its own plan, runs subagents in parallel, and verifies the output.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/dynamic-workflows.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/dynamic-workflows.html">View carousel</a>
+          <span class="kw">Comment <b>AGENTS</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Loop engineering: stop prompting, start looping</h3>
+        <p>The biggest mindset shift of 2026 isn't a new model — it's designing agentic loops instead of typing prompts one at a time. The pattern is simple: gather context, take action, verify, repeat.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/loop-engineering.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/loop-engineering.html">View carousel</a>
+          <span class="kw">Comment <b>LOOPS</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Agent teams: give each subagent one clear job</h3>
+        <p>A single agent doing everything hits a wall — full context, blurred focus, drifting quality. Agent teams fix that by splitting the work across specialized subagents coordinated by a lead.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/agent-teams.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/agent-teams.html">View carousel</a>
+          <span class="kw">Comment <b>TEAM</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Claude Cowork: an AI coworker on your Mac and your phone</h3>
+        <p>Cowork is now generally available on macOS and Windows. It works your actual files, can use your computer, and Pro/Max users can dispatch tasks from their phone via a persistent agent thread.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/cowork-anywhere.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/cowork-anywhere.html">View carousel</a>
+          <span class="kw">Comment <b>COWORK</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>MCP connectors: plug Claude into your tools, no code</h3>
+        <p>Claude can only help with what it can see. MCP connectors let you connect Claude to your apps and data — like USB-C for AI — so it can act on your real stack instead of guessing.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/mcp-connectors.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/mcp-connectors.html">View carousel</a>
+          <span class="kw">Comment <b>CONNECT</b></span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Fast vs deep: pick the right Opus 4.8 mode</h3>
+        <p>Opus 4.8 can run in a Fast mode that's about 2.5x quicker and roughly 3x cheaper than earlier fast modes — or in full deep-reasoning mode. The skill is matching the mode to the task.</p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="guides/fast-vs-deep.html">Read guide &rarr;</a>
+          <a class="btn btn-ghost" href="posts/fast-vs-deep.html">View carousel</a>
+          <span class="kw">Comment <b>SPEED</b></span>
+        </div>
+      </article>
+  </div>
+
+  <footer>
+    Built by <a href="https://instagram.com/jaidenrabatin" target="_blank" rel="noopener">@jaidenrabatin</a> &middot; Claude Code Education Series
+  </footer>
+</div>
+</body>
+</html>

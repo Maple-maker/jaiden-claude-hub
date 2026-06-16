@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Bundle your skills into a shareable plugin · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
+section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
+pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
+.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<body><div class="wrap">
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Bundle your skills into a shareable plugin</h1><p class="subtitle">A single skill helps you. A plugin helps your whole team. Here's how to package a set of skills into one install and distribute your standards.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>Group skills that belong together</li><li>Package a set as a plugin</li><li>Sharing a single skill</li><li>Distribute to your team</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Group skills that belong together</h2><p>A plugin is nothing fancy — it's a tidy collection of skills, each in its own named folder with a SKILL.md inside. Cluster the skills that support the same workflow: a content kit, a research kit, an ops kit.</p><p>Keeping each skill in its own folder is the whole structure. Get that right and packaging is trivial.</p><div class="callout c-amber"><strong>Mental model</strong>One skill is a tool. A plugin is the toolbox you hand someone on day one.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Package a set as a plugin</h2><p>When you have multiple skills to share, zip the folders together and upload the bundle as a personal plugin. Everyone who installs it gets all the skills at once.</p><pre>Customize -&gt; Personal plugins -&gt; "+" -&gt; Create plugin
+       -&gt; Upload plugin -&gt; upload your .zip</pre></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Sharing a single skill</h2><p>If you only have one skill, you don't need a plugin at all. Upload it directly as a skill — either a zipped folder or a single SKILL.md file. Use plugins only when you're bundling several skills together.</p><pre>Customize -&gt; Skills -&gt; "+" -&gt; Create skill
+       -&gt; Upload a skill -&gt; upload .zip or SKILL.md</pre><div class="callout c-green"><strong>Rule of thumb</strong>One skill = upload a skill. Several related skills = bundle a plugin.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Distribute to your team</h2><p>Send the plugin file directly, or commit the skill folders into your project's repository so they travel with the code. Either way, everyone ends up running the same standards — your format, your process, your defaults — without re-explaining anything.</p><p>This is the moment a personal habit becomes a team system.</p><div class="callout c-blue"><strong>In your sandbox</strong>Commit a skills/ directory to the repo. Anyone who pulls the project gets the whole set automatically.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The plugin packaging guide</h2><p>Folder structure, zip steps, and the exact upload paths for both single skills and full plugins.</p><div class="grid"><div class="gp"><b>›</b> Folder structure</div><div class="gp"><b>›</b> One skill upload</div><div class="gp"><b>›</b> Plugin upload</div><div class="gp"><b>›</b> Naming rules</div><div class="gp"><b>›</b> What to bundle</div><div class="gp"><b>›</b> Repo sharing</div><div class="gp"><b>›</b> Versioning</div><div class="gp"><b>›</b> Team rollout</div><div class="gp"><b>›</b> Troubleshooting</div><div class="gp"><b>›</b> Checklist</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download plugin-packaging-guide.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Plugin Packaging Guide
+
+## Folder structure
+my-plugin/
+  skill-one/
+    SKILL.md
+  skill-two/
+    SKILL.md
+  skill-three/
+    SKILL.md
+(One folder per skill. One SKILL.md per folder.)
+
+## Share a SINGLE skill
+Customize -&gt; Skills -&gt; "+" -&gt; Create skill -&gt; Upload a skill
+Upload a .zip of the folder OR a single SKILL.md
+
+## Bundle MULTIPLE skills (plugin)
+1. Zip the parent folder containing all your skill folders
+2. Customize -&gt; Personal plugins -&gt; "+" -&gt; Create plugin -&gt; Upload plugin
+3. Upload the .zip
+
+## When to use which
+- One skill .............. upload as a skill
+- Several related skills .. bundle as a plugin
+
+## Share with a team (repo method)
+[ ] Put skills under skills/ in your project
+[ ] Commit and push
+[ ] Teammates pull the project -&gt; they get every skill
+
+## Checklist
+[ ] Each skill in its own named folder
+[ ] Each folder has exactly one SKILL.md
+[ ] Descriptions written as "Use when..."
+[ ] Tested each skill once before bundling
+[ ] Zip is the folder, not loose files
+</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='plugin-packaging-guide.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Dynamic Workflows: run hundreds of agents in one session · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
+section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
+pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
+.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<body><div class="wrap">
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Dynamic Workflows: run hundreds of agents in one session</h1><p class="subtitle">Claude Opus 4.8 introduced Dynamic Workflows — Claude Code's orchestration layer for jobs too big for a single pass. It writes its own plan, runs subagents in parallel, and verifies the output.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>What Dynamic Workflows are</li><li>When to reach for it</li><li>How to start one</li><li>Verify at the summary level</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>What Dynamic Workflows are</h2><p>A Dynamic Workflow is Claude Code planning and running its own multi-agent job. Instead of you hand-building a chain of steps, Claude writes an orchestration script, spins up subagents to do pieces of the work in parallel, and checks the results before calling it done.</p><p>Think of it as a manager that hires its own team for the task in front of it, then disbands them when the job is finished.</p><div class="callout c-amber"><strong>The shift</strong>You stop describing steps and start describing outcomes. Claude figures out the team and the order.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>When to reach for it</h2><p>This is for work that doesn't fit in a single context window: large refactors across hundreds of files, repo-wide test generation, multi-file security audits, big migrations. If you've ever watched a normal session run out of room, that's the signal.</p><p>For small, single-file tasks, a regular session is still faster. Dynamic Workflows shine on breadth.</p><div class="callout c-blue"><strong>Rule of thumb</strong>One file: normal chat. Hundreds of files: a workflow.</div></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>How to start one</h2><p>State the big goal in plain language and let Claude plan. You don't write the orchestration — Claude does. It decides how to split the work, how many subagents to run, and how to recombine the results.</p><p>Your job is a clear objective and good guardrails (what done looks like, what not to touch).</p><pre>&gt; Migrate the codebase to the new API.
+  Keep public behavior identical.
+  Add tests for anything you change.</pre></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Verify at the summary level</h2><p>The workflow verifies its own outputs and hands you a summary: what passed, what needs a look, what failed. You review at that level instead of reading every file, then re-run only the parts that need it.</p><p>That's the whole point — the work scales without your attention having to scale with it.</p><div class="callout c-green"><strong>In your sandbox</strong>Start with a contained goal (one module) to learn the pattern before pointing it at the whole repo.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The Dynamic Workflow starter prompt</h2><p>A fill-in-the-blank brief that gives Claude a big goal plus the guardrails it needs to plan a safe workflow.</p><div class="grid"><div class="gp"><b>›</b> Goal statement</div><div class="gp"><b>›</b> Scope + guardrails</div><div class="gp"><b>›</b> Definition of done</div><div class="gp"><b>›</b> Do-not-touch list</div><div class="gp"><b>›</b> Verification ask</div><div class="gp"><b>›</b> Parallelism hint</div><div class="gp"><b>›</b> Rollback note</div><div class="gp"><b>›</b> Example refactor</div><div class="gp"><b>›</b> Example audit</div><div class="gp"><b>›</b> Checklist</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download dynamic-workflow-starter.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Dynamic Workflow — Starter Brief
+
+## Goal (one sentence)
+[The big outcome, e.g. "Migrate the whole codebase from API v1 to v2."]
+
+## Scope
+- Include: [paths / modules]
+- Exclude (do NOT touch): [paths / files]
+
+## Guardrails
+- Keep public behavior identical.
+- Add or update tests for anything you change.
+- Stop and ask if a change would break a public interface.
+
+## Definition of done
+- [ ] All in-scope files updated
+- [ ] Tests pass
+- [ ] A summary of what changed + anything that needs review
+
+## How to verify
+Verify your own outputs. Give me a summary grouped by:
+PASSED / NEEDS REVIEW / FAILED — don't make me read every file.
+
+## Notes for Claude
+- Plan the workflow yourself; parallelize where safe.
+- Re-run only failed pieces if something breaks.
+
+---
+## Example goals
+- "Generate tests for every file in src/ that lacks them."
+- "Audit every API endpoint for missing auth checks."
+- "Rename the User model to Account across the repo."
+</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='dynamic-workflow-starter.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>

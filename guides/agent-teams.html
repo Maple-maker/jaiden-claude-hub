@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Agent teams: give each subagent one clear job · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
+section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
+pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
+.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<body><div class="wrap">
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Agent teams: give each subagent one clear job</h1><p class="subtitle">A single agent doing everything hits a wall — full context, blurred focus, drifting quality. Agent teams fix that by splitting the work across specialized subagents coordinated by a lead.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>Why one agent stalls</li><li>Give each subagent a job</li><li>A lead agent coordinates</li><li>Manage it from agent view</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Why one agent stalls</h2><p>Every agent has one context window. Pile a big, many-part task into it and it fills up, the goals blur together, and quality slips as everything competes for attention. You've felt this when a long session starts forgetting earlier instructions.</p><p>The fix isn't a bigger prompt — it's more agents, each with a narrower job.</p><div class="callout c-red"><strong>The failure mode</strong>A single agent is a single point of overload. Past a certain size, more instructions make it worse, not better.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Give each subagent a job</h2><p>In an agent team, each subagent has its own context window, its own prompt, and its own tool permissions. One researches, one builds, one reviews. Because each has a clean, narrow scope, each does its part well — and you can give the reviewer different (safer) tools than the builder.</p><p>This separation is what keeps quality high as the overall job grows.</p><pre>researcher -&gt; read-only, search
+builder    -&gt; edit files
+reviewer   -&gt; read + run tests</pre></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>A lead agent coordinates</h2><p>A main agent assigns the work, lets the subagents run in parallel, and merges their results into a single answer. You talk to the lead; the lead manages the team. This composes with Dynamic Workflows — a workflow can spin up subagents as part of its plan.</p><p>One conductor, many players, one coherent result.</p><div class="callout c-blue"><strong>Composable</strong>Subagents and Dynamic Workflows aren't either/or — a workflow can run a whole agent team inside it.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Manage it from agent view</h2><p>Claude Code's agent view lets you manage multiple sessions from one place — see which subagent is running, which is done, and where something is stuck. You step in only where you're needed instead of babysitting the whole thing.</p><p>That's how you run a team without losing the thread.</p><div class="callout c-green"><strong>In your sandbox</strong>Start with two roles — a builder and a reviewer. Add specialists once the handoffs feel clean.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The agent-team blueprint</h2><p>A template for defining each subagent's role, context, tools, and how the lead combines their work.</p><div class="grid"><div class="gp"><b>›</b> Lead agent role</div><div class="gp"><b>›</b> Subagent roles</div><div class="gp"><b>›</b> Per-agent tools</div><div class="gp"><b>›</b> Per-agent context</div><div class="gp"><b>›</b> Handoffs</div><div class="gp"><b>›</b> Merge step</div><div class="gp"><b>›</b> Guardrails</div><div class="gp"><b>›</b> Example: research</div><div class="gp"><b>›</b> Example: build</div><div class="gp"><b>›</b> Checklist</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download agent-team-blueprint.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Agent Team Blueprint
+
+## Lead agent
+Role: [coordinate, assign, merge]
+Talks to: the human
+
+## Subagents (one job each)
+| name       | job              | tools            | context        |
+|------------|------------------|------------------|----------------|
+| researcher | gather + summarize| read, search     | the question   |
+| builder    | make the changes  | edit files       | the spec       |
+| reviewer   | check the work    | read, run tests  | the diff       |
+
+## Handoffs
+researcher -&gt; builder: [what gets passed]
+builder -&gt; reviewer: [what gets passed]
+reviewer -&gt; lead: [pass/fail + notes]
+
+## Merge step
+Lead combines results into: [one deliverable / summary]
+
+## Guardrails
+- Reviewer gets read-only + tests (not edit).
+- Builder stops and asks before touching [x].
+
+## Checklist
+[ ] Each subagent has ONE clear job
+[ ] Tools scoped per role (least privilege)
+[ ] Handoffs are explicit
+[ ] Lead owns the final merge
+</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='agent-team-blueprint.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>

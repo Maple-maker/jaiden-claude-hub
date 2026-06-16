@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Fast vs deep: pick the right Opus 4.8 mode · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
+section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
+pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
+.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<body><div class="wrap">
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Fast vs deep: pick the right Opus 4.8 mode</h1><p class="subtitle">Opus 4.8 can run in a Fast mode that's about 2.5x quicker and roughly 3x cheaper than earlier fast modes — or in full deep-reasoning mode. The skill is matching the mode to the task.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>Two gears, one model</li><li>Use Fast for volume</li><li>Use Deep for hard calls</li><li>Match mode to task</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Two gears, one model</h2><p>Opus 4.8 isn't one fixed speed. Fast mode trades a little depth for a lot of speed — around 2.5x quicker — and it's roughly 3x cheaper than the fast modes of previous models. Deep mode gives you full reasoning for the hard stuff.</p><p>Same model, two gears. Most people leave it in one gear and either overpay or wait too long.</p><div class="callout c-amber"><strong>The idea</strong>It's not 'which model' — it's 'which gear' for the task in front of you.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Use Fast for volume</h2><p>Fast mode is built for high-volume, low-ambiguity work: quick edits, formatting, simple lookups, summarizing a thread, cleaning up files. When the task is clear and you're doing a lot of it, speed and cost win.</p><p>Paying for deep reasoning to rename files is like hiring a surgeon to cut your sandwich.</p><pre>fast: reformat 50 notes
+fast: summarize a thread
+fast: rename + sort files</pre></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Use Deep for hard calls</h2><p>Deep mode earns its keep on tricky reasoning: system design, gnarly debugging, strategy, long-horizon multi-step problems. When being right matters more than being quick, give the model room to think.</p><p>Slow is smart exactly when the stakes are real.</p><div class="callout c-blue"><strong>Tell</strong>If a mistake here is expensive or hard to undo, go deep.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Match mode to task</h2><p>A simple habit: start fast, and escalate to deep only if the task stalls or turns out to be harder than it looked. Reserve deep for the ~20% of work that's genuinely hard, and let fast handle the rest. You'll save real time and money without losing quality where it counts.</p><p>The whole skill is knowing which gear you're in.</p><div class="callout c-green"><strong>In practice</strong>Default to fast for routine work. Flip to deep the moment ambiguity or stakes show up.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The fast-vs-deep cheat sheet</h2><p>A one-glance guide to picking Fast or Deep mode, with examples and an escalation rule.</p><div class="grid"><div class="gp"><b>›</b> Fast = volume</div><div class="gp"><b>›</b> Deep = stakes</div><div class="gp"><b>›</b> Speed numbers</div><div class="gp"><b>›</b> Cost note</div><div class="gp"><b>›</b> Escalation rule</div><div class="gp"><b>›</b> Fast examples</div><div class="gp"><b>›</b> Deep examples</div><div class="gp"><b>›</b> Unsure? default</div><div class="gp"><b>›</b> Cost savings</div><div class="gp"><b>›</b> Checklist</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download fast-vs-deep-cheatsheet.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Fast vs Deep — Cheat Sheet (Opus 4.8)
+
+## The two gears
+FAST:  ~2.5x quicker, ~3x cheaper than older fast modes
+DEEP:  full reasoning for hard, high-stakes work
+
+## Use FAST when...
+- The task is clear and low-ambiguity
+- You're doing a LOT of it (volume)
+- Speed + cost matter more than nuance
+Examples: reformatting, summaries, lookups, file cleanup
+
+## Use DEEP when...
+- The reasoning is tricky (design, debugging, strategy)
+- It's long-horizon / multi-step
+- Being right &gt; being fast
+Examples: architecture, weird bugs, migrations, big decisions
+
+## The escalation rule
+1. Start FAST.
+2. If it stalls or turns out harder than expected -&gt; switch to DEEP.
+3. Reserve DEEP for the ~20% that's genuinely hard.
+
+## Why it matters
+You stop paying deep-thinking rates for routine work,
+and you stop rushing the decisions that deserve thought.
+</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='fast-vs-deep-cheatsheet.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>

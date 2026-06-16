@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>MCP connectors: plug Claude into your tools, no code · @jaidenrabatin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
+section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
+pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
+.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<body><div class="wrap">
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>MCP connectors: plug Claude into your tools, no code</h1><p class="subtitle">Claude can only help with what it can see. MCP connectors let you connect Claude to your apps and data — like USB-C for AI — so it can act on your real stack instead of guessing.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>What MCP is, in plain terms</li><li>Add a remote connector</li><li>Now Claude can act, not guess</li><li>Connect only what you trust</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>What MCP is, in plain terms</h2><p>MCP (the Model Context Protocol) is a standard way to plug tools into Claude. Instead of a custom integration for every app, there's one protocol that many tools speak. The usual analogy: it's USB-C for AI — one port, many devices.</p><p>You don't need to understand the protocol to use it. You just need to know it's what lets Claude reach your tools.</p><div class="callout c-amber"><strong>The mental model</strong>MCP is the port. Each app's MCP server is a plug. Connect the plugs you want.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Add a remote connector</h2><p>In beta, you can connect any remote MCP server without writing client code. You add the connector, authorize access, and it's available. That removes the part that used to require a developer.</p><p>Start with one tool you use constantly — your docs, your chat, or your task tracker.</p><pre>Add connector -&gt; authorize -&gt; connected
+(no client code required, beta)</pre></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Now Claude can act, not guess</h2><p>Once connected, Claude can read and update real data: pull a ticket, fetch a doc, post a message, summarize today's activity. Better still, it can work across tools in a single request — read from one, write to another — so you stop being the copy-paste bridge.</p><p>This is the difference between an assistant that talks about your work and one that does it.</p><div class="callout c-blue"><strong>Where it shines</strong>Anything that currently makes you tab between Claude and another app is a connector waiting to happen.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Connect only what you trust</h2><p>Connectors ask for permission and define a scope. Add the few you actually use, and review the access each one requests before approving. More power means being deliberate — give read-only where reading is all that's needed.</p><p>Connect on purpose, not by default.</p><div class="callout c-red"><strong>Safety</strong>Read the scope before you approve. Prefer read-only unless the task truly needs write access.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The connector setup checklist</h2><p>A short checklist to connect your first MCP tools safely and get Claude acting across your stack.</p><div class="grid"><div class="gp"><b>›</b> Pick a tool</div><div class="gp"><b>›</b> Find its MCP</div><div class="gp"><b>›</b> Add connector</div><div class="gp"><b>›</b> Authorize scope</div><div class="gp"><b>›</b> Test a read</div><div class="gp"><b>›</b> Test an action</div><div class="gp"><b>›</b> Cross-tool task</div><div class="gp"><b>›</b> Least privilege</div><div class="gp"><b>›</b> Revoke unused</div><div class="gp"><b>›</b> Checklist</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download mcp-connector-checklist.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># MCP Connector Setup Checklist
+
+## 1. Pick your first tool
+Choose the app you tab to most: [docs / chat / tasks / drive]
+
+## 2. Connect it
+[ ] Find its MCP server / connector
+[ ] Add the connector in Claude
+[ ] Authorize — review the scope it asks for
+[ ] Confirm it shows as connected
+
+## 3. Test safely
+[ ] Read first: "summarize my latest [items]"
+[ ] Then a small action: "draft a reply" (review before send)
+
+## 4. Go cross-tool
+Try one request that spans two connectors:
+"Pull today's tickets and post a summary to [chat]."
+
+## 5. Keep it tidy + safe
+[ ] Prefer read-only unless write is required
+[ ] Remove connectors you don't use
+[ ] Re-check scopes periodically
+
+## Good first connectors
+- Docs / knowledge base
+- Chat (Slack/Teams)
+- Task tracker (Linear/Asana/Jira)
+- Drive / file storage
+</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='mcp-connector-checklist.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>
