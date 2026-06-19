@@ -27,7 +27,7 @@ Trustworthy pixel renders: 1440 / 768 / 500.
 The mockup passes, but the **site does not yet match site-wide**. Remaining highest-impact gaps,
 in priority order:
 
-1. **guides/*.html** (13 pages left) — run `.warloops/apply_template.py <file>` (cycle 04 tool;
+1. **guides/*.html** (12 pages left) — run `.warloops/apply_template.py <file>` (cycle 04 tool;
    deterministic swap of fonts + style + manifest, preserves body & download script). Order below.
    Template source = `skills-101.html` (cycle 02):
    tokens, 4 fonts, manifest bar, TOC, SECTION rules, restrained callouts, dark code, reduced-motion.
@@ -41,7 +41,7 @@ in priority order:
    (measure ≤72ch, Playfair pull-quotes, mono captions).
 4. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
 
-_Done: 404.html (c01) · skills-101=template (c02) · skill-creator (c03) · trigger-design (c04)._
+_Done: 404 (c01) · skills-101=template (c02) · skill-creator (c03) · trigger-design (c04) · chat-to-skill (c05)._
 
 Extract the locked CSS tokens block + manifest/section partial from index.html as the
 copy-source for every propagation cycle. Keep all existing content, links, and SEO/meta intact.
@@ -97,3 +97,8 @@ copy-source for every propagation cycle. Keep all existing content, links, and S
   motion, download intact, 4 sections) + rendered at 900w — matches template. Scores hold (9/8/8).
 - This tool makes remaining guides one-command each (and a "batch the rest" trivial).
   Next = chat-to-skill.
+
+### Cycle 05 — 2026-06-19 — guides/chat-to-skill.html
+- Ran apply_template.py on chat-to-skill.html. Validated (no off-brand leftovers, 4 fonts,
+  manifest, reduced motion, download intact, glyph gone, 4 sections) + rendered at 900w —
+  matches template. Scores hold (9 / 8 / 8). Next = skills-to-plugin.
