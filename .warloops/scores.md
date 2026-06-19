@@ -27,14 +27,15 @@ Trustworthy pixel renders: 1440 / 768 / 500.
 The mockup passes, but the **site does not yet match site-wide**. Remaining highest-impact gaps,
 in priority order:
 
-1. **404.html** — restyle to Field Manual (quick, high visibility).
-2. **guides/*.html** (18 pages) — propagate design system: tokens, fonts, manifest bar,
+1. **guides/*.html** (18 pages) — propagate design system: tokens, fonts, manifest bar,
    SEC headers, bracket styling, reduced-motion. One page per cycle, simplest first
    (skills-101 → skill-creator → …). Verify each renders.
-3. **posts/*.html** (18 carousel pages) — same propagation pass.
-4. **blog/the-real-agi-race.html** — long-form reading layout in Field Manual style
+2. **posts/*.html** (18 carousel pages) — same propagation pass.
+3. **blog/the-real-agi-race.html** — long-form reading layout in Field Manual style
    (measure ≤72ch, Playfair pull-quotes, mono captions).
-5. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
+4. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
+
+_Done: 404.html (cycle 01)._
 
 Extract the locked CSS tokens block + manifest/section partial from index.html as the
 copy-source for every propagation cycle. Keep all existing content, links, and SEO/meta intact.
@@ -54,3 +55,12 @@ copy-source for every propagation cycle. Keep all existing content, links, and S
   headless-capture artifact).
 - Preserved 1 deep dive + 18 guides + 18 carousel links + SEO/meta/JSON-LD.
 - index.html PASSES all three axes. Site-wide propagation pending (see NEXT ACTIONS).
+
+### Cycle 01 — 2026-06-19 — 404.html
+- Surgical critic top gap: 404.html was a single-line page with off-brand hex
+  (#0D0D0D / #F2EDE4 / #E8784A) — visually broke from the new homepage.
+- Rebuilt to Field Manual: brand tokens, Barlow/DM Sans/DM Mono, warm-light glow,
+  corner-bracket `SIGNAL LOST` tag, Barlow 404, mono command-line w/ cursor, single
+  orange CTA, reduced-motion guard. Rendered at 1024 — on-brand, consistent w/ index.
+- Scores hold (Static 9 / Motion 8 / Responsive 8). No regression. Loop continues:
+  next gap = guides/*.html propagation (start skills-101).
