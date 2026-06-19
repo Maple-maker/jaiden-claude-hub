@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Jaiden Rabatin — Claude guides, templates & tutorials</title>
+<title>Jaiden Rabatin — Claude guides, templates &amp; tutorials</title>
 <meta name="description" content="Free guides, templates, and tutorials for getting the most out of Claude &amp; Claude Code — no CS degree required."/>
-<meta property="og:title" content="Jaiden Rabatin — Claude guides & templates"/>
+<meta property="og:title" content="Jaiden Rabatin — Claude guides &amp; templates"/>
 <meta property="og:description" content="Free guides, templates, and tutorials for getting the most out of Claude &amp; Claude Code — no CS degree required."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://jaidenrabatin.netlify.app/"/>
@@ -24,241 +24,335 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  :root{--bg:#0D0D0D;--orange:#C4522A;--orange-light:#E8784A;--cream:#F2EDE4;--muted:rgba(242,237,228,.55);--ghost:rgba(196,82,42,.07);--border:rgba(196,82,42,.25);--card:#151515;}
+  /* ── Brand tokens (locked) ───────────────────────────────── */
+  :root{
+    --obsidian:#0B0B0B; --carbon:#1A1A1A; --bone:#F4F1EA;
+    --orange:#C4522A; --tan:#C2A878; --ash:#6B6B6B;
+    --line:rgba(194,168,120,.18);          /* field-tan hairline */
+    --line-strong:rgba(194,168,120,.34);
+    --card:#141413;
+    --muted:rgba(244,241,234,.56);
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:680px;margin:0 auto;padding:0 20px 80px}
-  header.top{display:flex;align-items:center;gap:10px;justify-content:center;padding:32px 0 8px}
-  header.top span{font-family:'DM Mono',monospace;color:var(--muted);font-size:15px}
-  .hero{text-align:center;padding:24px 8px 8px}
-  .hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,12vw,76px);line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
-  .hero h1 .o{color:var(--orange-light)}
-  .hero .tag{font-size:clamp(17px,4.5vw,21px);margin-top:14px;color:var(--cream)}
-  .hero .sub{font-size:15px;color:var(--muted);margin:12px auto 0;max-width:440px}
-  .cta{display:flex;flex-direction:column;gap:12px;margin:28px auto 8px;max-width:440px}
-  .big{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:#190a04;font-weight:700;font-size:18px;padding:18px 22px;border-radius:14px;text-decoration:none;transition:.15s}
-  .big:hover{background:var(--orange-light);transform:translateY(-1px)}
-  .row{display:flex;gap:12px}
-  .row a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ghost);border:1px solid var(--border);color:var(--cream);font-weight:600;font-size:15px;padding:14px;border-radius:12px;text-decoration:none;transition:.15s}
-  .row a:hover{background:rgba(196,82,42,.15)}
-  .section-label{font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.15em;font-size:13px;color:var(--orange-light);text-align:center;margin:48px 0 6px}
-  .section-sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:22px}
-  .grid{display:grid;gap:14px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px}
-  .card h3{font-size:19px;font-weight:700;line-height:1.25;margin-bottom:6px}
-  .card p{font-size:14px;color:var(--muted);margin-bottom:14px}
-  .card-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-  .btn{font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px;text-decoration:none}
-  .btn-primary{background:var(--orange);color:#190a04}
-  .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--cream)}
-  .kw{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);margin-left:auto}
-  .kw b{color:var(--orange-light)}
-  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:56px}
-  footer a{color:var(--orange-light);text-decoration:none}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--obsidian); color:var(--bone);
+    font-family:'DM Sans',system-ui,sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:hidden;                      /* guard against accidental bleed */
+  }
+  /* one warm light: a single, faint radial top-center */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:radial-gradient(60% 42% at 50% -6%, rgba(196,82,42,.10), transparent 70%);
+  }
+  .wrap{position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 22px 96px}
+  a{color:inherit}
+  ::selection{background:var(--orange); color:#160a05}
+
+  /* mono utility */
+  .mono{font-family:'DM Mono',monospace; letter-spacing:.04em}
+
+  /* ── Manifest bar ────────────────────────────────────────── */
+  .manifest{
+    display:flex; align-items:center; justify-content:space-between; gap:10px 14px;
+    flex-wrap:wrap;
+    border:1px solid var(--line); border-radius:4px;
+    padding:11px 14px; margin:26px 0 0;
+    font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--muted); position:relative;
+  }
+  .manifest .id{color:var(--bone)}
+  .manifest .id b{color:var(--orange); font-weight:500}
+  .manifest .stamp{color:var(--tan)}
+  @media(max-width:440px){
+    .manifest{font-size:10.5px; letter-spacing:.08em}
+    .manifest .stamp{display:none}        /* keep the operator ID, drop the stamp on narrow screens */
+  }
+  /* corner brackets */
+  .bracket::before,.bracket::after{
+    content:""; position:absolute; width:9px; height:9px; border:1px solid var(--tan);
+  }
+  .bracket::before{top:-1px; left:-1px; border-right:0; border-bottom:0}
+  .bracket::after{bottom:-1px; right:-1px; border-left:0; border-top:0}
+
+  /* ── Hero ────────────────────────────────────────────────── */
+  .hero{padding:54px 2px 18px}
+  .hero h1{
+    font-family:'Barlow Condensed',sans-serif; font-weight:900;
+    font-size:clamp(50px,13.5vw,104px); line-height:.9; letter-spacing:-.015em;
+    text-transform:uppercase;
+  }
+  /* redaction reveal */
+  .redact{position:relative; display:inline-block; color:var(--bone)}
+  .redact > span{position:relative; z-index:1}
+  .redact::after{
+    content:""; position:absolute; inset:.06em -.06em .12em -.06em; z-index:2;
+    background:var(--orange); transform-origin:left center;
+    animation:declassify .62s .35s cubic-bezier(.7,0,.2,1) forwards;
+  }
+  @keyframes declassify{to{transform:scaleX(0); transform-origin:right center}}
+  .cmd{
+    margin-top:22px; font-family:'DM Mono',monospace; font-size:clamp(14px,3.6vw,16px);
+    color:var(--tan);
+  }
+  .cmd .p{color:var(--orange)}
+  .cmd .cur{display:inline-block; width:.62ch; background:var(--bone); color:transparent;
+    margin-left:1px; animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .sub{margin-top:16px; max-width:48ch; color:var(--muted); font-size:15.5px}
+
+  .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px}
+  .btn-lead{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--orange); color:#160a05; font-weight:700; font-size:16px;
+    padding:15px 22px; border-radius:6px; text-decoration:none;
+    min-height:48px; transition:background .2s ease, transform .2s ease;
+  }
+  .btn-lead:hover{background:#d75e34; transform:translateY(-1px)}
+  .btn-line{
+    display:inline-flex; align-items:center; gap:9px;
+    border:1px solid var(--line-strong); color:var(--bone); font-weight:600; font-size:15px;
+    padding:14px 18px; border-radius:6px; text-decoration:none; min-height:48px;
+    font-family:'DM Mono',monospace; letter-spacing:.04em;
+    transition:border-color .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn-line:hover{border-color:var(--orange); color:var(--orange)}
+  .ic{width:17px; height:17px; flex:none; stroke:currentColor; fill:none; stroke-width:2}
+  .ic-fill{width:15px; height:15px; flex:none; fill:currentColor}
+
+  /* ── Section header ──────────────────────────────────────── */
+  .sec{margin-top:64px}
+  .sec-head{
+    display:flex; align-items:baseline; gap:14px;
+    border-top:1px solid var(--line); padding-top:14px;
+  }
+  .sec-no{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--orange)}
+  .sec-title{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--bone)}
+  .sec-count{margin-left:auto; font-family:'DM Mono',monospace; font-size:12px;
+    color:var(--ash)}
+  .sec-sub{color:var(--muted); font-size:14.5px; margin:9px 0 22px}
+
+  /* ── Cards ───────────────────────────────────────────────── */
+  .grid{display:grid; gap:14px}
+  @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+  .card{
+    position:relative; background:var(--card);
+    border:1px solid var(--line); border-radius:6px; padding:22px 22px 20px;
+    transition:border-color .25s ease, background .25s ease, transform .25s ease;
+  }
+  .card:hover{border-color:var(--line-strong); background:#181715; transform:translateY(-2px)}
+  /* corner brackets on cards */
+  .card::before,.card::after{
+    content:""; position:absolute; width:12px; height:12px;
+    border:1px solid var(--tan); opacity:.35; transition:opacity .25s ease;
+  }
+  .card::before{top:9px; left:9px; border-right:0; border-bottom:0}
+  .card::after{bottom:9px; right:9px; border-left:0; border-top:0}
+  .card:hover::before,.card:hover::after{opacity:.8; border-color:var(--orange)}
+
+  .card h3{font-size:18.5px; font-weight:700; line-height:1.28; letter-spacing:-.01em;
+    margin-bottom:8px}
+  .card p{font-size:13.5px; color:var(--muted); margin-bottom:16px}
+  .card-actions{display:flex; flex-wrap:wrap; align-items:center; gap:9px}
+  .lnk{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:13.5px; font-weight:600; text-decoration:none; min-height:40px; padding:6px 0;
+    color:var(--bone); transition:color .2s ease;
+  }
+  .lnk:hover{color:var(--orange)}
+  .lnk .ic{width:14px; height:14px}
+  .lnk-ghost{color:var(--muted)}
+  .lnk-ghost:hover{color:var(--bone)}
+  .kw{margin-left:auto; font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:.06em; color:var(--ash); text-transform:uppercase}
+  .kw b{color:var(--orange); font-weight:500}
+
+  /* featured deep-dive card spans full width, slightly heavier */
+  .card.feat{grid-column:1/-1; border-color:var(--line-strong)}
+  .card.feat h3{font-size:clamp(21px,4.4vw,26px); line-height:1.18}
+  .card.feat .quote{font-family:'Playfair Display',serif; font-weight:700; font-style:italic;
+    color:var(--tan); font-size:15px; margin:0 0 12px}
+
+  /* ── Closer ──────────────────────────────────────────────── */
+  .closer{margin-top:70px; text-align:center; padding-top:30px; border-top:1px solid var(--line)}
+  .closer .sig{font-family:'Playfair Display',serif; font-weight:700; font-style:italic;
+    font-size:clamp(22px,5vw,30px); color:var(--bone)}
+  .closer .sig .o{color:var(--orange)}
+  footer{margin-top:26px; text-align:center; color:var(--ash);
+    font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.05em}
+  footer a{color:var(--tan); text-decoration:none}
+  footer a:hover{color:var(--orange)}
+
+  /* ── Reveal-on-scroll ────────────────────────────────────── */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease}
+  .reveal.in{opacity:1; transform:none}
+
+  /* focus + reduced motion */
+  a:focus-visible{outline:2px solid var(--orange); outline-offset:3px; border-radius:3px}
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important; transition:none!important}
+    .redact::after{display:none}
+    .reveal{opacity:1; transform:none}
+    html{scroll-behavior:auto}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="top"><svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true"><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(0 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(25.71428571428571 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(51.42857142857142 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(77.14285714285714 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(102.85714285714285 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(128.57142857142858 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(154.28571428571428 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(180 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(205.7142857142857 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(231.42857142857144 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(257.14285714285717 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(282.85714285714283 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(308.57142857142856 50 50)"/><rect x="48.5" y="6" width="3" height="38" rx="1.5" fill="#E8784A" transform="rotate(334.2857142857143 50 50)"/><circle cx="50" cy="50" r="9" fill="#E8784A"/></svg><span>@jaidenrabatin</span></header>
 
+  <!-- Manifest bar -->
+  <div class="manifest bracket">
+    <span class="id">J.&nbsp;RABATIN&nbsp;<b>//</b>&nbsp;CLAUDE&nbsp;OPS</span>
+    <span class="stamp">FIELD MANUAL &middot; UNCLASSIFIED</span>
+  </div>
+
+  <!-- Hero -->
   <section class="hero">
-    <h1>Make Claude<br/><span class="o">Do The Work</span></h1>
-    <p class="tag">Plain-English Claude systems that do real work.</p>
+    <h1>Make Claude<br/><span class="redact"><span>Do</span></span> The Work</h1>
+    <p class="cmd"><span class="p">&gt;</span> plain-english claude systems that do real work<span class="cur">_</span></p>
     <p class="sub">Free guides, templates, and tutorials for getting the most out of Claude &amp; Claude Code — no CS degree required.</p>
     <div class="cta">
-      <a class="big" href="#guides">&#8595;&nbsp; Free Guides &amp; Templates</a>
-      <div class="row">
-        <a href="https://youtube.com/@jaidenrabatin" target="_blank" rel="noopener">&#9654;&nbsp; YouTube</a>
-        <a href="https://instagram.com/jaidenrabatin" target="_blank" rel="noopener">&#9728;&nbsp; Instagram</a>
-      </div>
+      <a class="btn-lead" href="#guides">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14m0 0l-6-6m6 6l6-6"/></svg>
+        Free Guides &amp; Templates
+      </a>
+      <a class="btn-line" href="https://youtube.com/@jaidenrabatin" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg class="ic-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.8-.5-5.6a2.9 2.9 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.9 2.9 0 0 0-2 2C1 8.2 1 12 1 12s0 3.8.5 5.6a2.9 2.9 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.9 2.9 0 0 0 2-2C23 15.8 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>
+        YouTube
+      </a>
+      <a class="btn-line" href="https://instagram.com/jaidenrabatin" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
     </div>
   </section>
 
-  <h2 class="section-label" id="deepdives">Deep Dives &amp; Long-Form</h2>
-  <p class="section-sub">Fact-checked, research-heavy essays on where AI is actually going.</p>
-  <div class="grid">
-      <article class="card" style="border-color:rgba(196,82,42,.45)">
+  <!-- SEC 01 — Deep Dives -->
+  <section class="sec" id="deepdives">
+    <div class="sec-head">
+      <span class="sec-no">SEC 01</span>
+      <span class="sec-title">Deep Dives &amp; Long-Form</span>
+      <span class="sec-count">001 / 001</span>
+    </div>
+    <p class="sec-sub">Fact-checked, research-heavy essays on where AI is actually going.</p>
+    <div class="grid">
+      <article class="card feat reveal">
+        <p class="quote">"Separating what's verified from what's vivid fiction."</p>
         <h3>The AGI Race Is Real. The 2027 Deadline Is Marketing.</h3>
-        <p>Everyone quotes a 2027 date the forecast's own authors already walked back to 2032. A fact-checked deep dive separating what's verified from what's vivid fiction — plus the 5 indicators that actually tell you where the US&ndash;China AI race is going.</p>
+        <p>Everyone quotes a 2027 date the forecast's own authors already walked back to 2032. A fact-checked deep dive — plus the 5 indicators that actually tell you where the US&ndash;China AI race is going.</p>
         <div class="card-actions">
-          <a class="btn btn-primary" href="blog/the-real-agi-race.html">Read the deep dive &rarr;</a>
-          <span class="kw">~12 min &middot; <b>Fact-checked</b></span>
+          <a class="lnk" href="blog/the-real-agi-race.html">Read the deep dive
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </a>
+          <span class="kw">~12 MIN &middot; <b>FACT-CHECKED</b></span>
         </div>
       </article>
-  </div>
+    </div>
+  </section>
 
-  <h2 class="section-label" id="guides">Free Guides &amp; Templates</h2>
-  <p class="section-sub">Every one comes with a downloadable resource for your Claude Code sandbox.</p>
-  <div class="grid">
-      <article class="card">
-        <h3>Turn on Claude Skills and stop getting generic output</h3>
-        <p>Skills are the feature that makes Claude follow your standards. They're built in, free, and off by default. Here's how to switch them on and start using them today.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/skills-101.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/skills-101.html">View carousel</a>
-          <span class="kw">Comment <b>ENABLE</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Build your first Claude Skill with no code</h3>
-        <p>The built-in skill-creator turns a plain-English description into a working skill. If you can explain a process to a coworker, you can build one. Here's the whole flow.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/skill-creator.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/skill-creator.html">View carousel</a>
-          <span class="kw">Comment <b>CREATOR</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Write skill triggers that fire on their own</h3>
-        <p>A brilliant skill that lives in a menu you never open is worse than a mediocre one that auto-triggers. The difference is the description. Here's how to write one that works.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/trigger-design.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/trigger-design.html">View carousel</a>
-          <span class="kw">Comment <b>TRIGGER</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Turn any good chat into a reusable skill</h3>
-        <p>Your best Claude chats are skills you haven't saved yet. With one click you can package a workflow you already solved and rerun it whenever you need it.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/chat-to-skill.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/chat-to-skill.html">View carousel</a>
-          <span class="kw">Comment <b>REUSE</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Bundle your skills into a shareable plugin</h3>
-        <p>A single skill helps you. A plugin helps your whole team. Here's how to package a set of skills into one install and distribute your standards.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/skills-to-plugin.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/skills-to-plugin.html">View carousel</a>
-          <span class="kw">Comment <b>PLUGIN</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Teach Claude the why, not just the what</h3>
-        <p>Anthropic's alignment research found that explaining the reasons behind good behavior generalizes better than showing examples of it. The same idea makes your prompts and skills far more reliable.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/teach-the-why.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/teach-the-why.html">View carousel</a>
-          <span class="kw">Comment <b>WHY</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Dynamic Workflows: run hundreds of agents in one session</h3>
-        <p>Claude Opus 4.8 introduced Dynamic Workflows — Claude Code's orchestration layer for jobs too big for a single pass. It writes its own plan, runs subagents in parallel, and verifies the output.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/dynamic-workflows.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/dynamic-workflows.html">View carousel</a>
-          <span class="kw">Comment <b>AGENTS</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Loop engineering: stop prompting, start looping</h3>
-        <p>The biggest mindset shift of 2026 isn't a new model — it's designing agentic loops instead of typing prompts one at a time. The pattern is simple: gather context, take action, verify, repeat.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/loop-engineering.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/loop-engineering.html">View carousel</a>
-          <span class="kw">Comment <b>LOOPS</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Agent teams: give each subagent one clear job</h3>
-        <p>A single agent doing everything hits a wall — full context, blurred focus, drifting quality. Agent teams fix that by splitting the work across specialized subagents coordinated by a lead.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/agent-teams.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/agent-teams.html">View carousel</a>
-          <span class="kw">Comment <b>TEAM</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Claude Cowork: an AI coworker on your Mac and your phone</h3>
-        <p>Cowork is now generally available on macOS and Windows. It works your actual files, can use your computer, and Pro/Max users can dispatch tasks from their phone via a persistent agent thread.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/cowork-anywhere.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/cowork-anywhere.html">View carousel</a>
-          <span class="kw">Comment <b>COWORK</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>MCP connectors: plug Claude into your tools, no code</h3>
-        <p>Claude can only help with what it can see. MCP connectors let you connect Claude to your apps and data — like USB-C for AI — so it can act on your real stack instead of guessing.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/mcp-connectors.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/mcp-connectors.html">View carousel</a>
-          <span class="kw">Comment <b>CONNECT</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Fast vs deep: pick the right Opus 4.8 mode</h3>
-        <p>Opus 4.8 can run in a Fast mode that's about 2.5x quicker and roughly 3x cheaper than earlier fast modes — or in full deep-reasoning mode. The skill is matching the mode to the task.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/fast-vs-deep.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/fast-vs-deep.html">View carousel</a>
-          <span class="kw">Comment <b>SPEED</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Auto Mode: let Claude run the safe stuff on its own</h3>
-        <p>Auto Mode grades every action Claude wants to take, runs the safe ones automatically, and blocks the risky ones — so you stop rubber-stamping 'allow' on long jobs without giving up control.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/auto-mode.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/auto-mode.html">View carousel</a>
-          <span class="kw">Comment <b>AUTO</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Cowork computer use: let Claude use your actual desktop</h3>
-        <p>Computer use lets Claude open apps, click, and type on your screen — so it can finish work even in tools that have no integration. Here's how it works and where a non-developer should start.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/cowork-computer-use.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/cowork-computer-use.html">View carousel</a>
-          <span class="kw">Comment <b>CLICK</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Install community AI skills without getting burned</h3>
-        <p>A community skill runs inside your Claude, so adding one is a real trust decision — not a free freebie. Here are the five checks that take two minutes and keep a bad skill out.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/safe-skill-install.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/safe-skill-install.html">View carousel</a>
-          <span class="kw">Comment <b>SAFE</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Command, skill, subagent, or hook — which one do you need?</h3>
-        <p>Claude can be extended four ways and they look confusingly similar. Here's the plain-English map: a command is a saved prompt, a skill is real know-how, a subagent is isolated work, and a hook is an enforced rule.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/which-extension.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/which-extension.html">View carousel</a>
-          <span class="kw">Comment <b>WHICH</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Give Claude a memory so you stop repeating yourself</h3>
-        <p>A CLAUDE.md file is a plain document Claude reads automatically at the start of your work — your role, preferences, and rules. Set it once and every conversation starts already briefed.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/claude-memory.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/claude-memory.html">View carousel</a>
-          <span class="kw">Comment <b>MEMORY</b></span>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Plugins &amp; marketplaces: install a whole toolkit at once</h3>
-        <p>A plugin bundles skills, tools, and connectors into one installable package — and the official marketplace already has 100+. Here's how to browse, install, and vet them as a non-developer.</p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="guides/plugins-marketplace.html">Read guide &rarr;</a>
-          <a class="btn btn-ghost" href="posts/plugins-marketplace.html">View carousel</a>
-          <span class="kw">Comment <b>PLUGINS</b></span>
-        </div>
-      </article>
-  </div>
+  <!-- SEC 02 — Field Guides -->
+  <section class="sec" id="guides">
+    <div class="sec-head">
+      <span class="sec-no">SEC 02</span>
+      <span class="sec-title">Field Guides &amp; Templates</span>
+      <span class="sec-count">001 / 018</span>
+    </div>
+    <p class="sec-sub">Every one ships with a downloadable resource for your Claude Code sandbox.</p>
+    <div class="grid" id="guidegrid">
 
+      <article class="card reveal"><h3>Turn on Claude Skills and stop getting generic output</h3><p>Skills are the feature that makes Claude follow your standards. Built in, free, and off by default. Here's how to switch them on today.</p><div class="card-actions"><a class="lnk" href="guides/skills-101.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/skills-101.html">Carousel</a><span class="kw">Comment <b>ENABLE</b></span></div></article>
+
+      <article class="card reveal"><h3>Build your first Claude Skill with no code</h3><p>The built-in skill-creator turns a plain-English description into a working skill. If you can explain a process to a coworker, you can build one.</p><div class="card-actions"><a class="lnk" href="guides/skill-creator.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/skill-creator.html">Carousel</a><span class="kw">Comment <b>CREATOR</b></span></div></article>
+
+      <article class="card reveal"><h3>Write skill triggers that fire on their own</h3><p>A brilliant skill in a menu you never open is worse than a mediocre one that auto-triggers. The difference is the description. Here's how to write one that works.</p><div class="card-actions"><a class="lnk" href="guides/trigger-design.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/trigger-design.html">Carousel</a><span class="kw">Comment <b>TRIGGER</b></span></div></article>
+
+      <article class="card reveal"><h3>Turn any good chat into a reusable skill</h3><p>Your best Claude chats are skills you haven't saved yet. With one click you can package a workflow you already solved and rerun it whenever you need it.</p><div class="card-actions"><a class="lnk" href="guides/chat-to-skill.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/chat-to-skill.html">Carousel</a><span class="kw">Comment <b>REUSE</b></span></div></article>
+
+      <article class="card reveal"><h3>Bundle your skills into a shareable plugin</h3><p>A single skill helps you. A plugin helps your whole team. Here's how to package a set of skills into one install and distribute your standards.</p><div class="card-actions"><a class="lnk" href="guides/skills-to-plugin.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/skills-to-plugin.html">Carousel</a><span class="kw">Comment <b>PLUGIN</b></span></div></article>
+
+      <article class="card reveal"><h3>Teach Claude the why, not just the what</h3><p>Anthropic's alignment research found that explaining the reasons behind good behavior generalizes better than showing examples. The same idea makes your prompts and skills far more reliable.</p><div class="card-actions"><a class="lnk" href="guides/teach-the-why.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/teach-the-why.html">Carousel</a><span class="kw">Comment <b>WHY</b></span></div></article>
+
+      <article class="card reveal"><h3>Dynamic Workflows: run hundreds of agents in one session</h3><p>Claude Opus 4.8 introduced Dynamic Workflows — Claude Code's orchestration layer for jobs too big for a single pass. It writes its own plan, runs subagents in parallel, and verifies the output.</p><div class="card-actions"><a class="lnk" href="guides/dynamic-workflows.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/dynamic-workflows.html">Carousel</a><span class="kw">Comment <b>AGENTS</b></span></div></article>
+
+      <article class="card reveal"><h3>Loop engineering: stop prompting, start looping</h3><p>The biggest mindset shift of 2026 isn't a new model — it's designing agentic loops instead of typing prompts one at a time. The pattern: gather context, act, verify, repeat.</p><div class="card-actions"><a class="lnk" href="guides/loop-engineering.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/loop-engineering.html">Carousel</a><span class="kw">Comment <b>LOOPS</b></span></div></article>
+
+      <article class="card reveal"><h3>Agent teams: give each subagent one clear job</h3><p>A single agent doing everything hits a wall — full context, blurred focus, drifting quality. Agent teams fix that by splitting work across specialized subagents coordinated by a lead.</p><div class="card-actions"><a class="lnk" href="guides/agent-teams.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/agent-teams.html">Carousel</a><span class="kw">Comment <b>TEAM</b></span></div></article>
+
+      <article class="card reveal"><h3>Claude Cowork: an AI coworker on your Mac and your phone</h3><p>Cowork is now generally available on macOS and Windows. It works your actual files, can use your computer, and Pro/Max users can dispatch tasks from their phone via a persistent agent thread.</p><div class="card-actions"><a class="lnk" href="guides/cowork-anywhere.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/cowork-anywhere.html">Carousel</a><span class="kw">Comment <b>COWORK</b></span></div></article>
+
+      <article class="card reveal"><h3>MCP connectors: plug Claude into your tools, no code</h3><p>Claude can only help with what it can see. MCP connectors let you connect Claude to your apps and data — like USB-C for AI — so it can act on your real stack instead of guessing.</p><div class="card-actions"><a class="lnk" href="guides/mcp-connectors.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/mcp-connectors.html">Carousel</a><span class="kw">Comment <b>CONNECT</b></span></div></article>
+
+      <article class="card reveal"><h3>Fast vs deep: pick the right Opus 4.8 mode</h3><p>Opus 4.8 can run in a Fast mode that's about 2.5x quicker and roughly 3x cheaper than earlier fast modes — or in full deep-reasoning mode. The skill is matching the mode to the task.</p><div class="card-actions"><a class="lnk" href="guides/fast-vs-deep.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/fast-vs-deep.html">Carousel</a><span class="kw">Comment <b>SPEED</b></span></div></article>
+
+      <article class="card reveal"><h3>Auto Mode: let Claude run the safe stuff on its own</h3><p>Auto Mode grades every action Claude wants to take, runs the safe ones automatically, and blocks the risky ones — so you stop rubber-stamping 'allow' on long jobs without giving up control.</p><div class="card-actions"><a class="lnk" href="guides/auto-mode.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/auto-mode.html">Carousel</a><span class="kw">Comment <b>AUTO</b></span></div></article>
+
+      <article class="card reveal"><h3>Cowork computer use: let Claude use your actual desktop</h3><p>Computer use lets Claude open apps, click, and type on your screen — so it can finish work even in tools that have no integration. Here's how it works and where a non-developer should start.</p><div class="card-actions"><a class="lnk" href="guides/cowork-computer-use.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/cowork-computer-use.html">Carousel</a><span class="kw">Comment <b>CLICK</b></span></div></article>
+
+      <article class="card reveal"><h3>Install community AI skills without getting burned</h3><p>A community skill runs inside your Claude, so adding one is a real trust decision — not a free freebie. Here are the five checks that take two minutes and keep a bad skill out.</p><div class="card-actions"><a class="lnk" href="guides/safe-skill-install.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/safe-skill-install.html">Carousel</a><span class="kw">Comment <b>SAFE</b></span></div></article>
+
+      <article class="card reveal"><h3>Command, skill, subagent, or hook — which one do you need?</h3><p>Claude can be extended four ways and they look confusingly similar. The plain-English map: a command is a saved prompt, a skill is real know-how, a subagent is isolated work, a hook is an enforced rule.</p><div class="card-actions"><a class="lnk" href="guides/which-extension.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/which-extension.html">Carousel</a><span class="kw">Comment <b>WHICH</b></span></div></article>
+
+      <article class="card reveal"><h3>Give Claude a memory so you stop repeating yourself</h3><p>A CLAUDE.md file is a plain document Claude reads automatically at the start of your work — your role, preferences, and rules. Set it once and every conversation starts already briefed.</p><div class="card-actions"><a class="lnk" href="guides/claude-memory.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/claude-memory.html">Carousel</a><span class="kw">Comment <b>MEMORY</b></span></div></article>
+
+      <article class="card reveal"><h3>Plugins &amp; marketplaces: install a whole toolkit at once</h3><p>A plugin bundles skills, tools, and connectors into one installable package — and the official marketplace already has 100+. Here's how to browse, install, and vet them as a non-developer.</p><div class="card-actions"><a class="lnk" href="guides/plugins-marketplace.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><a class="lnk lnk-ghost" href="posts/plugins-marketplace.html">Carousel</a><span class="kw">Comment <b>PLUGINS</b></span></div></article>
+
+    </div>
+  </section>
+
+  <!-- Closer -->
+  <div class="closer">
+    <p class="sig">No wasted <span class="o">motion</span>.</p>
+  </div>
   <footer>
-    Built by <a href="https://instagram.com/jaidenrabatin" target="_blank" rel="noopener">@jaidenrabatin</a> &middot; Claude Code Education Series
+    BUILT BY <a href="https://instagram.com/jaidenrabatin" target="_blank" rel="noopener">@jaidenrabatin</a> &middot; CLAUDE CODE EDUCATION SERIES
   </footer>
+
 </div>
+
+<script>
+  // Scroll-reveal, staggered. Skips entirely under reduced-motion.
+  (function(){
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if(rm || !('IntersectionObserver' in window)){
+      els.forEach(function(el){el.classList.add('in')});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          var sibs = Array.prototype.slice.call(el.parentNode.children).indexOf(el);
+          el.style.transitionDelay = Math.min(sibs % 8, 6) * 55 + 'ms';
+          el.classList.add('in');
+          io.unobserve(el);
+        }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:.08});
+    els.forEach(function(el){io.observe(el)});
+  })();
+
+  // Update the live section counter as guides scroll past.
+  (function(){
+    var counter = document.querySelector('#guides .sec-count');
+    var cards = document.querySelectorAll('#guidegrid .card');
+    if(!counter || !cards.length || !('IntersectionObserver' in window)) return;
+    var pad = function(n){return ('00'+n).slice(-3)};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var idx = Array.prototype.slice.call(cards).indexOf(e.target) + 1;
+          counter.textContent = pad(idx) + ' / 018';
+        }
+      });
+    }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+    cards.forEach(function(c){io.observe(c)});
+  })();
+</script>
 </body>
 </html>
