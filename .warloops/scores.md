@@ -26,8 +26,9 @@ Trustworthy pixel renders: 1440 / 768 / 500.
 
 Site is now on-brand across **index + 404 + all 20 guides + all 18 posts**. Remaining:
 
-1. **blog/the-real-agi-race.html** — long-form reading layout in Field Manual style
-   (measure ≤72ch, Playfair pull-quotes, mono captions).
+1. **blog/the-real-agi-race.html** — base hex aligned (c06). REMAINING: inline-SVG chart
+   palette uses off-brand hues (#6E97C4 blue, #E0A33D gold, #6FAE6B green, #D9663F) — decide
+   whether multi-hue data-viz is acceptable or remap to orange/tan/olive/ash. Needs render check.
 2. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
 
 _Done: 404 (c01) · skills-101=template (c02) · skill-creator (c03) · trigger-design (c04) ·
