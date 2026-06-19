@@ -27,7 +27,7 @@ Trustworthy pixel renders: 1440 / 768 / 500.
 The mockup passes, but the **site does not yet match site-wide**. Remaining highest-impact gaps,
 in priority order:
 
-1. **guides/*.html** (15 pages left) — copy the `skills-101.html` template (cycle 02 set it):
+1. **guides/*.html** (14 pages left) — copy the `skills-101.html` template (cycle 02 set it):
    tokens, 4 fonts, manifest bar, TOC, SECTION rules, restrained callouts, dark code, reduced-motion.
    Keep each page's own content + download script verbatim. Order: skill-creator → trigger-design →
    chat-to-skill → skills-to-plugin → teach-the-why → dynamic-workflows → loop-engineering →
@@ -39,7 +39,7 @@ in priority order:
    (measure ≤72ch, Playfair pull-quotes, mono captions).
 4. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
 
-_Done: 404.html (cycle 01) · guides/skills-101.html = template (cycle 02)._
+_Done: 404.html (cycle 01) · guides/skills-101.html = template (cycle 02) · guides/skill-creator.html (cycle 03)._
 
 Extract the locked CSS tokens block + manifest/section partial from index.html as the
 copy-source for every propagation cycle. Keep all existing content, links, and SEO/meta intact.
@@ -80,3 +80,9 @@ copy-source for every propagation cycle. Keep all existing content, links, and S
   + checklist). Rendered at 900w — on-brand, consistent w/ index + 404.
 - Scores hold (9 / 8 / 8). Loop continues: 15 linked guides (+2 unlinked) copy this template,
   next = skill-creator.
+
+### Cycle 03 — 2026-06-19 — guides/skill-creator.html
+- Applied the cycle-02 guide template to skill-creator.html (was still the old light theme).
+- Swapped CSS/shell to Field Manual; kept all body copy, the 10-item download grid, the
+  SKILL.md frontmatter starter, and downloadAsset() (SKILL-template.md) verbatim. Rendered
+  at 900w — matches template. Scores hold (9 / 8 / 8). Next = trigger-design.
