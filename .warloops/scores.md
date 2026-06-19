@@ -24,15 +24,16 @@ Trustworthy pixel renders: 1440 / 768 / 500.
 
 ## NEXT ACTIONS (work queue — top item is next cycle's target)
 
-Site is now on-brand across **index + 404 + all 20 guides + all 18 posts**. Remaining:
+Site is now on-brand across **index + 404 + all 20 guides + all 18 posts + blog (incl. charts)**.
 
-1. **blog/the-real-agi-race.html** — base hex aligned (c06). REMAINING: inline-SVG chart
-   palette uses off-brand hues (#6E97C4 blue, #E0A33D gold, #6FAE6B green, #D9663F) — decide
-   whether multi-hue data-viz is acceptable or remap to orange/tan/olive/ash. Needs render check.
-2. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
+**SITE VERDICT: PASS — site-wide propagation complete.** Scores have plateaued at 9/8/8 and all
+three axes pass; no high-impact gap remains. Recommend stopping the loop (CronDelete f364b8b0).
+
+Optional future polish (low impact, not loop-worthy): `<title>`/OG-tag parity across guide pages,
+shared header/footer extraction, blog inline-SVG `prefers-reduced-motion` audit.
 
 _Done: 404 (c01) · skills-101=template (c02) · skill-creator (c03) · trigger-design (c04) ·
-chat-to-skill (c05) · ALL 20 guides + ALL 18 posts (c06 BATCH)._
+chat-to-skill (c05) · ALL 20 guides + ALL 18 posts (c06 BATCH) · blog charts (c07)._
 
 Extract the locked CSS tokens block + manifest/section partial from index.html as the
 copy-source for every propagation cycle. Keep all existing content, links, and SEO/meta intact.
@@ -106,3 +107,13 @@ copy-source for every propagation cycle. Keep all existing content, links, and S
   Note: carousels run heavier orange by design (Instagram medium); the ≤10% rule governs
   website frames, not slide art. Minor deferred: #E8784A orange-light tint left as-is.
 - Scores hold (Static 9 / Motion 8 / Responsive 8). Remaining: blog long-form + polish.
+
+### Cycle 07 — 2026-06-19 — blog/the-real-agi-race.html (charts)
+- Surgical critic top gap: blog inline-SVG figures used 5 off-brand data hues (blue #6E97C4,
+  gold #E0A33D, green #6FAE6B, red #D9663F, orange-light #E8784A) — fintech-blue violated brand.
+- Remapped each to the nearest locked token: orange-light→#C4522A (Signal Orange), amber→#C2A878
+  (Field Tan), green→#8A9657 (olive tint), blue→#6B6B6B (Ash, kills the blue), red→#9C4A3A
+  (muted danger). #C4522A was only a var def (no series), so no collisions.
+- Rendered full page + cropped 3 chart bands: exponential line (orange + tan marker), 5%-compute
+  bar chart (orange bars + tan callout), callouts (mono labels) — all legible + on-brand.
+- Scores hold (9 / 8 / 8). SITE-WIDE PROPAGATION COMPLETE → recommend stopping the loop.
