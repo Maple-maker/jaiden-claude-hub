@@ -1,0 +1,8 @@
+{
+  "provider": "here.now",
+  "mode": "authenticated-permanent",
+  "slug": "rosy-cherry-dzf5",
+  "url": "https://rosy-cherry-dzf5.here.now/",
+  "credentials": "~/.herenow/credentials",
+  "note": "old anonymous deep-quill-6heb expires ~24h; permanent site supersedes it"
+}
