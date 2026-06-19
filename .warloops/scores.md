@@ -27,15 +27,19 @@ Trustworthy pixel renders: 1440 / 768 / 500.
 The mockup passes, but the **site does not yet match site-wide**. Remaining highest-impact gaps,
 in priority order:
 
-1. **guides/*.html** (18 pages) — propagate design system: tokens, fonts, manifest bar,
-   SEC headers, bracket styling, reduced-motion. One page per cycle, simplest first
-   (skills-101 → skill-creator → …). Verify each renders.
+1. **guides/*.html** (15 pages left) — copy the `skills-101.html` template (cycle 02 set it):
+   tokens, 4 fonts, manifest bar, TOC, SECTION rules, restrained callouts, dark code, reduced-motion.
+   Keep each page's own content + download script verbatim. Order: skill-creator → trigger-design →
+   chat-to-skill → skills-to-plugin → teach-the-why → dynamic-workflows → loop-engineering →
+   agent-teams → cowork-anywhere → mcp-connectors → fast-vs-deep → auto-mode → cowork-computer-use →
+   safe-skill-install → which-extension → claude-memory → plugins-marketplace. (Note: guides/ also has
+   claude-vs-chatgpt + tips-5-illegal not linked from index — convert too.) Verify each renders.
 2. **posts/*.html** (18 carousel pages) — same propagation pass.
 3. **blog/the-real-agi-race.html** — long-form reading layout in Field Manual style
    (measure ≤72ch, Playfair pull-quotes, mono captions).
 4. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
 
-_Done: 404.html (cycle 01)._
+_Done: 404.html (cycle 01) · guides/skills-101.html = template (cycle 02)._
 
 Extract the locked CSS tokens block + manifest/section partial from index.html as the
 copy-source for every propagation cycle. Keep all existing content, links, and SEO/meta intact.
@@ -64,3 +68,15 @@ copy-source for every propagation cycle. Keep all existing content, links, and S
   orange CTA, reduced-motion guard. Rendered at 1024 — on-brand, consistent w/ index.
 - Scores hold (Static 9 / Motion 8 / Responsive 8). No regression. Loop continues:
   next gap = guides/*.html propagation (start skills-101).
+
+### Cycle 02 — 2026-06-19 — guides/skills-101.html (TEMPLATE)
+- Surgical critic top gap: guide pages were a separate light theme (#FAFAFA, Inter +
+  JetBrains Mono, amber #C8860A, green/blue/red callouts) — total break from the dark
+  Field Manual homepage.
+- Converted skills-101.html → guide-page template: brand tokens, 4-font system, manifest
+  bar w/ back-link, bracketed TOC + mono numbering, SECTION rules, restrained callouts
+  (orange/olive/tan/muted-danger), dark code blocks, SVG download icon, reduced-motion guard.
+- Preserved all body copy, the 10-item grid, and the download script verbatim (downloadAsset
+  + checklist). Rendered at 900w — on-brand, consistent w/ index + 404.
+- Scores hold (9 / 8 / 8). Loop continues: 15 linked guides (+2 unlinked) copy this template,
+  next = skill-creator.
