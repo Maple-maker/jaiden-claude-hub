@@ -24,24 +24,14 @@ Trustworthy pixel renders: 1440 / 768 / 500.
 
 ## NEXT ACTIONS (work queue — top item is next cycle's target)
 
-The mockup passes, but the **site does not yet match site-wide**. Remaining highest-impact gaps,
-in priority order:
+Site is now on-brand across **index + 404 + all 20 guides + all 18 posts**. Remaining:
 
-1. **guides/*.html** (12 pages left) — run `.warloops/apply_template.py <file>` (cycle 04 tool;
-   deterministic swap of fonts + style + manifest, preserves body & download script). Order below.
-   Template source = `skills-101.html` (cycle 02):
-   tokens, 4 fonts, manifest bar, TOC, SECTION rules, restrained callouts, dark code, reduced-motion.
-   Keep each page's own content + download script verbatim. Order: skill-creator → trigger-design →
-   chat-to-skill → skills-to-plugin → teach-the-why → dynamic-workflows → loop-engineering →
-   agent-teams → cowork-anywhere → mcp-connectors → fast-vs-deep → auto-mode → cowork-computer-use →
-   safe-skill-install → which-extension → claude-memory → plugins-marketplace. (Note: guides/ also has
-   claude-vs-chatgpt + tips-5-illegal not linked from index — convert too.) Verify each renders.
-2. **posts/*.html** (18 carousel pages) — same propagation pass.
-3. **blog/the-real-agi-race.html** — long-form reading layout in Field Manual style
+1. **blog/the-real-agi-race.html** — long-form reading layout in Field Manual style
    (measure ≤72ch, Playfair pull-quotes, mono captions).
-4. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
+2. Cross-page polish: shared header/footer consistency, `<title>`/OG parity, sitemap unaffected.
 
-_Done: 404 (c01) · skills-101=template (c02) · skill-creator (c03) · trigger-design (c04) · chat-to-skill (c05)._
+_Done: 404 (c01) · skills-101=template (c02) · skill-creator (c03) · trigger-design (c04) ·
+chat-to-skill (c05) · ALL 20 guides + ALL 18 posts (c06 BATCH)._
 
 Extract the locked CSS tokens block + manifest/section partial from index.html as the
 copy-source for every propagation cycle. Keep all existing content, links, and SEO/meta intact.
@@ -102,3 +92,16 @@ copy-source for every propagation cycle. Keep all existing content, links, and S
 - Ran apply_template.py on chat-to-skill.html. Validated (no off-brand leftovers, 4 fonts,
   manifest, reduced motion, download intact, glyph gone, 4 sections) + rendered at 900w —
   matches template. Scores hold (9 / 8 / 8). Next = skills-to-plugin.
+
+### Cycle 06 — 2026-06-19 — BATCH (user: "batch the rest")
+- Guides: converted the remaining 16 via apply_template.py (per-file loop; zsh doesn't
+  word-split unquoted vars). All 20 guides validated (0 failing): no off-brand leftovers,
+  brand tokens, 4 fonts, manifest, download script intact, arrow glyph gone. Spot-rendered
+  the two structural outliers (claude-vs-chatgpt, tips-5-illegal — custom ROUND/TIP section
+  labels) + dynamic-workflows: clean.
+- Posts: the 18 carousels were already in the brand system (4 fonts, #C4522A) but on legacy
+  base hex. Aligned #0D0D0D→#0B0B0B and #F2EDE4→#F4F1EA across all 18 (vars in :root, one
+  edit covers each). Rendered skills-101 + loop-engineering (React mounts): on exact tokens.
+  Note: carousels run heavier orange by design (Instagram medium); the ≤10% rule governs
+  website frames, not slide art. Minor deferred: #E8784A orange-light tint left as-is.
+- Scores hold (Static 9 / Motion 8 / Responsive 8). Remaining: blog long-form + polish.
