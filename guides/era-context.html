@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Era Context: give Claude your live financial picture · @jaiden.rabatin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--obsidian:#0B0B0B;--carbon:#1A1A1A;--bone:#F4F1EA;--signal:#C4522A;--tan:#C2A878;--ash:#6B6B6B;--border:rgba(244,241,234,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:#070707;color:var(--bone);font-family:'DM Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.topbar a{color:var(--bone);text-decoration:none;font-weight:500}
+.hero{padding:60px 0 40px}.eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--signal)}
+h1{font-family:'Playfair Display',serif;font-size:50px;font-weight:800;line-height:1.08;margin-top:18px;letter-spacing:-.01em;color:var(--bone)}
+.subtitle{font-size:19px;color:var(--ash);margin-top:20px}.metarow{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;align-items:center}
+.pill{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);background:rgba(196,82,42,.08);border:1px solid rgba(196,82,42,.3);padding:6px 12px;border-radius:999px}
+.meta-note{font-size:14px;color:var(--ash)}
+.toc{background:var(--carbon);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}
+.toc h3{font-family:'DM Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--ash);margin-bottom:16px}
+.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:10px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px;color:var(--bone)}
+.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--signal);font-family:'DM Mono',monospace;font-size:14px}
+section{margin-bottom:52px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.secnum span{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);white-space:nowrap}
+.secnum .line{height:1px;background:linear-gradient(to right,rgba(196,82,42,.4),transparent);flex:1}
+h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px;color:var(--bone)}
+p{margin-bottom:16px;color:rgba(244,241,234,.82)}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid;background:var(--carbon)}
+.callout strong{display:block;margin-bottom:4px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
+.c-amber{border-color:var(--signal)}.c-amber strong{color:var(--signal)}.c-green{border-color:#7AB948}.c-green strong{color:#7AB948}
+.c-blue{border-color:#5B8DEF}.c-blue strong{color:#5B8DEF}.c-red{border-color:#D86B5C}.c-red strong{color:#D86B5C}
+pre{background:var(--obsidian);color:var(--bone);border:1px solid var(--border);border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}
+code{font-family:'DM Mono',monospace;font-size:.9em;background:rgba(196,82,42,.1);padding:2px 6px;border-radius:5px;color:var(--tan)}
+.download{background:var(--carbon);border:1px solid var(--border);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}
+.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--signal),#E8784A,var(--signal))}
+.download .eyebrow{color:#E8784A}.download h2{color:var(--bone);margin-top:10px}.download p{color:var(--ash)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}
+.gp{background:rgba(244,241,234,.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;color:rgba(244,241,234,.7);font-family:'DM Mono',monospace}.gp b{color:var(--signal)}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:#0B0B0B;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}
+.dl-success{display:none;margin-top:18px;color:#7AB948;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--ash);font-size:13px;border-top:1px solid var(--border);padding-top:28px}footer a{color:var(--signal);text-decoration:none}</style></head>
+<body><div class="wrap"><div class="topbar"><a href="/">J. RABATIN // CLAUDE OPS</a><span>FIELD MANUAL · GUIDE</span></div>
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Era Context: give Claude your live financial picture</h1><p class="subtitle">AI money advice is generic because it doesn't know your numbers. Era Context is a connector that gives Claude your live positions, balances, and debts on demand — so every finance answer is grounded in what's actually true today.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>The blind-advice problem</li><li>What Era Context is</li><li>How it works</li><li>How I use it to sharpen my finances</li></ol></div>
+<section><div class="secnum"><span>Step 01</span><div class="line"></div></div><h2>The blind-advice problem</h2><p>Ask any model about rebalancing, debt, or risk and it answers from population averages — it has no idea what you hold, owe, or earn. Confident, generic, and not actually about you.</p><div class="callout c-amber"><strong>The gap</strong>Advice that doesn't know your numbers is entertainment, not strategy.</div></section><section><div class="secnum"><span>Step 02</span><div class="line"></div></div><h2>What Era Context is</h2><p>A connector that holds your live financial picture — positions, balances, debts — and exposes it to Claude on demand. Nothing is hardcoded or snapshotted; it's one source of truth read in real time.</p><p>Your finances aren't a static snapshot. They're a live position that changes daily.</p><div class="callout c-blue"><strong>Principle</strong>Live data on demand beats a snapshot that's stale the moment you save it.</div></section><section><div class="secnum"><span>Step 03</span><div class="line"></div></div><h2>How it works</h2><p>Before answering anything about money, Claude queries Era Context, loads the current numbers, and reasons over them. It never advises from memory or a month-old figure.</p><p>Garbage context in, garbage advice out — so the context has to be live.</p><div class="callout c-green"><strong>The rule</strong>Check the live ledger first. Then advise.</div></section><section><div class="secnum"><span>Step 04</span><div class="line"></div></div><h2>How I use it to sharpen my finances</h2><p>The debt-paydown cascade is ranked against real balances. BTC conviction and an income layer are sized to actual cash flow. Roth and core compounding get a weekly review on real data — not vibes.</p><p>This is the Financially-Free lethality in practice: a money system you can query, not a feeling you chase.</p><div class="callout c-red"><strong>Guardrail</strong>Keep real figures out of public content. The system is shareable; the balances are not.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>Live financial data in Claude (setup + guardrails)</h2><p>How to expose your live financial picture to Claude via a connector, with the guardrails that keep it safe and accurate.</p><div class="grid"><div class="gp"><b>›</b> Connector pattern</div><div class="gp"><b>›</b> Query-on-demand</div><div class="gp"><b>›</b> No-snapshot rule</div><div class="gp"><b>›</b> Source of truth</div><div class="gp"><b>›</b> Debt cascade</div><div class="gp"><b>›</b> Income layer</div><div class="gp"><b>›</b> Weekly review</div><div class="gp"><b>›</b> Privacy guardrails</div><div class="gp"><b>›</b> Prompt hooks</div><div class="gp"><b>›</b> Example brief</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download era-context-setup.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaiden.rabatin">@jaiden.rabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Era Context — live financial data for Claude (setup + guardrails)
+A pattern for giving Claude your live financial picture instead of a stale snapshot.
+
+## The idea
+- Expose positions, balances, and debts through a connector (MCP) Claude can query on demand.
+- Never hardcode financial snapshots into memory/instructions — they go stale instantly.
+- Treat financial health as a live project, not a static number.
+
+## The rule (put in your CLAUDE.md / system prompt)
+- "For any finance question, query Era Context for live data BEFORE advising. Never work from memory."
+- "Never invent figures. If live data is unavailable, say so."
+
+## How you use it
+1. Ask a real question ("plan this month", "is the cascade on track?").
+2. Claude pulls live positions/balances/debts.
+3. It reasons over the real numbers and returns a plan.
+
+## Guardrails
+- Keep real balances OUT of any public content — share the system, never the figures.
+- Read-only by default; never let the model move money or place trades.
+- Log decisions, review weekly against live data.
+
+## Strategy anchors (yours will differ)
+- Ranked debt-paydown cascade · BTC conviction · income layer · tax-advantaged compounding.</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='era-context-setup.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>
