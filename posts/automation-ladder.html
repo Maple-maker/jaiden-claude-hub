@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>FAST VS DEEP — Carousel · @jaidenrabatin</title>
+<title>AUTOMATION LADDER — Carousel · @jaidenrabatin</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -23,33 +23,33 @@
 <script type="text/babel">
 const DATA = {
   "handle": "@jaidenrabatin",
-  "topic": "FAST VS DEEP",
-  "subtitle": "PICK THE RIGHT MODE",
-  "ctaWord": "SPEED",
+  "topic": "AUTOMATION LADDER",
+  "subtitle": "FROM PROMPT TO AGENT",
+  "ctaWord": "LADDER",
   "hook": {
     "headlineLines": [
       [
-        "YOU'RE USING",
+        "YOU'RE STUCK",
         "dark"
       ],
       [
-        "THE SLOW MODE",
+        "ON RUNG ONE",
+        "dark"
+      ],
+      [
+        "OF A LADDER",
+        "dark"
+      ],
+      [
+        "NOBODY DREW.",
         "accent"
-      ],
-      [
-        "FOR FAST",
-        "dark"
-      ],
-      [
-        "WORK",
-        "dark"
       ]
     ],
-    "subline": "Opus 4.8 Fast mode is 2.5x quicker — and cheaper.",
+    "subline": "Command → skill → subagent → agent. Climb one rung at a time.",
     "tags": [
-      "OPUS 4.8",
-      "2.5x FASTER",
-      "3x CHEAPER"
+      "BEGINNER PATH",
+      "NO CS DEGREE",
+      "LEVERAGE"
     ]
   },
   "steps": [
@@ -58,44 +58,44 @@ const DATA = {
       "label": "STEP 01",
       "titleParts": [
         [
-          "Two gears, "
+          "Rung 1: "
         ],
         [
-          "one model",
+          "the command",
           "it"
         ]
       ],
       "bullets": [
         [
           {
-            "t": "Opus 4.8 can run fast or run deep."
+            "t": "A saved instruction you reuse."
           }
         ],
         [
           {
-            "t": "Fast mode is about 2.5x quicker."
+            "t": "Stop retyping the same prompt."
           }
         ],
         [
           {
-            "t": "And ~3x cheaper than older fast modes."
+            "t": "Your first piece of leverage."
           }
         ]
       ],
-      "callout": "Same brain. Two speeds. Your choice.",
+      "callout": "Reuse beats remembering. Save the good prompt.",
       "term": {
-        "title": "opus 4.8",
+        "title": "rung 1",
         "lines": [
           {
-            "t": "fast:  ~2.5x speed",
+            "t": "/standup",
             "c": 1
           },
           {
-            "t": "fast:  ~3x cheaper",
-            "c": 1
+            "t": "= your saved prompt",
+            "p": 1
           },
           {
-            "t": "deep:  full reasoning"
+            "t": "type it, reuse it"
           }
         ]
       }
@@ -105,48 +105,45 @@ const DATA = {
       "label": "STEP 02",
       "titleParts": [
         [
-          "Use "
+          "Rung 2: "
         ],
         [
-          "Fast",
+          "the skill",
           "it"
-        ],
-        [
-          " for volume"
         ]
       ],
       "bullets": [
         [
           {
-            "t": "Quick edits, formatting, simple lookups."
+            "t": "A command that knows when to fire."
           }
         ],
         [
           {
-            "t": "High-volume, low-ambiguity tasks."
+            "t": "Triggers itself on the right task."
           }
         ],
         [
           {
-            "t": "When speed and cost matter most."
+            "t": "Packaged know-how, reusable."
           }
         ]
       ],
-      "callout": "Don't pay deep-thinking rates to rename files.",
+      "callout": "A skill is a command that shows up on its own.",
       "term": {
-        "title": "fast fits",
+        "title": "rung 2",
         "lines": [
           {
-            "t": "reformat 50 notes",
+            "t": "skill: weekly-report",
             "c": 1
           },
           {
-            "t": "summarize a thread",
+            "t": "triggers on 'report'",
             "c": 1
           },
           {
-            "t": "rename + sort files",
-            "c": 1
+            "t": "runs the steps",
+            "p": 1
           }
         ]
       }
@@ -156,48 +153,45 @@ const DATA = {
       "label": "STEP 03",
       "titleParts": [
         [
-          "Use "
+          "Rung 3: "
         ],
         [
-          "Deep",
+          "the subagent",
           "it"
-        ],
-        [
-          " for hard calls"
         ]
       ],
       "bullets": [
         [
           {
-            "t": "Tricky reasoning, architecture, strategy."
+            "t": "A worker with its own context + tools."
           }
         ],
         [
           {
-            "t": "Long-horizon, multi-step problems."
+            "t": "Handles one job inside a bigger one."
           }
         ],
         [
           {
-            "t": "When being right beats being quick."
+            "t": "You delegate a whole task, not a step."
           }
         ]
       ],
-      "callout": "Slow is smart when the stakes are real.",
+      "callout": "Now you're assigning work, not doing it.",
       "term": {
-        "title": "deep fits",
+        "title": "rung 3",
         "lines": [
           {
-            "t": "design the system",
+            "t": "researcher subagent",
             "c": 1
           },
           {
-            "t": "debug the weird bug",
+            "t": "own context + tools",
             "c": 1
           },
           {
-            "t": "plan the migration",
-            "c": 1
+            "t": "reports back",
+            "p": 1
           }
         ]
       }
@@ -207,53 +201,53 @@ const DATA = {
       "label": "STEP 04",
       "titleParts": [
         [
-          "Match "
+          "Rung 4: "
         ],
         [
-          "mode to task",
+          "the agent",
           "it"
         ]
       ],
       "bullets": [
         [
           {
-            "t": "Start fast; escalate to deep if it stalls."
+            "t": "Runs a full loop toward a goal."
           }
         ],
         [
           {
-            "t": "Reserve deep for the 20% that's hard."
+            "t": "Gathers, acts, verifies, repeats."
           }
         ],
         [
           {
-            "t": "Save time and money on the rest."
+            "t": "You set direction; it does the rest."
           }
         ]
       ],
-      "callout": "The skill is knowing which gear you're in.",
+      "callout": "Climb one rung at a time. Don't skip steps.",
       "term": {
-        "title": "rule",
+        "title": "rung 4",
         "lines": [
           {
-            "t": "routine?  -> fast",
+            "t": "goal: ship the report",
             "p": 1
           },
           {
-            "t": "high stakes? -> deep",
-            "p": 1
+            "t": "loops until done",
+            "c": 1
           },
           {
-            "t": "unsure?  start fast"
+            "t": "you review result"
           }
         ]
       }
     }
   ],
   "cta": {
-    "saveReminder": "Save this and stop overpaying for simple tasks.",
-    "body": "Comment SPEED and I'll DM you the full breakdown + a fast-vs-deep cheat sheet. Free.",
-    "follow": "Follow @jaidenrabatin to get more out of Claude for less."
+    "saveReminder": "Save this as your map up the automation ladder.",
+    "body": "Comment LADDER and I'll DM you the full breakdown + the automation-ladder map. Free.",
+    "follow": "Follow @jaidenrabatin to climb from prompts to agents, one rung at a time."
   }
 };
 const Star=({size=18,c="var(--orange)"})=>{const a=Array.from({length:14});return(<svg width={size} height={size} viewBox="0 0 100 100" style={{display:'block'}}>{a.map((_,i)=>{const an=(i/14)*Math.PI*2;return <rect key={i} x="48.5" y="6" width="3" height="38" rx="1.5" fill={c} transform={"rotate("+(an*180/Math.PI)+" 50 50)"}/>;})}<circle cx="50" cy="50" r="9" fill={c}/></svg>);};
