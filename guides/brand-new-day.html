@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Brand New Day: make Claude brief itself every morning · @jaiden.rabatin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--obsidian:#0B0B0B;--carbon:#1A1A1A;--bone:#F4F1EA;--signal:#C4522A;--tan:#C2A878;--ash:#6B6B6B;--border:rgba(244,241,234,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:#070707;color:var(--bone);font-family:'DM Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.topbar a{color:var(--bone);text-decoration:none;font-weight:500}
+.hero{padding:60px 0 40px}.eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--signal)}
+h1{font-family:'Playfair Display',serif;font-size:50px;font-weight:800;line-height:1.08;margin-top:18px;letter-spacing:-.01em;color:var(--bone)}
+.subtitle{font-size:19px;color:var(--ash);margin-top:20px}.metarow{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;align-items:center}
+.pill{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);background:rgba(196,82,42,.08);border:1px solid rgba(196,82,42,.3);padding:6px 12px;border-radius:999px}
+.meta-note{font-size:14px;color:var(--ash)}
+.toc{background:var(--carbon);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}
+.toc h3{font-family:'DM Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--ash);margin-bottom:16px}
+.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:10px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px;color:var(--bone)}
+.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--signal);font-family:'DM Mono',monospace;font-size:14px}
+section{margin-bottom:52px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.secnum span{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);white-space:nowrap}
+.secnum .line{height:1px;background:linear-gradient(to right,rgba(196,82,42,.4),transparent);flex:1}
+h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px;color:var(--bone)}
+p{margin-bottom:16px;color:rgba(244,241,234,.82)}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid;background:var(--carbon)}
+.callout strong{display:block;margin-bottom:4px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
+.c-amber{border-color:var(--signal)}.c-amber strong{color:var(--signal)}.c-green{border-color:#7AB948}.c-green strong{color:#7AB948}
+.c-blue{border-color:#5B8DEF}.c-blue strong{color:#5B8DEF}.c-red{border-color:#D86B5C}.c-red strong{color:#D86B5C}
+pre{background:var(--obsidian);color:var(--bone);border:1px solid var(--border);border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}
+code{font-family:'DM Mono',monospace;font-size:.9em;background:rgba(196,82,42,.1);padding:2px 6px;border-radius:5px;color:var(--tan)}
+.download{background:var(--carbon);border:1px solid var(--border);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}
+.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--signal),#E8784A,var(--signal))}
+.download .eyebrow{color:#E8784A}.download h2{color:var(--bone);margin-top:10px}.download p{color:var(--ash)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}
+.gp{background:rgba(244,241,234,.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;color:rgba(244,241,234,.7);font-family:'DM Mono',monospace}.gp b{color:var(--signal)}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:#0B0B0B;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}
+.dl-success{display:none;margin-top:18px;color:#7AB948;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--ash);font-size:13px;border-top:1px solid var(--border);padding-top:28px}footer a{color:var(--signal);text-decoration:none}</style></head>
+<body><div class="wrap"><div class="topbar"><a href="/">J. RABATIN // CLAUDE OPS</a><span>FIELD MANUAL · GUIDE</span></div>
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Brand New Day: make Claude brief itself every morning</h1><p class="subtitle">AI has no memory between sessions by default — so you re-explain everything. This skill closes the loop: Claude reads its own memory, your git history, and your notes, then hands you a military-style SITREP with paste-ready resume prompts.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>The problem with AI sessions</li><li>What /brand-new-day does</li><li>What comes out — a SITREP</li><li>The resume prompt</li></ol></div>
+<section><div class="secnum"><span>Step 01</span><div class="line"></div></div><h2>The problem with AI sessions</h2><p>Every session starts from zero. You spend the first ten minutes re-explaining your stack, your projects, and your last decision. That re-briefing ritual — not the model — is the real bottleneck.</p><div class="callout c-amber"><strong>The gap</strong>AI has no continuity by default. Most people just accept it and re-explain.</div></section><section><div class="secnum"><span>Step 02</span><div class="line"></div></div><h2>What /brand-new-day does</h2><p>One command triggers a full intelligence-gather before Claude writes a word. It reads its own memory files, yesterday's git commits, your wiki log, and your spec files — all in parallel.</p><p>Claude reads its own receipts so you never hand them over.</p><div class="callout c-blue"><strong>How</strong>memory + git + wiki + spec, gathered in parallel into one brief.</div></section><section><div class="secnum"><span>Step 03</span><div class="line"></div></div><h2>What comes out — a SITREP</h2><p>Active fronts (where each project stands now), yesterday's work (from real git commits, nothing invented), and open threads (ranked by how close to done). It reads like a staff officer briefed the commander.</p><div class="callout c-green"><strong>Not a summary</strong>A situation report you can act on in seconds.</div></section><section><div class="secnum"><span>Step 04</span><div class="line"></div></div><h2>The resume prompt</h2><p>The brief closes with a paste-ready prompt for every open thread. Copy it, open a new session, paste — and you're working in 30 seconds with full context. With great context comes great output.</p><div class="callout c-red"><strong>The point</strong>Context in, not context out. The resume prompt is the whole skill.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The /brand-new-day skill (install pack)</h2><p>A fill-in-the-blank SKILL.md that gathers memory + git + notes and outputs a morning SITREP with resume prompts.</p><div class="grid"><div class="gp"><b>›</b> SKILL.md</div><div class="gp"><b>›</b> Memory read</div><div class="gp"><b>›</b> Git read</div><div class="gp"><b>›</b> Wiki/notes read</div><div class="gp"><b>›</b> Spec read</div><div class="gp"><b>›</b> SITREP format</div><div class="gp"><b>›</b> Resume prompts</div><div class="gp"><b>›</b> Install steps</div><div class="gp"><b>›</b> Customize map</div><div class="gp"><b>›</b> Example brief</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download brand-new-day-SKILL.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaiden.rabatin">@jaiden.rabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Brand New Day — morning briefing skill
+Drop into skills/brand-new-day/SKILL.md, then run /brand-new-day each morning.
+
+name: brand-new-day
+description: Use at the start of a work session to brief myself. Gather memory, yesterday's git commits, wiki/notes, and spec files in parallel, then output a SITREP + paste-ready resume prompts.
+
+## Gather (in parallel)
+- Read AI memory files.
+- Read git log since yesterday (commit messages only — do not invent work).
+- Read wiki/notes log.
+- Read spec files for active projects.
+
+## Output — AEGIS MORNING BRIEF
+1. ACTIVE FRONTS — each project and where it stands now (not history).
+2. YESTERDAY'S WORK — straight from git commits.
+3. OPEN THREADS — unfinished work ranked by how close to done.
+4. RESUME PROMPTS — one paste-ready prompt per open thread.
+
+## Rules
+- Never invent progress. If git is silent, say so.
+- Keep it scannable. Briefing voice, not prose.
+
+## Install
+Settings -&gt; Capabilities -&gt; Skills (on). Put the folder under skills/. Run /brand-new-day.</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='brand-new-day-SKILL.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>
