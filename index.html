@@ -26,14 +26,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  /* ── Brand tokens (locked) ───────────────────────────────── */
   :root{
     --obsidian:#0B0B0B; --carbon:#1A1A1A; --bone:#F4F1EA;
     --orange:#C4522A; --tan:#C2A878; --ash:#6B6B6B;
-    --line:rgba(194,168,120,.18);          /* field-tan hairline */
+    --line:rgba(194,168,120,.18);
     --line-strong:rgba(194,168,120,.34);
     --card:#141413;
     --muted:rgba(244,241,234,.56);
+    --nav-h:58px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -41,51 +41,77 @@
     background:var(--obsidian); color:var(--bone);
     font-family:'DM Sans',system-ui,sans-serif; line-height:1.6;
     -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    overflow-x:hidden;                      /* guard against accidental bleed */
+    overflow-x:hidden;
+    padding-top:var(--nav-h);
   }
-  /* one warm light: a single, faint radial top-center */
   body::before{
     content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
     background:radial-gradient(60% 42% at 50% -6%, rgba(196,82,42,.10), transparent 70%);
   }
-  .wrap{position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 22px 96px}
-  a{color:inherit}
+  a{color:inherit; text-decoration:none}
   ::selection{background:var(--orange); color:#160a05}
-
-  /* mono utility */
   .mono{font-family:'DM Mono',monospace; letter-spacing:.04em}
 
-  /* ── Manifest bar ────────────────────────────────────────── */
-  .manifest{
-    display:flex; align-items:center; justify-content:space-between; gap:10px 14px;
-    flex-wrap:wrap;
-    border:1px solid var(--line); border-radius:4px;
-    padding:11px 14px; margin:26px 0 0;
-    font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.13em;
-    text-transform:uppercase; color:var(--muted); position:relative;
+  /* ── Sticky nav ─────────────────────────────────────────────── */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    height:var(--nav-h);
+    background:rgba(11,11,11,.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 40px;
   }
-  .manifest .id{color:var(--bone)}
-  .manifest .id b{color:var(--orange); font-weight:500}
-  .manifest .stamp{color:var(--tan)}
-  @media(max-width:440px){
-    .manifest{font-size:10.5px; letter-spacing:.08em}
-    .manifest .stamp{display:none}        /* keep the operator ID, drop the stamp on narrow screens */
+  .nav-brand{
+    font-family:'DM Mono',monospace; font-size:12.5px; letter-spacing:.15em;
+    text-transform:uppercase; color:var(--bone);
   }
-  /* corner brackets */
-  .bracket::before,.bracket::after{
-    content:""; position:absolute; width:9px; height:9px; border:1px solid var(--tan);
+  .nav-brand b{color:var(--orange); font-weight:500}
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--orange); color:#160a05; font-weight:700; font-size:13.5px;
+    padding:9px 18px; border-radius:5px; cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+    font-family:'DM Sans',sans-serif; border:none;
   }
-  .bracket::before{top:-1px; left:-1px; border-right:0; border-bottom:0}
-  .bracket::after{bottom:-1px; right:-1px; border-left:0; border-top:0}
+  .nav-cta:hover{background:#d75e34; transform:translateY(-1px)}
+  @media(max-width:500px){
+    .nav{padding:0 18px}
+    .nav-brand{font-size:10.5px; letter-spacing:.08em}
+    .nav-cta{font-size:12px; padding:8px 14px}
+  }
 
-  /* ── Hero ────────────────────────────────────────────────── */
-  .hero{padding:54px 2px 18px}
+  /* ── Page wrap ───────────────────────────────────────────────── */
+  .wrap{position:relative; z-index:1; max-width:1160px; margin:0 auto; padding:0 40px 96px}
+  @media(max-width:700px){.wrap{padding:0 20px 80px}}
+
+  /* ── Hero ────────────────────────────────────────────────────── */
+  .hero{
+    padding:72px 0 56px;
+    display:grid;
+    grid-template-columns:55fr 45fr;
+    gap:64px;
+    align-items:center;
+  }
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr; gap:40px; padding:48px 0 40px}
+    .hero-stat-panel{display:none}
+  }
+
+  .skool-badge{
+    display:inline-flex; align-items:center; gap:8px; margin-bottom:18px;
+    font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--tan); border:1px solid var(--line);
+    padding:6px 12px; border-radius:4px;
+  }
+  .skool-dot{width:6px; height:6px; border-radius:50%; background:var(--orange);
+    animation:pulse 2s ease infinite; flex:none}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
   .hero h1{
     font-family:'Barlow Condensed',sans-serif; font-weight:900;
-    font-size:clamp(50px,13.5vw,104px); line-height:.9; letter-spacing:-.015em;
+    font-size:clamp(54px,7.5vw,108px); line-height:.9; letter-spacing:-.015em;
     text-transform:uppercase;
   }
-  /* redaction reveal */
   .redact{position:relative; display:inline-block; color:var(--bone)}
   .redact > span{position:relative; z-index:1}
   .redact::after{
@@ -94,33 +120,16 @@
     animation:declassify .62s .35s cubic-bezier(.7,0,.2,1) forwards;
   }
   @keyframes declassify{to{transform:scaleX(0); transform-origin:right center}}
+
   .cmd{
-    margin-top:22px; font-family:'DM Mono',monospace; font-size:clamp(14px,3.6vw,16px);
+    margin-top:22px; font-family:'DM Mono',monospace; font-size:clamp(13px,1.5vw,15.5px);
     color:var(--tan);
   }
   .cmd .p{color:var(--orange)}
-  .sub{margin-top:16px; max-width:48ch; color:var(--muted); font-size:15.5px}
+  .sub{margin-top:14px; max-width:52ch; color:var(--muted); font-size:16px; line-height:1.65}
 
-  .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px}
-  .btn-lead{
-    display:inline-flex; align-items:center; gap:10px;
-    background:var(--orange); color:#160a05; font-weight:700; font-size:16px;
-    padding:15px 22px; border-radius:6px; text-decoration:none;
-    min-height:48px; transition:background .2s ease, transform .2s ease;
-  }
-  .btn-lead:hover{background:#d75e34; transform:translateY(-1px)}
-  .btn-line{
-    display:inline-flex; align-items:center; gap:9px;
-    border:1px solid var(--line-strong); color:var(--bone); font-weight:600; font-size:15px;
-    padding:14px 18px; border-radius:6px; text-decoration:none; min-height:48px;
-    font-family:'DM Mono',monospace; letter-spacing:.04em;
-    transition:border-color .2s ease, background .2s ease, color .2s ease;
-  }
-  .btn-line:hover{border-color:var(--orange); color:var(--orange)}
-  .ic{width:17px; height:17px; flex:none; stroke:currentColor; fill:none; stroke-width:2}
-
-  /* ── Waitlist form ───────────────────────────────────────── */
-  .waitlist{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; max-width:480px}
+  /* ── Waitlist form ───────────────────────────────────────────── */
+  .waitlist{display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; max-width:520px}
   .waitlist input[type="email"]{
     flex:1; min-width:200px; background:#1c1b19; border:1px solid var(--line-strong);
     color:var(--bone); font-family:'DM Sans',sans-serif; font-size:15px;
@@ -142,40 +151,55 @@
     display:none; margin-top:14px; font-family:'DM Mono',monospace; font-size:13px;
     letter-spacing:.06em; color:var(--tan);
   }
-  .skool-badge{
-    display:inline-flex; align-items:center; gap:8px; margin-bottom:14px;
-    font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.16em;
-    text-transform:uppercase; color:var(--tan); border:1px solid var(--line);
-    padding:6px 12px; border-radius:4px;
-  }
-  .skool-dot{width:6px; height:6px; border-radius:50%; background:var(--orange);
-    animation:pulse 2s ease infinite; flex:none}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-  /* ── Section header ──────────────────────────────────────── */
-  .sec{margin-top:64px}
+  /* ── Hero stat panel ─────────────────────────────────────────── */
+  .hero-stat-panel{
+    background:var(--card); border:1px solid var(--line-strong);
+    border-radius:12px; padding:36px 32px;
+    display:flex; flex-direction:column; gap:0;
+  }
+  .stat-row{
+    display:flex; align-items:center; gap:20px;
+    padding:20px 0; border-bottom:1px solid var(--line);
+  }
+  .stat-row:last-child{border-bottom:0; padding-bottom:0}
+  .stat-row:first-child{padding-top:0}
+  .stat-num{
+    font-family:'Barlow Condensed',sans-serif; font-weight:900;
+    font-size:52px; line-height:1; color:var(--orange); min-width:60px; text-align:center;
+  }
+  .stat-label{
+    font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--muted); line-height:1.5;
+  }
+  .stat-label b{display:block; color:var(--bone); font-weight:600; font-size:14px;
+    font-family:'DM Sans',sans-serif; letter-spacing:0; text-transform:none; margin-bottom:2px}
+
+  /* ── Section header ──────────────────────────────────────────── */
+  .sec{margin-top:88px}
+  @media(max-width:700px){.sec{margin-top:64px}}
   .sec-head{
     display:flex; align-items:baseline; gap:14px;
-    border-top:1px solid var(--line); padding-top:14px;
+    border-top:1px solid var(--line); padding-top:14px; margin-bottom:10px;
   }
-  .sec-no{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.14em;
-    color:var(--orange)}
+  .sec-no{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.14em; color:var(--orange)}
   .sec-title{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.2em;
     text-transform:uppercase; color:var(--bone)}
-  .sec-count{margin-left:auto; font-family:'DM Mono',monospace; font-size:12px;
-    color:var(--ash)}
-  .sec-sub{color:var(--muted); font-size:14.5px; margin:9px 0 22px}
+  .sec-count{margin-left:auto; font-family:'DM Mono',monospace; font-size:12px; color:var(--ash)}
+  .sec-sub{color:var(--muted); font-size:15px; margin-bottom:26px}
 
-  /* ── Cards ───────────────────────────────────────────────── */
-  .grid{display:grid; gap:14px}
+  /* ── Cards ───────────────────────────────────────────────────── */
+  .grid{display:grid; gap:16px}
   @media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
   .card{
     position:relative; background:var(--card);
-    border:1px solid var(--line); border-radius:6px; padding:22px 22px 20px;
+    border:1px solid var(--line); border-radius:8px; padding:24px 22px 20px;
     transition:border-color .25s ease, background .25s ease, transform .25s ease;
+    display:flex; flex-direction:column;
   }
   .card:hover{border-color:var(--line-strong); background:#181715; transform:translateY(-2px)}
-  /* corner brackets on cards */
   .card::before,.card::after{
     content:""; position:absolute; width:12px; height:12px;
     border:1px solid var(--tan); opacity:.35; transition:opacity .25s ease;
@@ -184,44 +208,54 @@
   .card::after{bottom:9px; right:9px; border-left:0; border-top:0}
   .card:hover::before,.card:hover::after{opacity:.8; border-color:var(--orange)}
 
-  .card h3{font-size:18.5px; font-weight:700; line-height:1.28; letter-spacing:-.01em;
-    margin-bottom:8px}
-  .card p{font-size:13.5px; color:var(--muted); margin-bottom:16px}
-  .card-actions{display:flex; flex-wrap:wrap; align-items:center; gap:9px}
+  .card h3{font-size:17px; font-weight:700; line-height:1.3; letter-spacing:-.01em; margin-bottom:10px}
+  .card p{font-size:13.5px; color:var(--muted); margin-bottom:16px; flex:1}
+  .card-actions{display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin-top:auto}
+
   .lnk{
     display:inline-flex; align-items:center; gap:7px;
     font-size:13.5px; font-weight:600; text-decoration:none; min-height:40px; padding:6px 0;
     color:var(--bone); transition:color .2s ease;
   }
   .lnk:hover{color:var(--orange)}
-  .lnk .ic{width:14px; height:14px}
-  .lnk-ghost{color:var(--muted)}
-  .lnk-ghost:hover{color:var(--bone)}
+  .ic{width:14px; height:14px; flex:none; stroke:currentColor; fill:none; stroke-width:2}
   .kw{margin-left:auto; font-family:'DM Mono',monospace; font-size:11px;
     letter-spacing:.06em; color:var(--ash); text-transform:uppercase}
   .kw b{color:var(--orange); font-weight:500}
 
-  /* featured deep-dive card spans full width, slightly heavier */
+  /* featured card spans full width */
   .card.feat{grid-column:1/-1; border-color:var(--line-strong)}
-  .card.feat h3{font-size:clamp(21px,4.4vw,26px); line-height:1.18}
+  .card.feat h3{font-size:clamp(20px,2.5vw,26px); line-height:1.18}
   .card.feat .quote{font-family:'Playfair Display',serif; font-weight:700; font-style:italic;
-    color:var(--tan); font-size:15px; margin:0 0 12px}
+    color:var(--tan); font-size:15.5px; margin:0 0 14px}
 
-  /* ── Closer ──────────────────────────────────────────────── */
-  .closer{margin-top:70px; text-align:center; padding-top:30px; border-top:1px solid var(--line)}
-  .closer .sig{font-family:'Playfair Display',serif; font-weight:700; font-style:italic;
-    font-size:clamp(22px,5vw,30px); color:var(--bone)}
+  /* ── Closer ──────────────────────────────────────────────────── */
+  .closer{
+    margin-top:88px; text-align:center;
+    padding-top:36px; border-top:1px solid var(--line);
+  }
+  @media(max-width:700px){.closer{margin-top:64px}}
+  .closer .sig{
+    font-family:'Playfair Display',serif; font-weight:700; font-style:italic;
+    font-size:clamp(26px,3.5vw,40px); color:var(--bone); line-height:1.2;
+  }
   .closer .sig .o{color:var(--orange)}
-  footer{margin-top:26px; text-align:center; color:var(--ash);
-    font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.05em}
-  footer a{color:var(--tan); text-decoration:none}
+  .closer .body{
+    color:var(--muted); font-size:16px; margin:18px auto 0; max-width:50ch; line-height:1.7;
+  }
+  .closer .waitlist{justify-content:center; max-width:560px; margin:28px auto 0}
+
+  footer{
+    margin-top:32px; text-align:center; color:var(--ash);
+    font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.05em;
+  }
+  footer a{color:var(--tan)}
   footer a:hover{color:var(--orange)}
 
-  /* ── Reveal-on-scroll ────────────────────────────────────── */
+  /* ── Reveal-on-scroll ────────────────────────────────────────── */
   .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease}
   .reveal.in{opacity:1; transform:none}
 
-  /* focus + reduced motion */
   a:focus-visible{outline:2px solid var(--orange); outline-offset:3px; border-radius:3px}
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important; transition:none!important}
@@ -232,32 +266,52 @@
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- Manifest bar -->
-  <div class="manifest bracket">
-    <span class="id">J.&nbsp;RABATIN&nbsp;<b>//</b>&nbsp;CLAUDE&nbsp;OPS</span>
-    <span class="stamp">FIELD MANUAL &middot; UNCLASSIFIED</span>
-  </div>
+<!-- Sticky nav -->
+<nav class="nav">
+  <span class="nav-brand">J.&nbsp;RABATIN&nbsp;<b>//</b>&nbsp;CLAUDE&nbsp;OPS</span>
+  <button class="nav-cta" onclick="document.getElementById('hero-form').scrollIntoView({behavior:'smooth'});document.querySelector('#hero-form input').focus()">
+    Get early access
+  </button>
+</nav>
+
+<div class="wrap">
 
   <!-- Hero -->
   <section class="hero">
-    <div class="skool-badge">
-      <span class="skool-dot" aria-hidden="true"></span>
-      Launching on Skool
+    <div class="hero-left">
+      <div class="skool-badge">
+        <span class="skool-dot" aria-hidden="true"></span>
+        Launching on Skool
+      </div>
+      <h1>Make Claude<br/><span class="redact"><span>Do</span></span> The Work</h1>
+      <p class="cmd"><span class="p">&gt;</span> the claude education platform — launching on skool</p>
+      <p class="sub">Structured training for people who want Claude to do real work, not just answer questions. Five free field guides below. Full curriculum coming to Skool.</p>
+      <form class="waitlist" id="hero-form">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address"/>
+        <button type="submit">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          Get early access
+        </button>
+      </form>
+      <p class="waitlist-confirm" id="hero-confirm">&#10003;&nbsp; You&#8217;re on the list. We&#8217;ll reach out before launch.</p>
+      <p style="margin-top:16px; font-size:13px; color:var(--ash)">Free field guides below &darr;</p>
     </div>
-    <h1>Make Claude<br/><span class="redact"><span>Do</span></span> The Work</h1>
-    <p class="cmd"><span class="p">&gt;</span> the claude education platform — launching on skool</p>
-    <p class="sub">Structured training for people who want Claude to do real work, not just answer questions. Five free field guides below. Full curriculum coming to Skool.</p>
-    <form class="waitlist" id="hero-form">
-      <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address"/>
-      <button type="submit">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
-        Get early access
-      </button>
-    </form>
-    <p class="waitlist-confirm" id="hero-confirm">&#10003;&nbsp; You&#8217;re on the list. We&#8217;ll reach out before launch.</p>
-    <p style="margin-top:14px; font-size:13px; color:var(--ash)">Free field guides below &darr;</p>
+
+    <div class="hero-stat-panel">
+      <div class="stat-row">
+        <div class="stat-num">5</div>
+        <div class="stat-label"><b>Free Field Guides</b>Available now — no sign-up</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">1</div>
+        <div class="stat-label"><b>Featured Deep Dive</b>12-min fact-checked read</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">&#8734;</div>
+        <div class="stat-label"><b>Skool Community</b>Full curriculum coming soon</div>
+      </div>
+    </div>
   </section>
 
   <!-- SEC 01 — Deep Dives -->
@@ -288,29 +342,64 @@
     <div class="sec-head">
       <span class="sec-no">SEC 02</span>
       <span class="sec-title">Free Curriculum Previews</span>
-      <span class="sec-count">001 / 005</span>
+      <span class="sec-count" id="guide-counter">001 / 005</span>
     </div>
     <p class="sec-sub">Five field guides — a preview of what&#8217;s inside the Skool community. Read these first.</p>
     <div class="grid" id="guidegrid">
 
-      <article class="card reveal"><h3>Give Claude a memory so you stop repeating yourself</h3><p>A CLAUDE.md file is a plain document Claude reads at the start of every session — your role, preferences, and rules. Set it once. Every conversation starts already briefed.</p><div class="card-actions"><a class="lnk" href="guides/claude-memory.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><span class="kw">Start <b>here</b></span></div></article>
+      <article class="card reveal">
+        <h3>Give Claude a memory so you stop repeating yourself</h3>
+        <p>A CLAUDE.md file is a plain document Claude reads at the start of every session — your role, preferences, and rules. Set it once. Every conversation starts already briefed.</p>
+        <div class="card-actions">
+          <a class="lnk" href="guides/claude-memory.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+          <span class="kw">Start <b>here</b></span>
+        </div>
+      </article>
 
-      <article class="card reveal"><h3>Teach Claude the why, not just the what</h3><p>Prompts that explain the reason behind a rule generalize far better than prompts that list examples. One shift in how you write instructions changes everything Claude produces for you.</p><div class="card-actions"><a class="lnk" href="guides/teach-the-why.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><span class="kw">Prompting <b>101</b></span></div></article>
+      <article class="card reveal">
+        <h3>Teach Claude the why, not just the what</h3>
+        <p>Prompts that explain the reason behind a rule generalize far better than prompts that list examples. One shift in how you write instructions changes everything Claude produces for you.</p>
+        <div class="card-actions">
+          <a class="lnk" href="guides/teach-the-why.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+          <span class="kw">Prompting <b>101</b></span>
+        </div>
+      </article>
 
-      <article class="card reveal"><h3>Loop engineering: stop prompting, start looping</h3><p>The biggest mindset shift in 2026 isn't a new model — it's designing agentic loops instead of one-off prompts. Gather context. Act. Verify. Repeat. Here's the pattern.</p><div class="card-actions"><a class="lnk" href="guides/loop-engineering.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><span class="kw">Mindset <b>shift</b></span></div></article>
+      <article class="card reveal">
+        <h3>Loop engineering: stop prompting, start looping</h3>
+        <p>The biggest mindset shift in 2026 isn't a new model — it's designing agentic loops instead of one-off prompts. Gather context. Act. Verify. Repeat. Here's the pattern.</p>
+        <div class="card-actions">
+          <a class="lnk" href="guides/loop-engineering.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+          <span class="kw">Mindset <b>shift</b></span>
+        </div>
+      </article>
 
-      <article class="card reveal"><h3>MCP connectors: plug Claude into your tools, no code</h3><p>Claude can only help with what it can see. MCP connectors link Claude to your real apps and data — like USB-C for AI — so it acts on your actual stack instead of guessing.</p><div class="card-actions"><a class="lnk" href="guides/mcp-connectors.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><span class="kw">Power <b>move</b></span></div></article>
+      <article class="card reveal">
+        <h3>MCP connectors: plug Claude into your tools, no code</h3>
+        <p>Claude can only help with what it can see. MCP connectors link Claude to your real apps and data — like USB-C for AI — so it acts on your actual stack instead of guessing.</p>
+        <div class="card-actions">
+          <a class="lnk" href="guides/mcp-connectors.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+          <span class="kw">Power <b>move</b></span>
+        </div>
+      </article>
 
-      <article class="card reveal"><h3>Agent teams: give each subagent one clear job</h3><p>A single agent doing everything hits a wall — full context, blurred focus, drifting quality. Agent teams split work across specialized subagents coordinated by a lead. Here's how to design one.</p><div class="card-actions"><a class="lnk" href="guides/agent-teams.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a><span class="kw">Advanced <b>leverage</b></span></div></article>
+      <article class="card reveal">
+        <h3>Agent teams: give each subagent one clear job</h3>
+        <p>A single agent doing everything hits a wall — full context, blurred focus, drifting quality. Agent teams split work across specialized subagents coordinated by a lead. Here's how to design one.</p>
+        <div class="card-actions">
+          <a class="lnk" href="guides/agent-teams.html">Read guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg></a>
+          <span class="kw">Advanced <b>leverage</b></span>
+        </div>
+      </article>
 
     </div>
   </section>
 
-  <!-- Closer — Skool waitlist capture -->
+  <!-- Closer -->
   <div class="closer">
     <p class="sig">The full curriculum<br/>launches on <span class="o">Skool</span>.</p>
-    <p style="color:var(--muted);font-size:15.5px;margin-top:14px;max-width:44ch;margin-left:auto;margin-right:auto;line-height:1.65">The five guides above are the preview. Inside Skool: structured modules, live sessions, a community of people actually using Claude to do real work, and direct access.</p>
-    <form class="waitlist" id="closer-form" style="justify-content:center;margin-top:26px">
+    <p class="body">The five guides above are the preview. Inside Skool: structured modules, live sessions, a community of people actually using Claude to do real work, and direct access.</p>
+    <form class="waitlist" id="closer-form">
       <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address"/>
       <button type="submit">
         <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
@@ -318,8 +407,9 @@
       </button>
     </form>
     <p class="waitlist-confirm" id="closer-confirm">&#10003;&nbsp; You&#8217;re on the list. We&#8217;ll reach out before launch.</p>
-    <p style="margin-top:18px;font-size:13px;color:var(--ash)">Or <a href="blog/the-real-agi-race.html" style="color:var(--tan);text-decoration:none">read the AGI deep dive</a> while you wait.</p>
+    <p style="margin-top:20px;font-size:13px;color:var(--ash)">Or <a href="blog/the-real-agi-race.html" style="color:var(--tan)">read the AGI deep dive</a> while you wait.</p>
   </div>
+
   <footer>
     FIELD MANUAL &middot; CLAUDE EDUCATION SERIES &middot; J. RABATIN
   </footer>
@@ -347,7 +437,7 @@
           },
           body: JSON.stringify({email: email})
         })
-        .then(function(r){
+        .then(function(){
           formEl.style.display = 'none';
           confirmEl.style.display = 'block';
         })
@@ -365,7 +455,6 @@
     if(cf && cc) handleWaitlist(cf, cc);
   })();
 
-  // Scroll-reveal, staggered. Skips entirely under reduced-motion.
   (function(){
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var els = document.querySelectorAll('.reveal');
@@ -387,9 +476,8 @@
     els.forEach(function(el){io.observe(el)});
   })();
 
-  // Update the live section counter as guides scroll past.
   (function(){
-    var counter = document.querySelector('#guides .sec-count');
+    var counter = document.getElementById('guide-counter');
     var cards = document.querySelectorAll('#guidegrid .card');
     if(!counter || !cards.length || !('IntersectionObserver' in window)) return;
     var pad = function(n){return ('00'+n).slice(-3)};
@@ -406,4 +494,3 @@
 </script>
 </body>
 </html>
-<!-- deploy Mon Jun 22 21:21:12 +03 2026 -->
