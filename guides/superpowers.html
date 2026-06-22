@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Superpowers: give your coding agent great power — and great responsibility · @jaiden.rabatin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--obsidian:#0B0B0B;--carbon:#1A1A1A;--bone:#F4F1EA;--signal:#C4522A;--tan:#C2A878;--ash:#6B6B6B;--border:rgba(244,241,234,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:#070707;color:var(--bone);font-family:'DM Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.topbar a{color:var(--bone);text-decoration:none;font-weight:500}
+.hero{padding:60px 0 40px}.eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--signal)}
+h1{font-family:'Playfair Display',serif;font-size:50px;font-weight:800;line-height:1.08;margin-top:18px;letter-spacing:-.01em;color:var(--bone)}
+.subtitle{font-size:19px;color:var(--ash);margin-top:20px}.metarow{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;align-items:center}
+.pill{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);background:rgba(196,82,42,.08);border:1px solid rgba(196,82,42,.3);padding:6px 12px;border-radius:999px}
+.meta-note{font-size:14px;color:var(--ash)}
+.toc{background:var(--carbon);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}
+.toc h3{font-family:'DM Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--ash);margin-bottom:16px}
+.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:10px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px;color:var(--bone)}
+.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--signal);font-family:'DM Mono',monospace;font-size:14px}
+section{margin-bottom:52px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.secnum span{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);white-space:nowrap}
+.secnum .line{height:1px;background:linear-gradient(to right,rgba(196,82,42,.4),transparent);flex:1}
+h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px;color:var(--bone)}
+p{margin-bottom:16px;color:rgba(244,241,234,.82)}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid;background:var(--carbon)}
+.callout strong{display:block;margin-bottom:4px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
+.c-amber{border-color:var(--signal)}.c-amber strong{color:var(--signal)}.c-green{border-color:#7AB948}.c-green strong{color:#7AB948}
+.c-blue{border-color:#5B8DEF}.c-blue strong{color:#5B8DEF}.c-red{border-color:#D86B5C}.c-red strong{color:#D86B5C}
+pre{background:var(--obsidian);color:var(--bone);border:1px solid var(--border);border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}
+code{font-family:'DM Mono',monospace;font-size:.9em;background:rgba(196,82,42,.1);padding:2px 6px;border-radius:5px;color:var(--tan)}
+.download{background:var(--carbon);border:1px solid var(--border);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}
+.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--signal),#E8784A,var(--signal))}
+.download .eyebrow{color:#E8784A}.download h2{color:var(--bone);margin-top:10px}.download p{color:var(--ash)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}
+.gp{background:rgba(244,241,234,.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;color:rgba(244,241,234,.7);font-family:'DM Mono',monospace}.gp b{color:var(--signal)}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:#0B0B0B;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}
+.dl-success{display:none;margin-top:18px;color:#7AB948;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--ash);font-size:13px;border-top:1px solid var(--border);padding-top:28px}footer a{color:var(--signal);text-decoration:none}</style></head>
+<body><div class="wrap"><div class="topbar"><a href="/">J. RABATIN // CLAUDE OPS</a><span>FIELD MANUAL · GUIDE</span></div>
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Superpowers: give your coding agent great power — and great responsibility</h1><p class="subtitle">AI can build almost anything now. 'Vibe coding' is that power with no discipline. Superpowers is a free, open-source framework that makes Claude follow a real engineering workflow — spec, TDD, subagents, and code review — automatically. Here's what it is, how to install it, and exactly how the workflow runs.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>Vibe coding is a villain origin story</li><li>What Superpowers is</li><li>The workflow it enforces</li><li>Practical application — building a real feature</li><li>Sources &amp; verification</li></ol></div><section><div class="secnum"><span>Carousel</span><div class="line"></div></div><h2 style="margin-bottom:8px">The post, slide by slide</h2><p style="color:var(--ash);margin-bottom:18px">The Instagram carousel — save it or send it to someone who's still vibe coding.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 8px"><a href="../img/superpowers/slide-01.png" target="_blank" rel="noopener"><img loading="lazy" src="../img/superpowers/slide-01.png" alt="Superpowers slide 1" style="width:100%;border-radius:12px;border:1px solid rgba(244,241,234,.1);display:block"/></a><a href="../img/superpowers/slide-02.png" target="_blank" rel="noopener"><img loading="lazy" src="../img/superpowers/slide-02.png" alt="Superpowers slide 2" style="width:100%;border-radius:12px;border:1px solid rgba(244,241,234,.1);display:block"/></a><a href="../img/superpowers/slide-03.png" target="_blank" rel="noopener"><img loading="lazy" src="../img/superpowers/slide-03.png" alt="Superpowers slide 3" style="width:100%;border-radius:12px;border:1px solid rgba(244,241,234,.1);display:block"/></a><a href="../img/superpowers/slide-04.png" target="_blank" rel="noopener"><img loading="lazy" src="../img/superpowers/slide-04.png" alt="Superpowers slide 4" style="width:100%;border-radius:12px;border:1px solid rgba(244,241,234,.1);display:block"/></a><a href="../img/superpowers/slide-05.png" target="_blank" rel="noopener"><img loading="lazy" src="../img/superpowers/slide-05.png" alt="Superpowers slide 5" style="width:100%;border-radius:12px;border:1px solid rgba(244,241,234,.1);display:block"/></a><a href="../img/superpowers/slide-06.png" target="_blank" rel="noopener"><img loading="lazy" src="../img/superpowers/slide-06.png" alt="Superpowers slide 6" style="width:100%;border-radius:12px;border:1px solid rgba(244,241,234,.1);display:block"/></a></div></section>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Vibe coding is a villain origin story</h2><p>Coding agents crossed a line: they can scaffold features, wire APIs, and refactor modules on command. That is real power. The problem is how most people use it — what people now call 'vibe coding': prompt, glance at the output, accept, and hope. No specification of what 'done' means, no tests to prove it, no review before it ships.</p><p>Power without discipline doesn't make you a hero — it makes you fast at creating problems. An agent with no process will confidently produce code that looks right and breaks in production. The fix isn't a smarter model; it's a process the agent can't skip.</p><pre>&gt; build the whole feature
+...looks good, ship it      # no spec
+(no failing test written)   # no proof
+prod is on fire             # no review</pre><div class="callout c-amber"><strong>The Spider-Man rule</strong>Spider-Man without responsibility is just a guy wrecking the city. An agent without process is the same.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>What Superpowers is</h2><p>Superpowers is 'a complete software development methodology for your coding agents, built on a set of composable skills and some initial instructions that make sure your agent uses them.' It's free, open-source, and built by Jesse Vincent (obra) and the team at Prime Radiant. You install it once and the skills trigger automatically — the README is explicit that these are mandatory workflows, not suggestions.</p><p>In Claude Code, install it from Anthropic's official plugin marketplace. It also supports Codex, Gemini CLI, Cursor, Copilot CLI, and others — install it per harness. Heads up: the full workflow is token-heavy, so a Max plan or API usage is more practical than a base plan for end-to-end runs.</p><pre># Claude Code — official marketplace
+/plugin install superpowers@claude-plugins-official
+
+# or via the Superpowers marketplace
+/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace</pre><div class="callout c-blue"><strong>The reframe</strong>It's the 'with great power comes great responsibility' layer, bolted onto your coding agent.</div></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>The workflow it enforces</h2><p>Superpowers runs a real engineering pipeline. (1) Brainstorming refines your rough idea through questions and shows the design back in chunks small enough to actually read. (2) using-git-worktrees creates an isolated branch with a clean test baseline. (3) writing-plans breaks the work into bite-size tasks (2–5 minutes each) with exact file paths and verification steps. (4) subagent-driven-development dispatches a fresh subagent per task — its own clean context window — so there's no context rot across a long build.</p><p>(5) test-driven-development is the heart of it: RED → GREEN → REFACTOR. Write a failing test, watch it fail, write the minimum code to pass, watch it pass, commit — and any code written before its test gets deleted. (6) requesting-code-review checks the work against the plan between tasks and blocks on critical issues. (7) finishing-a-development-branch verifies the tests and gives you merge / PR / keep / discard options, then cleans up the worktree.</p><pre>brainstorm  -&gt; spec (you approve in chunks)
+worktree    -&gt; isolated branch, clean baseline
+plan        -&gt; bite-size tasks, exact file paths
+subagents   -&gt; fresh context per task
+TDD         -&gt; RED -&gt; GREEN -&gt; REFACTOR
+review      -&gt; blocks on critical issues
+finish      -&gt; merge / PR / cleanup</pre><div class="callout c-green"><strong>Why TDD is the differentiator</strong>Most spec frameworks plan then code. Superpowers makes the agent prove each step with a test first — the way enterprise teams actually work.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Practical application — building a real feature</h2><p>Here's the concrete payoff, from a real walkthrough (Eric Tech built a Google-Drive resync feature on a production app, BookZero.ai, end to end): paste the ticket, let Superpowers brainstorm a spec with interactive mockups, approve it, and it generates an 11-task implementation plan. You pick subagent-driven execution; it spins a worktree and runs each task with a fresh agent, test-first. When all tasks pass, it runs an automated code review, catches a couple of critical issues, dispatches a fix agent, and leaves you a clean branch to smoke-test and merge.</p><p>The point isn't the demo — it's the shape. Tests-first means the agent proves it works instead of claiming it. Worktrees plus subagents let it work autonomously for a couple of hours without drifting from the plan. And the review gate means problems get caught before they reach main. That's the difference between an agent that's fast and an agent you can trust.</p><pre>spec approved
+11 tasks  -&gt; all tests green
+review    -&gt; 2 critical issues -&gt; auto-fixed
+branch    -&gt; smoke test -&gt; PR
+you       -&gt; review the diff, not every keystroke</pre><div class="callout c-red"><strong>Discipline, applied</strong>Same idea whether you wear a uniform or write code: power is common, discipline is the edge. Point the agent at a real feature and let the process do the work.</div></section><section><div class="secnum"><span>Sources</span><div class="line"></div></div><h2>Sources &amp; verification</h2><p>Grounded in the official project and a hands-on tutorial, verified 2026-06-22. Primary: github.com/obra/superpowers (README — definition, install commands, the 7-skill workflow, philosophy) and the release announcement at blog.fsck.com/2025/10/09/superpowers. Practical walkthrough: Eric Tech, 'Claude Code + SUPERPOWERS = The End of Vibe Coding?' (youtu.be/TX91PdBn_IA). Movie release date (July 31, 2026): marvel.com.</p><p>A full link-by-link source list lives at jaidenrabatin.com/sources/superpowers.md so any claim here can be traced to its primary source.</p><div class="callout c-amber"><strong>Note</strong>Spider-Man imagery belongs to Sony/Marvel and is used here as commentary tied to the film's release.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The Superpowers Quickstart + Workflow Cheat Sheet</h2><p>Install commands, the 7-skill workflow, the TDD cycle, and when to reach for it — one page to end vibe coding.</p><div class="grid"><div class="gp"><b>›</b> Install (Claude Code)</div><div class="gp"><b>›</b> Other harnesses</div><div class="gp"><b>›</b> The 7 skills</div><div class="gp"><b>›</b> RED-GREEN-REFACTOR</div><div class="gp"><b>›</b> Subagent execution</div><div class="gp"><b>›</b> Git worktrees</div><div class="gp"><b>›</b> Code review gate</div><div class="gp"><b>›</b> When to use it</div><div class="gp"><b>›</b> Token note</div><div class="gp"><b>›</b> Source links</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download superpowers-cheat-sheet.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaiden.rabatin">@jaiden.rabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Superpowers — Quickstart + Workflow Cheat Sheet
+Give your coding agent great power AND great responsibility.
+Source: https://github.com/obra/superpowers (verified 2026-06-22)
+
+## Install — Claude Code
+/plugin install superpowers@claude-plugins-official
+# or:
+/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace
+
+## Other harnesses (install per harness)
+- Codex CLI/App: official Codex plugin marketplace -&gt; search "superpowers"
+- Gemini CLI:    gemini extensions install https://github.com/obra/superpowers
+- Cursor:        /add-plugin superpowers
+- Copilot CLI:   copilot plugin marketplace add obra/superpowers-marketplace
+
+## How it works
+Skills trigger automatically. They are mandatory workflows, not suggestions.
+Don't call the deprecated slash commands — let the skills fire.
+
+## The 7-skill workflow
+1. brainstorming                 refine idea via questions; spec shown in readable chunks
+2. using-git-worktrees           isolated branch + clean test baseline
+3. writing-plans                 bite-size tasks (2-5 min), exact file paths, verify steps
+4. subagent-driven-development   fresh subagent per task (no context rot) + two-stage review
+   (or executing-plans          batch execution with human checkpoints)
+5. test-driven-development       RED -&gt; GREEN -&gt; REFACTOR; code written before a test is deleted
+6. requesting-code-review        review vs plan; critical issues BLOCK progress
+7. finishing-a-development-branch verify tests -&gt; merge / PR / keep / discard -&gt; clean worktree
+
+## The TDD cycle (the differentiator)
+RED:      write a failing test; watch it fail
+GREEN:    write the minimum code to pass; watch it pass
+REFACTOR: clean it up; tests stay green; commit
+Repeat until there's nothing left to refactor.
+
+## Bonus skills
+systematic-debugging · verification-before-completion · dispatching-parallel-agents ·
+receiving-code-review · writing-skills · using-superpowers
+
+## When to use it
+- Real features and refactors where correctness matters (not throwaway scripts).
+- You want autonomous runs you can trust (it can work ~hours without drifting).
+- Token-heavy: Max plan or API is more practical than a base plan for full runs.
+
+## Philosophy
+Test-Driven Development always · systematic over ad-hoc · reduce complexity ·
+evidence over claims (verify before declaring success).
+
+## Sources
+- README + workflow: https://github.com/obra/superpowers
+- Announcement:       https://blog.fsck.com/2025/10/09/superpowers/
+- Tutorial:           https://www.youtube.com/watch?v=TX91PdBn_IA</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='superpowers-cheat-sheet.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>
