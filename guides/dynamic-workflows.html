@@ -156,5 +156,23 @@ PASSED / NEEDS REVIEW / FAILED — don't make me read every file.
 - "Audit every API endpoint for missing auth checks."
 - "Rename the User model to Account across the repo."
 </script>
-<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='dynamic-workflow-starter.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+<script>
+function downloadAsset(){
+  var c=document.getElementById('download-content').textContent;
+  var b=new Blob([c],{type:'text\/plain;charset=utf-8'});
+  var u=URL.createObjectURL(b);
+  var a=document.createElement('a');
+  a.href=u;
+  a.download='dynamic-workflow-starter.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(u);
+  setTimeout(function(){
+    var s=document.getElementById('download-success');
+    s.innerHTML='✓ Checklist ready. If it didn't download, <a href="data:text\/plain;charset=utf-8,'+encodeURIComponent(c)+'" target="_blank">open it here<\/a> and save the page.';
+    s.classList.add('visible');
+  },400);
+}
+<\/script>
 </body></html>

@@ -135,9 +135,10 @@
 
 <section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>What a Skill actually is</h2><p>A Skill is a folder of instructions that Claude reads only when it's relevant. Instead of re-typing the same guidance every session, you write it down once and Claude applies it on demand.</p><p>The payoff is consistency. Ask for a presentation without a Skill and you get something generic. Ask with a brand-guidelines Skill turned on and you get your colors, your fonts, your layout — every time.</p><div class="callout c-amber"><strong>Mental model</strong>A Skill is a saved teammate who already knows how you like things done.</div></section>
 
-<section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Turning the feature on</h2><p>Skills are off by default, which is why most people never use them. Open your settings and switch them on, then start a fresh chat so Claude loads them.</p><pre>Settings → Capabilities → turn on Skills</pre></section>
+<section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Turning the feature on</h2><p>Skills are off by default, which is why most people never use them. On <strong>desktop</strong>, open Settings and look for the Skills section. On <strong>Claude.ai mobile</strong>, the same feature lives under Capabilities — that's where you toggle skills on and off.</p><pre>Desktop: Settings → Skills
+Mobile (iOS/Android): Settings → Capabilities → Skills</pre><div class="callout c-amber"><strong>Note</strong>Anthropic occasionally renames or reorganizes these settings. If you don't see a "Skills" label, look inside Capabilities — that's where it lives on mobile.</div></section>
 
-<section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>The skills you already have</h2><p>Once Skills are on, you'll see a set built by Anthropic. Two are worth knowing immediately: brand-guidelines, which styles outputs to a brand, and skill-creator, which builds new skills for you from a plain-English description.</p><p>Toggle on the ones you want and leave skill-creator on permanently — it's how you'll make your own skills without writing any code.</p><div class="callout c-green"><strong>Do this now</strong>Toggle skill-creator on and leave it on. It pays for itself the first time you use it.</div></section>
+<section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>The skills you already have</h2><p>Once Skills are on, you'll see a set built by Anthropic. The one worth knowing first is <strong>skill-creator</strong> — it builds new skills for you from a plain-English description, no code required.</p><p>Turn on the ones that match how you work and leave skill-creator on permanently. Every custom skill you build later starts here.</p><div class="callout c-green"><strong>Do this now</strong>Find skill-creator and turn it on. It pays for itself the first time you use it.</div></section>
 
 <section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Triggering a skill</h2><p>There are two ways a skill runs. Claude can pick it automatically when your request matches what the skill does, or you can open the skill menu and choose "Try in chat" to force it.</p><p>Either way, glance at the first lines of Claude's reply to confirm the right skill fired. If it didn't, rephrase your request using words that match the skill's purpose.</p><div class="callout c-blue"><strong>Tip</strong>Know what each installed skill does so you can phrase prompts to match. Claude is good at routing when your wording lines up.</div></section>
 
@@ -179,5 +180,24 @@
 ## Next step
 Build your first skill: just tell skill-creator the process in plain English.
 </script>
-<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='claude-skills-setup-checklist.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+<script>
+function downloadAsset(){
+  var c=document.getElementById('download-content').textContent;
+  var b=new Blob([c],{type:'text/plain;charset=utf-8'});
+  var u=URL.createObjectURL(b);
+  var a=document.createElement('a');
+  a.href=u;
+  a.download='claude-skills-setup-checklist.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(u);
+  // iOS Safari fallback: if the page didn't navigate away, show copy-paste fallback
+  setTimeout(function(){
+    var s=document.getElementById('download-success');
+    s.innerHTML='✓ Checklist ready. If it didn\'t download, <a href="data:text/plain;charset=utf-8,'+encodeURIComponent(c)+'" target="_blank">open it here</a> and save the page.';
+    s.classList.add('visible');
+  },400);
+}
+</script>
 </body></html>

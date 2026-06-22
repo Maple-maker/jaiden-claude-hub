@@ -133,7 +133,8 @@
 
 <div class="toc"><h3>What's inside</h3><ol><li>Turn on the skill-creator</li><li>Describe the process in plain words</li><li>Test, then refine in plain English</li><li>Save, reuse, and share</li></ol></div>
 
-<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Turn on the skill-creator</h2><p>The skill-creator is a skill that builds other skills. Turn it on once and leave it on — it's the fastest path from idea to working skill.</p><pre>Preferences -&gt; Skills -&gt; skill-creator -&gt; toggle ON</pre></section>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Turn on the skill-creator</h2><p>The skill-creator is a skill that builds other skills. Turn it on once and leave it on — it's the fastest path from idea to working skill.</p><pre>Desktop: Settings → Skills → skill-creator → toggle ON
+Mobile (iOS/Android): Settings → Capabilities → Skills → skill-creator → toggle ON</pre><div class="callout c-amber"><strong>Mobile note</strong>On iPhone and Android, Skills live inside the Capabilities section — not a standalone Skills tab. Look there if you don't see it immediately.</div></section>
 
 <section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Describe the process in plain words</h2><p>Tell Claude what you want the skill to do, the same way you'd brief a new hire on their first day. Name the steps, the inputs it needs, and what a finished result looks like.</p><p>Claude writes the underlying SKILL.md for you. You never touch syntax. The clearer your description, the better the skill — so spell out the preferences you'd normally keep in your head.</p><div class="callout c-amber"><strong>The trick</strong>Write the steps as if the reader knows nothing about your job. That's exactly the level of detail a good skill needs.</div></section>
 
@@ -192,5 +193,23 @@ HOW THIS WORKS
 [ ] You showed an example of the finished output
 [ ] You tested it once and fixed anything unclear
 </script>
-<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='SKILL-template.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+<script>
+function downloadAsset(){
+  var c=document.getElementById('download-content').textContent;
+  var b=new Blob([c],{type:'text\/plain;charset=utf-8'});
+  var u=URL.createObjectURL(b);
+  var a=document.createElement('a');
+  a.href=u;
+  a.download='SKILL-template.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(u);
+  setTimeout(function(){
+    var s=document.getElementById('download-success');
+    s.innerHTML='✓ Checklist ready. If it didn't download, <a href="data:text\/plain;charset=utf-8,'+encodeURIComponent(c)+'" target="_blank">open it here<\/a> and save the page.';
+    s.classList.add('visible');
+  },400);
+}
+<\/script>
 </body></html>
