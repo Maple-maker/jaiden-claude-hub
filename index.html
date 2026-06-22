@@ -112,15 +112,6 @@
     font-size:clamp(54px,7.5vw,108px); line-height:.9; letter-spacing:-.015em;
     text-transform:uppercase;
   }
-  .redact{position:relative; display:inline-block; color:var(--bone)}
-  .redact > span{position:relative; z-index:1}
-  .redact::after{
-    content:""; position:absolute; inset:.06em -.06em .12em -.06em; z-index:2;
-    background:var(--orange); transform-origin:left center;
-    animation:declassify .62s .35s cubic-bezier(.7,0,.2,1) forwards;
-  }
-  @keyframes declassify{to{transform:scaleX(0); transform-origin:right center}}
-
   .cmd{
     margin-top:22px; font-family:'DM Mono',monospace; font-size:clamp(13px,1.5vw,15.5px);
     color:var(--tan);
@@ -259,7 +250,6 @@
   a:focus-visible{outline:2px solid var(--orange); outline-offset:3px; border-radius:3px}
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none!important; transition:none!important}
-    .redact::after{display:none}
     .reveal{opacity:1; transform:none}
     html{scroll-behavior:auto}
   }
@@ -284,7 +274,7 @@
         <span class="skool-dot" aria-hidden="true"></span>
         Launching on Skool
       </div>
-      <h1>Make Claude<br/><span class="redact"><span>Do</span></span> The Work</h1>
+      <h1>Make Claude<br/>Do The Work</h1>
       <p class="cmd"><span class="p">&gt;</span> the AI skill nobody taught you — in plain english</p>
       <p class="sub">Most people use AI like a search engine. The people pulling ahead use it like a teammate — one that drafts, researches, and finishes real work for them. This is where you learn how, step by step, with zero code and zero jargon.</p>
       <form class="waitlist" id="hero-form">
