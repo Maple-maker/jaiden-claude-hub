@@ -1,24 +1,128 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Cowork computer use: let Claude use your actual desktop · @jaidenrabatin</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>:root{--bg:#FAFAFA;--text:#1C1C1E;--muted:#6b6b70;--amber:#C8860A;--amber-soft:#fbf3df;--codebg:#1E1E2E;--surface:#FFF;--border:#ececec}
-*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
-.hero{padding:80px 0 48px}.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}h1{font-size:46px;font-weight:800;line-height:1.1;margin-top:18px;letter-spacing:-.02em}.subtitle{font-size:19px;color:var(--muted);margin-top:20px}.metarow{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}.pill{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border:1px solid #f0e2c2;padding:6px 12px;border-radius:999px}.meta-note{font-size:14px;color:var(--muted)}
-.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}.toc h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:8px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px}.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:14px}
-section{margin-bottom:56px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}.secnum span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);white-space:nowrap}.secnum .line{height:1px;background:linear-gradient(to right,#f0e2c2,transparent);flex:1}h2{font-size:28px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px}p{margin-bottom:16px}
-.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid}.callout strong{display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}.c-amber{background:var(--amber-soft);border-color:var(--amber)}.c-green{background:#e9f7ef;border-color:#1f9d57}.c-blue{background:#e8f1fb;border-color:#2b6cb0}.c-red{background:#fdecea;border-color:#d64545}
-pre{background:var(--codebg);color:#e6e6e6;border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:#f0eee9;padding:2px 6px;border-radius:5px;color:#9a5b00}
-.download{background:var(--codebg);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--amber),#f0c46b,var(--amber))}.download .eyebrow{color:#f0c46b}.download h2{color:#fff;margin-top:10px}.download p{color:#b9b9c9}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}.gp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:11px 14px;font-size:13px;color:#d7d7e2;font-family:'JetBrains Mono',monospace}.gp b{color:#f0c46b}
-.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1304;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}.dl-success{display:none;margin-top:18px;color:#9ece6a;font-size:14px;font-weight:500}.dl-success.visible{display:block}
-footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}footer a{color:var(--amber);text-decoration:none}</style></head>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  /* ── Field Manual — guide page template (brand tokens locked) ── */
+  :root{
+    --obsidian:#0B0B0B;--carbon:#1A1A1A;--bone:#F4F1EA;
+    --orange:#C4522A;--tan:#C2A878;--ash:#6B6B6B;--olive:#4B5320;
+    --line:rgba(194,168,120,.18);--line-strong:rgba(194,168,120,.34);
+    --card:#141413;--muted:rgba(244,241,234,.58);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--obsidian);color:var(--bone);font-family:'DM Sans',system-ui,sans-serif;
+    line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(58% 38% at 50% -4%,rgba(196,82,42,.09),transparent 70%)}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 22px 96px}
+  a{color:inherit}
+  ::selection{background:var(--orange);color:#160a05}
+  a:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:3px}
+
+  /* manifest bar */
+  .manifest{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;
+    border:1px solid var(--line);border-radius:4px;padding:11px 14px;margin:26px 0 0;position:relative;
+    font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  .manifest::before,.manifest::after{content:"";position:absolute;width:9px;height:9px;border:1px solid var(--tan)}
+  .manifest::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .manifest::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .manifest a.back{display:inline-flex;align-items:center;gap:8px;color:var(--bone);text-decoration:none;transition:color .2s ease}
+  .manifest a.back:hover{color:var(--orange)}
+  .manifest a.back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+  .manifest .stamp{color:var(--tan)}
+  @media(max-width:440px){.manifest{font-size:10.5px;letter-spacing:.07em}.manifest .stamp{display:none}}
+
+  /* hero */
+  .hero{padding:52px 0 34px}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--orange)}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(38px,8vw,58px);
+    line-height:.96;letter-spacing:-.01em;text-transform:uppercase;margin-top:16px}
+  .subtitle{font-size:18px;color:var(--muted);margin-top:18px;max-width:60ch}
+  .metarow{display:flex;align-items:center;gap:13px;margin-top:24px;flex-wrap:wrap}
+  .pill{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--tan);border:1px solid var(--line-strong);padding:6px 12px;border-radius:4px}
+  .meta-note{font-size:13.5px;color:var(--ash)}
+
+  /* TOC */
+  .toc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:6px;
+    padding:24px 28px;margin:8px 0 56px}
+  .toc::before,.toc::after{content:"";position:absolute;width:11px;height:11px;border:1px solid var(--tan);opacity:.4}
+  .toc::before{top:9px;left:9px;border-right:0;border-bottom:0}
+  .toc::after{bottom:9px;right:9px;border-left:0;border-top:0}
+  .toc h3{font-family:'DM Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--orange);margin-bottom:14px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;padding:9px 0;border-bottom:1px solid var(--line);font-weight:500;display:flex;gap:14px}
+  .toc li:last-child{border-bottom:none}
+  .toc li::before{content:counter(t,decimal-leading-zero);color:var(--tan);font-family:'DM Mono',monospace;font-size:13px}
+
+  /* sections */
+  section{margin-bottom:52px}
+  .secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px;border-top:1px solid var(--line);padding-top:16px}
+  .secnum span{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+  .secnum .line{height:1px;background:var(--line);flex:1}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(26px,5vw,34px);
+    letter-spacing:0;text-transform:uppercase;margin-bottom:14px;line-height:1.04}
+  p{margin-bottom:16px;font-size:16.5px}
+
+  /* callouts — restrained brand palette, mono label + left rule */
+  .callout{position:relative;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--tan);
+    border-radius:5px;padding:16px 20px;margin:22px 0;font-size:15.5px;color:var(--bone)}
+  .callout strong{display:block;margin-bottom:5px;font-family:'DM Mono',monospace;font-size:11.5px;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--tan)}
+  .c-amber{border-left-color:var(--orange)} .c-amber strong{color:var(--orange)}
+  .c-green{border-left-color:var(--olive)} .c-green strong{color:#8a9657}
+  .c-blue{border-left-color:var(--tan)} .c-blue strong{color:var(--tan)}
+  .c-red{border-left-color:#9c4a3a} .c-red strong{color:#cf6b54}
+
+  /* code */
+  pre{background:#0e0e0d;border:1px solid var(--line);color:var(--bone);border-radius:6px;padding:18px 20px;
+    overflow-x:auto;margin:20px 0;font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}
+  code{font-family:'DM Mono',monospace;font-size:.9em;background:rgba(194,168,120,.1);padding:2px 6px;border-radius:4px;color:var(--tan)}
+
+  /* download block */
+  .download{position:relative;background:var(--card);border:1px solid var(--line-strong);border-radius:8px;
+    padding:34px 32px;margin:64px 0 40px;overflow:hidden}
+  .download::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange)}
+  .download .eyebrow{color:var(--orange)}
+  .download h2{margin-top:10px}
+  .download p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
+  .gp{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:5px;padding:11px 14px;
+    font-size:12.5px;color:var(--muted);font-family:'DM Mono',monospace}
+  .gp b{color:var(--orange)}
+  .dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#160a05;font-weight:700;
+    font-size:16px;padding:14px 26px;border:none;border-radius:6px;cursor:pointer;min-height:48px;
+    transition:background .2s ease,transform .2s ease}
+  .dlbtn:hover{background:#d75e34;transform:translateY(-1px)}
+  .dlbtn:focus-visible{outline:2px solid var(--tan);outline-offset:3px}
+  .dlbtn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+  .dl-success{display:none;margin-top:18px;color:#8a9657;font-size:14px;font-weight:500;font-family:'DM Mono',monospace}
+  .dl-success.visible{display:block}
+
+  footer{margin-top:52px;text-align:center;color:var(--ash);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.05em;
+    border-top:1px solid var(--line);padding-top:26px}
+  footer a{color:var(--tan);text-decoration:none}
+  footer a:hover{color:var(--orange)}
+
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style></head>
 <body><div class="wrap">
+<div class="manifest">
+  <a class="back" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6 6l-6-6 6-6"/></svg>J. RABATIN // CLAUDE OPS</a>
+  <span class="stamp">FIELD MANUAL &middot; GUIDE</span>
+</div>
+
 <div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Cowork computer use: let Claude use your actual desktop</h1><p class="subtitle">Computer use lets Claude open apps, click, and type on your screen — so it can finish work even in tools that have no integration. Here's how it works and where a non-developer should start.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
 <div class="toc"><h3>What's inside</h3><ol><li>What computer use is</li><li>When it kicks in</li><li>Dispatch and walk away</li><li>Stay in control</li></ol></div>
 <section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>What computer use is</h2><p>Most of the time Claude works through connectors — clean integrations with apps like your calendar or drive. Computer use is the fallback for everything else: instead of an API, Claude controls the screen directly, moving the cursor, clicking, and typing the way you would.</p><p>That means it can operate apps that were never built to talk to an AI — older desktop software, niche internal tools, anything with a normal window and buttons.</p><div class="callout c-amber"><strong>The idea</strong>A connector is a clean handshake. Computer use is Claude just using the app like a person when there's no handshake available.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>When it kicks in</h2><p>You don't usually pick computer use on purpose. When Claude needs to do something and there's no connector or tool for it, it falls back to using your screen. That's what makes it powerful for normal work — the long tail of apps that will never have a fancy integration.</p><p>It's currently a research-preview feature in Cowork on Pro and Max plans, on both macOS and Windows.</p><div class="callout c-blue"><strong>Why it matters</strong>It removes the 'sorry, that app isn't supported' wall. If you can do it with a mouse, Claude can attempt it.</div></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Dispatch and walk away</h2><p>The real unlock is handing off a task and stepping away. You describe the job, Claude works on your machine, and you come back to it finished — files sorted, a form filled, data moved from one app to another.</p><p>Think of the chores you'd never automate because they live across three apps with no API. That's exactly the work computer use is for.</p><pre>Hand-off examples:
 - Rename and sort this folder of PDFs
 - Copy these rows into the desktop app
 - Fill this form from the spreadsheet</pre></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Stay in control</h2><p>Computer use asks before sensitive or risky actions and lets you watch and take over at any time. The smart way in is to start with low-stakes, boring tasks where a mistake costs nothing — file cleanup, simple data entry, organizing screenshots.</p><p>Let it drive the chores. Keep the keys to anything involving money, accounts, or things you can't undo.</p><div class="callout c-green"><strong>Start here</strong>Pick one boring, reversible desktop chore. Watch Claude do it once. Build trust before you walk away.</div></section>
-<div class="download"><div class="eyebrow">Free Download</div><h2>10 safe computer-use tasks to start with</h2><p>A starter list of low-stakes desktop jobs to hand Claude first — plus the ones to keep for yourself.</p><div class="grid"><div class="gp"><b>›</b> File sorting</div><div class="gp"><b>›</b> Renaming</div><div class="gp"><b>›</b> Data entry</div><div class="gp"><b>›</b> Form filling</div><div class="gp"><b>›</b> Screenshot triage</div><div class="gp"><b>›</b> Copy between apps</div><div class="gp"><b>›</b> PDF organizing</div><div class="gp"><b>›</b> Desktop cleanup</div><div class="gp"><b>›</b> Do-not-hand-off list</div><div class="gp"><b>›</b> Watch-first note</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download computer-use-starter-tasks.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<div class="download"><div class="eyebrow">Free Download</div><h2>10 safe computer-use tasks to start with</h2><p>A starter list of low-stakes desktop jobs to hand Claude first — plus the ones to keep for yourself.</p><div class="grid"><div class="gp"><b>›</b> File sorting</div><div class="gp"><b>›</b> Renaming</div><div class="gp"><b>›</b> Data entry</div><div class="gp"><b>›</b> Form filling</div><div class="gp"><b>›</b> Screenshot triage</div><div class="gp"><b>›</b> Copy between apps</div><div class="gp"><b>›</b> PDF organizing</div><div class="gp"><b>›</b> Desktop cleanup</div><div class="gp"><b>›</b> Do-not-hand-off list</div><div class="gp"><b>›</b> Watch-first note</div></div><button class="dlbtn" onclick="downloadAsset()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg> Download computer-use-starter-tasks.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
 <footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
 <script id="download-content" type="text/plain"># Cowork Computer Use — Starter Tasks
 
@@ -44,5 +148,23 @@ footer{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}foote
 Watch the FIRST run of any new task all the way through.
 Trust is earned per task type, not all at once.
 </script>
-<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='computer-use-starter-tasks.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+<script>
+function downloadAsset(){
+  var c=document.getElementById('download-content').textContent;
+  var b=new Blob([c],{type:'text\/plain;charset=utf-8'});
+  var u=URL.createObjectURL(b);
+  var a=document.createElement('a');
+  a.href=u;
+  a.download='computer-use-starter-tasks.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(u);
+  setTimeout(function(){
+    var s=document.getElementById('download-success');
+    s.innerHTML='✓ Checklist ready. If it didn't download, <a href="data:text\/plain;charset=utf-8,'+encodeURIComponent(c)+'" target="_blank">open it here<\/a> and save the page.';
+    s.classList.add('visible');
+  },400);
+}
+<\/script>
 </body></html>

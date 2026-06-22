@@ -1,130 +1,178 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Loop engineering: how the agent loop actually works · @jaiden.rabatin</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>:root{--obsidian:#0B0B0B;--carbon:#1A1A1A;--bone:#F4F1EA;--signal:#C4522A;--tan:#C2A878;--ash:#6B6B6B;--border:rgba(244,241,234,0.08)}
-*{box-sizing:border-box;margin:0;padding:0}body{background:#070707;color:var(--bone);font-family:'DM Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
-.topbar a{color:var(--bone);text-decoration:none;font-weight:500}
-.hero{padding:60px 0 40px}.eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--signal)}
-h1{font-family:'Playfair Display',serif;font-size:50px;font-weight:800;line-height:1.08;margin-top:18px;letter-spacing:-.01em;color:var(--bone)}
-.subtitle{font-size:19px;color:var(--ash);margin-top:20px}.metarow{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;align-items:center}
-.pill{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);background:rgba(196,82,42,.08);border:1px solid rgba(196,82,42,.3);padding:6px 12px;border-radius:999px}
-.meta-note{font-size:14px;color:var(--ash)}
-.toc{background:var(--carbon);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}
-.toc h3{font-family:'DM Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--ash);margin-bottom:16px}
-.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:10px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px;color:var(--bone)}
-.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--signal);font-family:'DM Mono',monospace;font-size:14px}
-section{margin-bottom:52px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}
-.secnum span{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);white-space:nowrap}
-.secnum .line{height:1px;background:linear-gradient(to right,rgba(196,82,42,.4),transparent);flex:1}
-h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px;color:var(--bone)}
-p{margin-bottom:16px;color:rgba(244,241,234,.82)}
-.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid;background:var(--carbon)}
-.callout strong{display:block;margin-bottom:4px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
-.c-amber{border-color:var(--signal)}.c-amber strong{color:var(--signal)}.c-green{border-color:#7AB948}.c-green strong{color:#7AB948}
-.c-blue{border-color:#5B8DEF}.c-blue strong{color:#5B8DEF}.c-red{border-color:#D86B5C}.c-red strong{color:#D86B5C}
-pre{background:var(--obsidian);color:var(--bone);border:1px solid var(--border);border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}
-code{font-family:'DM Mono',monospace;font-size:.9em;background:rgba(196,82,42,.1);padding:2px 6px;border-radius:5px;color:var(--tan)}
-.download{background:var(--carbon);border:1px solid var(--border);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}
-.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--signal),#E8784A,var(--signal))}
-.download .eyebrow{color:#E8784A}.download h2{color:var(--bone);margin-top:10px}.download p{color:var(--ash)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}
-.gp{background:rgba(244,241,234,.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;color:rgba(244,241,234,.7);font-family:'DM Mono',monospace}.gp b{color:var(--signal)}
-.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:#0B0B0B;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}
-.dl-success{display:none;margin-top:18px;color:#7AB948;font-size:14px;font-weight:500}.dl-success.visible{display:block}
-footer{margin-top:56px;text-align:center;color:var(--ash);font-size:13px;border-top:1px solid var(--border);padding-top:28px}footer a{color:var(--signal);text-decoration:none}</style></head>
-<body><div class="wrap"><div class="topbar"><a href="/">J. RABATIN // CLAUDE OPS</a><span>FIELD MANUAL · GUIDE</span></div>
-<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Loop engineering: how the agent loop actually works</h1><p class="subtitle">You're not prompting — you're running a loop. This is the real mechanism behind every Claude Code run, straight from Anthropic's Agent SDK docs, plus exactly how I use it to reformat an entire site and run multi-step debugging in code review.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
-<div class="toc"><h3>What's inside</h3><ol><li>The loop, exactly (not a metaphor)</li><li>A turn is the unit of work</li><li>Put a leash on it: turns, budget, effort</li><li>Why long loops get dumb — and the fix</li><li>Let it act — safely</li><li>Know when it stopped — and resume</li><li>Sources &amp; verification</li></ol></div>
-<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>The loop, exactly (not a metaphor)</h2><p>When you start an agent, the SDK runs the same execution loop that powers Claude Code. It is a precise, documented cycle, not a vibe: Claude receives your prompt (with the system prompt, tool definitions, and history), evaluates and responds (text and/or tool calls), the SDK executes those tools and feeds the results back, and the cycle repeats. Each full cycle is one turn. The loop ends only when Claude produces a response with no tool calls — then you get the final result.</p><p>A quick question ("what files are here?") might be one or two turns. A real task ("refactor auth and update the tests") can chain dozens of tool calls across many turns, with Claude adjusting based on each result. Once you see runs as loops instead of single prompts, you stop trying to write the one perfect message and start designing the loop.</p><pre>1  Receive prompt   (SystemMessage: init)
-2  Evaluate + respond (AssistantMessage: text + tool calls)
-3  Execute tools     (UserMessage: tool results)
-4  Repeat 2-3        (each cycle = one turn)
-5  Return result     (ResultMessage: text, cost, usage)</pre><div class="callout c-amber"><strong>The reframe</strong>Don't ask 'what's the perfect prompt?' Ask 'what loop finishes this on its own — and where do I cap it?'</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>A turn is the unit of work</h2><p>A turn is one round trip: Claude outputs tool calls, the SDK runs them, and the results feed back automatically — without handing control back to you. Turns continue until Claude returns text with no tool calls. As the loop runs it streams typed messages so you can watch or drive it: a SystemMessage (init) with session metadata, an AssistantMessage per response, a UserMessage carrying each tool result, and finally a ResultMessage that ends the loop.</p><p>Anthropic's own walkthrough of "fix the failing tests in auth.ts" is four turns: turn 1 runs the tests (3 fail), turn 2 reads the source and test files, turn 3 edits and re-runs (all pass), and the final turn is a text-only summary. Three tool turns, one answer. That is the exact shape of a debugging session.</p><pre># Check the subtype before trusting output
-async for message in query(prompt="Summarize this project"):
-    if isinstance(message, AssistantMessage):
-        print(f"Turn: {len(message.content)} blocks")
-    if isinstance(message, ResultMessage):
-        if message.subtype == "success":
-            print(message.result)</pre><div class="callout c-blue"><strong>Real use #1 — debugging in code review</strong>I let the loop run the multi-step debug (run tests, read, edit, re-run, report) and just set the guardrails. I review the diff, not every keystroke.</div></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Put a leash on it: turns, budget, effort</h2><p>Without limits the loop runs until Claude finishes on its own. That is fine for well-scoped work and dangerous on open-ended prompts like "improve this codebase." Two caps stop runaways: max_turns (maximum tool-use round trips) and max_budget_usd (maximum spend). Hit either and the loop returns a ResultMessage with error_max_turns or error_max_budget_usd. A budget is the right default for any production or autonomous agent.</p><p>Separately, the effort option controls how hard Claude reasons per turn — low, medium, high, xhigh, max. Lower effort is cheaper and faster for simple jobs (listing files, a single grep); raise it for refactors and debugging. Effort is independent from extended thinking; you can mix them.</p><pre>ClaudeAgentOptions(
-    allowed_tools=["Read","Edit","Bash","Glob","Grep"],
-    setting_sources=["project"],   # load CLAUDE.md, skills, hooks
-    max_turns=30,                  # prevent runaway sessions
-    max_budget_usd=2.00,           # hard cost cap
-    effort="high",                 # thorough reasoning
-)</pre><div class="callout c-amber"><strong>How I set it</strong>Debugging loops get a turn cap so they can't spiral. I only raise effort to high/max for genuinely hard refactors — everything routine stays low to save cost.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Why long loops get dumb — and the fix</h2><p>The context window does not reset between turns. Everything accumulates: system prompt, tool definitions, conversation history, and every tool input and output. Large outputs (reading a big file, a verbose command) can burn thousands of tokens in a single turn, so long sessions carry far more weight than short ones.</p><p>When context approaches the limit, the SDK automatically compacts — it summarizes older history to free space and emits a system message with subtype compact_boundary. Compaction keeps recent exchanges but can drop specific instructions from early in the conversation. The fix: put persistent rules in CLAUDE.md (loaded via setting sources and re-injected on every request) instead of burying them in the first prompt, and offload big subtasks to subagents, which run in their own fresh context and return only a summary.</p><pre># CLAUDE.md — survives compaction, re-sent every request
-# Summary instructions
-When summarizing this conversation, always preserve:
-- The current objective and acceptance criteria
-- File paths read or modified
-- Test results and error messages
-- Decisions made and the reasoning</pre><div class="callout c-green"><strong>Real use #2 — reformatting the whole site</strong>Updating all 29 pages to the new format blew context fast. I moved the format spec into CLAUDE.md so every loop kept the rules even after compaction — then let it walk the repo file by file.</div></section><section><div class="secnum"><span>Section 05</span><div class="line"></div></div><h2>Let it act — safely</h2><p>Claude decides which tools to call; you decide what is allowed to run. Three options work together: allowed_tools auto-approves a list (a read-only agent with Read, Glob, Grep runs without prompting), disallowed_tools blocks tools regardless of other rules, and permission_mode governs everything not covered by an allow or deny rule. Useful modes: default (route to your approval callback), acceptEdits (auto-approve file edits and common filesystem commands), plan (explore without editing), and bypassPermissions (run everything — isolated environments only). When a tool is denied, Claude gets a rejection as the tool result and reroutes.</p><p>For speed, read-only tools (Read, Glob, Grep, read-only MCP tools) can run in parallel, while state-changing tools (Edit, Write, Bash) run sequentially to avoid conflicts. For safety and observability, hooks fire at fixed points — PreToolUse before a tool runs (validate or block), PostToolUse after it returns (audit, side effects), plus Stop, PreCompact, and subagent hooks. Hooks run in your process, not the agent's context window, so a PreToolUse hook that rejects a call short-circuits the loop without costing context.</p><pre># Block anything outside the repo, before it runs
-def pre_tool_use(tool, args):
-    if tool == "Bash" and "rm -rf" in args.get("command",""):
-        return deny("blocked: destructive command")
-    return allow()</pre><div class="callout c-red"><strong>My code-review guardrail</strong>acceptEdits so it can fix code autonomously, plus a PreToolUse hook that blocks any path outside the repo. Autonomy with a fence.</div></section><section><div class="secnum"><span>Section 06</span><div class="line"></div></div><h2>Know when it stopped — and resume</h2><p>The loop ends with a ResultMessage, and its subtype is the primary signal: success (finished normally — only this variant carries the result text), error_max_turns, error_max_budget_usd, error_during_execution, or error_max_structured_output_retries. Always check the subtype before reading result. Every subtype still carries total_cost_usd, usage, num_turns, and session_id, so you can track cost even on failures.</p><p>Capture session_id and you can resume later with the full context restored — every file read, every action taken. You can also fork a session to try a different approach without touching the original. This is what makes turn caps safe: if a long debug hits the limit, you resume instead of starting over.</p><pre>if message.subtype == "success":
-    print(message.result)
-elif message.subtype == "error_max_turns":
-    # resume with full context, no re-explaining
-    resume(message.session_id)
-else:
-    print(f"Stopped: {message.subtype}")</pre><div class="callout c-blue"><strong>The payoff</strong>Caps + resume = autonomous but recoverable. The loop can run long and you never lose the work.</div></section><section><div class="secnum"><span>Sources</span><div class="line"></div></div><h2>Sources &amp; verification</h2><p>Everything here is grounded in Anthropic's official Agent SDK documentation, verified on 2026-06-22. Primary source: code.claude.com/docs/en/agent-sdk/agent-loop ("How the agent loop works"). Supporting: how-claude-code-works (the agentic loop), agent-sdk/hooks, agent-sdk/permissions, agent-sdk/subagents, agent-sdk/sessions, and build-with-claude/effort.</p><p>A full, link-by-link source list lives alongside this guide at jaidenrabatin.com/sources/loop-engineering.md so any claim on this page can be traced to its primary doc.</p><div class="callout c-amber"><strong>Why this matters</strong>Teaching content should be checkable. Every guide on this site ships with a sources file so you can verify it yourself.</div></section>
-<div class="download"><div class="eyebrow">Free Download</div><h2>The Agent Loop Control Sheet</h2><p>Every knob that controls an autonomous Claude run, on one page — turns, budget, effort, permission modes, hooks, and result codes, with copy-paste defaults.</p><div class="grid"><div class="gp"><b>›</b> The 5 stages</div><div class="gp"><b>›</b> Turns vs messages</div><div class="gp"><b>›</b> max_turns</div><div class="gp"><b>›</b> max_budget_usd</div><div class="gp"><b>›</b> effort levels</div><div class="gp"><b>›</b> permission modes</div><div class="gp"><b>›</b> allowed / disallowed</div><div class="gp"><b>›</b> PreToolUse hooks</div><div class="gp"><b>›</b> Result subtypes</div><div class="gp"><b>›</b> Resume by session_id</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download agent-loop-control-sheet.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
-<footer>Made by <a href="https://instagram.com/jaiden.rabatin">@jaiden.rabatin</a> · Claude Code Educational Series</footer></div>
-<script id="download-content" type="text/plain"># Agent Loop Control Sheet
-One page for running Claude autonomously and safely.
-Grounded in: https://code.claude.com/docs/en/agent-sdk/agent-loop (verified 2026-06-22)
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Loop engineering: stop prompting, start looping · @jaidenrabatin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  /* ── Field Manual — guide page template (brand tokens locked) ── */
+  :root{
+    --obsidian:#0B0B0B;--carbon:#1A1A1A;--bone:#F4F1EA;
+    --orange:#C4522A;--tan:#C2A878;--ash:#6B6B6B;--olive:#4B5320;
+    --line:rgba(194,168,120,.18);--line-strong:rgba(194,168,120,.34);
+    --card:#141413;--muted:rgba(244,241,234,.58);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--obsidian);color:var(--bone);font-family:'DM Sans',system-ui,sans-serif;
+    line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(58% 38% at 50% -4%,rgba(196,82,42,.09),transparent 70%)}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 22px 96px}
+  a{color:inherit}
+  ::selection{background:var(--orange);color:#160a05}
+  a:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:3px}
 
-## The loop (5 stages)
-1. Receive prompt   -&gt; SystemMessage(init)
-2. Evaluate+respond -&gt; AssistantMessage (text + tool calls)
-3. Execute tools    -&gt; UserMessage (tool results)
-4. Repeat 2-3       -&gt; each full cycle = ONE turn
-5. Return result    -&gt; ResultMessage (text, cost, usage, session_id)
-Loop ends when Claude replies with NO tool calls.
+  /* manifest bar */
+  .manifest{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;
+    border:1px solid var(--line);border-radius:4px;padding:11px 14px;margin:26px 0 0;position:relative;
+    font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  .manifest::before,.manifest::after{content:"";position:absolute;width:9px;height:9px;border:1px solid var(--tan)}
+  .manifest::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .manifest::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .manifest a.back{display:inline-flex;align-items:center;gap:8px;color:var(--bone);text-decoration:none;transition:color .2s ease}
+  .manifest a.back:hover{color:var(--orange)}
+  .manifest a.back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+  .manifest .stamp{color:var(--tan)}
+  @media(max-width:440px){.manifest{font-size:10.5px;letter-spacing:.07em}.manifest .stamp{display:none}}
 
-## Cap the loop (defaults for autonomous runs)
-- max_turns = 30            # maximum tool-use round trips
-- max_budget_usd = 2.00     # hard spend cap (great production default)
-- effort = low|medium|high|xhigh|max   # reasoning depth per turn
-Hit a cap -&gt; ResultMessage subtype = error_max_turns | error_max_budget_usd
+  /* hero */
+  .hero{padding:52px 0 34px}
+  .eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--orange)}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(38px,8vw,58px);
+    line-height:.96;letter-spacing:-.01em;text-transform:uppercase;margin-top:16px}
+  .subtitle{font-size:18px;color:var(--muted);margin-top:18px;max-width:60ch}
+  .metarow{display:flex;align-items:center;gap:13px;margin-top:24px;flex-wrap:wrap}
+  .pill{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--tan);border:1px solid var(--line-strong);padding:6px 12px;border-radius:4px}
+  .meta-note{font-size:13.5px;color:var(--ash)}
 
-## Permissions
-- allowed_tools = ["Read","Edit","Bash","Glob","Grep"]   # auto-approved
-- disallowed_tools = [...]                                # always blocked
-- permission_mode:
-  - default          ask via callback
-  - acceptEdits      auto-approve edits + mkdir/touch/mv/cp
-  - plan             explore, never edit
-  - bypassPermissions  run all (ISOLATED envs only)
-- Scope a command: "Bash(npm *)"
-- Parallel: read-only tools concurrent; Edit/Write/Bash sequential.
+  /* TOC */
+  .toc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:6px;
+    padding:24px 28px;margin:8px 0 56px}
+  .toc::before,.toc::after{content:"";position:absolute;width:11px;height:11px;border:1px solid var(--tan);opacity:.4}
+  .toc::before{top:9px;left:9px;border-right:0;border-bottom:0}
+  .toc::after{bottom:9px;right:9px;border-left:0;border-top:0}
+  .toc h3{font-family:'DM Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--orange);margin-bottom:14px}
+  .toc ol{list-style:none;counter-reset:t}
+  .toc li{counter-increment:t;padding:9px 0;border-bottom:1px solid var(--line);font-weight:500;display:flex;gap:14px}
+  .toc li:last-child{border-bottom:none}
+  .toc li::before{content:counter(t,decimal-leading-zero);color:var(--tan);font-family:'DM Mono',monospace;font-size:13px}
 
-## Hooks (run outside the context window)
-- PreToolUse    before a tool   -&gt; validate / block dangerous calls
-- PostToolUse   after a tool    -&gt; audit, side effects
-- Stop          on finish       -&gt; validate result, save state
-- PreCompact    before compaction -&gt; archive transcript
+  /* sections */
+  section{margin-bottom:52px}
+  .secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px;border-top:1px solid var(--line);padding-top:16px}
+  .secnum span{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+  .secnum .line{height:1px;background:var(--line);flex:1}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(26px,5vw,34px);
+    letter-spacing:0;text-transform:uppercase;margin-bottom:14px;line-height:1.04}
+  p{margin-bottom:16px;font-size:16.5px}
 
-## Context discipline
-- Context never resets mid-session; tool outputs accumulate fast.
-- Near the limit -&gt; auto compaction (system: compact_boundary); early orders can drop.
-- Put persistent rules in CLAUDE.md (re-injected every request), NOT the first prompt.
-- Offload big subtasks to subagents (fresh context, return only a summary).
+  /* callouts — restrained brand palette, mono label + left rule */
+  .callout{position:relative;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--tan);
+    border-radius:5px;padding:16px 20px;margin:22px 0;font-size:15.5px;color:var(--bone)}
+  .callout strong{display:block;margin-bottom:5px;font-family:'DM Mono',monospace;font-size:11.5px;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--tan)}
+  .c-amber{border-left-color:var(--orange)} .c-amber strong{color:var(--orange)}
+  .c-green{border-left-color:var(--olive)} .c-green strong{color:#8a9657}
+  .c-blue{border-left-color:var(--tan)} .c-blue strong{color:var(--tan)}
+  .c-red{border-left-color:#9c4a3a} .c-red strong{color:#cf6b54}
 
-## Handle the result
-- Check subtype FIRST: success | error_max_turns | error_max_budget_usd |
-  error_during_execution | error_max_structured_output_retries
-- result text only exists on success.
-- All subtypes carry total_cost_usd, usage, num_turns, session_id.
-- Save session_id -&gt; resume with full context, or fork to branch.
+  /* code */
+  pre{background:#0e0e0d;border:1px solid var(--line);color:var(--bone);border-radius:6px;padding:18px 20px;
+    overflow-x:auto;margin:20px 0;font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}
+  code{font-family:'DM Mono',monospace;font-size:.9em;background:rgba(194,168,120,.1);padding:2px 6px;border-radius:4px;color:var(--tan)}
 
-## Two loops I actually run
-A) Reformat the whole repo
-   Goal: every page in the new format. Context: format spec in CLAUDE.md.
-   Tools: Read/Edit/Glob. Loop file-by-file until none left.
-B) Multi-step debug (code review)
-   Goal: tests green. permission_mode: acceptEdits + PreToolUse hook (no paths outside repo).
-   Loop: run tests -&gt; read -&gt; edit -&gt; re-run -&gt; report. Cap turns; resume if capped.</script>
-<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='agent-loop-control-sheet.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+  /* download block */
+  .download{position:relative;background:var(--card);border:1px solid var(--line-strong);border-radius:8px;
+    padding:34px 32px;margin:64px 0 40px;overflow:hidden}
+  .download::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--orange)}
+  .download .eyebrow{color:var(--orange)}
+  .download h2{margin-top:10px}
+  .download p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
+  .gp{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:5px;padding:11px 14px;
+    font-size:12.5px;color:var(--muted);font-family:'DM Mono',monospace}
+  .gp b{color:var(--orange)}
+  .dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#160a05;font-weight:700;
+    font-size:16px;padding:14px 26px;border:none;border-radius:6px;cursor:pointer;min-height:48px;
+    transition:background .2s ease,transform .2s ease}
+  .dlbtn:hover{background:#d75e34;transform:translateY(-1px)}
+  .dlbtn:focus-visible{outline:2px solid var(--tan);outline-offset:3px}
+  .dlbtn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+  .dl-success{display:none;margin-top:18px;color:#8a9657;font-size:14px;font-weight:500;font-family:'DM Mono',monospace}
+  .dl-success.visible{display:block}
+
+  footer{margin-top:52px;text-align:center;color:var(--ash);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.05em;
+    border-top:1px solid var(--line);padding-top:26px}
+  footer a{color:var(--tan);text-decoration:none}
+  footer a:hover{color:var(--orange)}
+
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style></head>
+<body><div class="wrap">
+<div class="manifest">
+  <a class="back" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6 6l-6-6 6-6"/></svg>J. RABATIN // CLAUDE OPS</a>
+  <span class="stamp">FIELD MANUAL &middot; GUIDE</span>
+</div>
+
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Loop engineering: stop prompting, start looping</h1><p class="subtitle">The biggest mindset shift of 2026 isn't a new model — it's designing agentic loops instead of typing prompts one at a time. The pattern is simple: gather context, take action, verify, repeat.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>Why a loop beats a prompt</li><li>Phase 1 — gather context</li><li>Phase 2 — take action</li><li>Phase 3 — verify, then repeat</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>Why a loop beats a prompt</h2><p>A prompt is a single instruction that runs once. A loop is a repeatable pattern that keeps going until the goal is actually met. When you prompt, you're the one deciding what happens next every turn. When you loop, you design the engine once and let it run.</p><p>This is how Claude Code already works under the hood — it describes its own behavior as an agentic loop with three blended phases.</p><div class="callout c-amber"><strong>The reframe</strong>Don't ask 'what's the perfect prompt?' Ask 'what loop gets this done on its own?'</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>Phase 1 — gather context</h2><p>Before Claude acts, it needs the right inputs: the files, the tools, the data, and a clear goal. Most disappointing AI output isn't a model problem — it's a missing-context problem. Point Claude at what matters first.</p><p>In practice that means naming the folders to read, the tools it can use, and the single objective for this pass.</p><pre>Read: /src, /docs
+Tools: search, run tests
+Goal: make the build pass</pre></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>Phase 2 — take action</h2><p>Talk is a draft; tools are the work. The action phase is where Claude actually edits files, runs commands, or calls APIs — one concrete step at a time. The more you let it act through tools, the less you have to translate its suggestions into work yourself.</p><div class="callout c-blue"><strong>Key idea</strong>An agent that can only talk gives you homework. An agent with tools gives you results.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Phase 3 — verify, then repeat</h2><p>After acting, Claude checks the result against the goal. If it's not there yet, it loops back carrying what it just learned. If it is, it stops and reports. The loop ends when the goal is met — not when you run out of patience.</p><p>Design this once and the same loop handles a failing build today and a different one next week.</p><div class="callout c-green"><strong>In your sandbox</strong>Write the goal, the tools allowed, and the 'done' test. Then let Claude run the loop instead of nudging it each turn.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The loop-design worksheet</h2><p>A one-page template to turn any repeatable task into an agentic loop Claude can run on its own.</p><div class="grid"><div class="gp"><b>›</b> Goal</div><div class="gp"><b>›</b> Context to gather</div><div class="gp"><b>›</b> Tools allowed</div><div class="gp"><b>›</b> Action steps</div><div class="gp"><b>›</b> Verify test</div><div class="gp"><b>›</b> Stop condition</div><div class="gp"><b>›</b> Failure handling</div><div class="gp"><b>›</b> Example: build fix</div><div class="gp"><b>›</b> Example: inbox</div><div class="gp"><b>›</b> Checklist</div></div><button class="dlbtn" onclick="downloadAsset()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg> Download loop-design-worksheet.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaidenrabatin">@jaidenrabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># Loop Design Worksheet
+
+## 1. Goal (the 'done' you want)
+[One sentence. Be specific and testable.]
+
+## 2. Context to gather first
+- Read: [files / folders / docs]
+- Data: [what Claude needs to know]
+
+## 3. Tools allowed
+- [search, edit files, run tests, call API, etc.]
+
+## 4. Action (one step at a time)
+[What a single pass should DO.]
+
+## 5. Verify (how to know it worked)
+[The check. e.g. "tests pass", "no TODOs left", "report matches format"]
+
+## 6. Stop condition
+Loop until: [verify passes]  — then stop and report.
+
+## 7. If it fails
+[What to try next; when to ask the human.]
+
+---
+## Example A — fix the build
+Goal: build passes. Context: /src + error log. Tools: edit, run build.
+Verify: build exits 0. Stop: when green.
+
+## Example B — clear my inbox
+Goal: inbox triaged. Context: today's unread. Tools: read, label, draft.
+Verify: every email labeled + drafts ready. Stop: when none left.
+</script>
+<script>
+function downloadAsset(){
+  var c=document.getElementById('download-content').textContent;
+  var b=new Blob([c],{type:'text\/plain;charset=utf-8'});
+  var u=URL.createObjectURL(b);
+  var a=document.createElement('a');
+  a.href=u;
+  a.download='loop-design-worksheet.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(u);
+  setTimeout(function(){
+    var s=document.getElementById('download-success');
+    s.innerHTML='✓ Checklist ready. If it didn't download, <a href="data:text\/plain;charset=utf-8,'+encodeURIComponent(c)+'" target="_blank">open it here<\/a> and save the page.';
+    s.classList.add('visible');
+  },400);
+}
+<\/script>
 </body></html>
