@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Skills: teach Claude your workflow once · @jaiden.rabatin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>:root{--obsidian:#0B0B0B;--carbon:#1A1A1A;--bone:#F4F1EA;--signal:#C4522A;--tan:#C2A878;--ash:#6B6B6B;--border:rgba(244,241,234,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:#070707;color:var(--bone);font-family:'DM Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 96px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.topbar a{color:var(--bone);text-decoration:none;font-weight:500}
+.hero{padding:60px 0 40px}.eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--signal)}
+h1{font-family:'Playfair Display',serif;font-size:50px;font-weight:800;line-height:1.08;margin-top:18px;letter-spacing:-.01em;color:var(--bone)}
+.subtitle{font-size:19px;color:var(--ash);margin-top:20px}.metarow{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;align-items:center}
+.pill{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);background:rgba(196,82,42,.08);border:1px solid rgba(196,82,42,.3);padding:6px 12px;border-radius:999px}
+.meta-note{font-size:14px;color:var(--ash)}
+.toc{background:var(--carbon);border:1px solid var(--border);border-radius:14px;padding:26px 30px;margin:8px 0 56px}
+.toc h3{font-family:'DM Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--ash);margin-bottom:16px}
+.toc ol{list-style:none;counter-reset:t}.toc li{counter-increment:t;padding:10px 0;border-bottom:1px solid var(--border);font-weight:500;display:flex;gap:14px;color:var(--bone)}
+.toc li:last-child{border-bottom:none}.toc li::before{content:counter(t,decimal-leading-zero);color:var(--signal);font-family:'DM Mono',monospace;font-size:14px}
+section{margin-bottom:52px}.secnum{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.secnum span{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);white-space:nowrap}
+.secnum .line{height:1px;background:linear-gradient(to right,rgba(196,82,42,.4),transparent);flex:1}
+h2{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:16px;color:var(--bone)}
+p{margin-bottom:16px;color:rgba(244,241,234,.82)}
+.callout{border-radius:12px;padding:18px 22px;margin:22px 0;font-size:15px;border-left:4px solid;background:var(--carbon)}
+.callout strong{display:block;margin-bottom:4px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-family:'DM Mono',monospace}
+.c-amber{border-color:var(--signal)}.c-amber strong{color:var(--signal)}.c-green{border-color:#7AB948}.c-green strong{color:#7AB948}
+.c-blue{border-color:#5B8DEF}.c-blue strong{color:#5B8DEF}.c-red{border-color:#D86B5C}.c-red strong{color:#D86B5C}
+pre{background:var(--obsidian);color:var(--bone);border:1px solid var(--border);border-radius:12px;padding:20px 22px;overflow-x:auto;margin:20px 0;font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;white-space:pre-wrap}
+code{font-family:'DM Mono',monospace;font-size:.9em;background:rgba(196,82,42,.1);padding:2px 6px;border-radius:5px;color:var(--tan)}
+.download{background:var(--carbon);border:1px solid var(--border);border-radius:16px;padding:38px 36px;margin:64px 0 40px;position:relative;overflow:hidden}
+.download::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--signal),#E8784A,var(--signal))}
+.download .eyebrow{color:#E8784A}.download h2{color:var(--bone);margin-top:10px}.download p{color:var(--ash)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0 28px}
+.gp{background:rgba(244,241,234,.04);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;color:rgba(244,241,234,.7);font-family:'DM Mono',monospace}.gp b{color:var(--signal)}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:#0B0B0B;font-weight:700;font-size:16px;padding:15px 30px;border:none;border-radius:10px;cursor:pointer}
+.dl-success{display:none;margin-top:18px;color:#7AB948;font-size:14px;font-weight:500}.dl-success.visible{display:block}
+footer{margin-top:56px;text-align:center;color:var(--ash);font-size:13px;border-top:1px solid var(--border);padding-top:28px}footer a{color:var(--signal);text-decoration:none}</style></head>
+<body><div class="wrap"><div class="topbar"><a href="/">J. RABATIN // CLAUDE OPS</a><span>FIELD MANUAL · GUIDE</span></div>
+<div class="hero"><div class="eyebrow">Claude Code · Educational Series</div><h1>Skills: teach Claude your workflow once</h1><p class="subtitle">A skill packages a workflow — your steps, rules, and standards — into one reusable, auto-triggering command. Here's what a skill is, how it fires, what goes in a SKILL.md, how to make it reliable, and how to build your first one.</p><div class="metarow"><span class="pill">Reference Guide</span><span class="meta-note">with a downloadable resource for your Claude Code sandbox</span></div></div>
+<div class="toc"><h3>What's inside</h3><ol><li>What a skill actually is</li><li>How a skill triggers</li><li>What goes inside a SKILL.md</li><li>Make it reliable — build in a check</li><li>Build your first one</li></ol></div>
+<section><div class="secnum"><span>Section 01</span><div class="line"></div></div><h2>What a skill actually is</h2><p>A skill is a folder containing a SKILL.md file: a set of instructions Claude loads on demand. Instead of re-typing the same multi-step process every session, you write it down once and Claude follows it whenever it's relevant. Think of it as turning a workflow you keep explaining into a reusable command.</p><p>A prompt is a single instruction that runs once. A skill is a process you keep and reuse — the difference between telling someone what to do today and training them how you work.</p><div class="callout c-amber"><strong>The shift</strong>Stop optimizing one-off prompts. Capture the workflow once.</div></section><section><div class="secnum"><span>Section 02</span><div class="line"></div></div><h2>How a skill triggers</h2><p>Every skill has a description with trigger phrases. Claude reads that description and automatically reaches for the skill when your request matches — you don't have to remember a command, though you can also call it by name. A sharp description is what makes the skill fire at the right moment and stay quiet otherwise.</p><div class="callout c-blue"><strong>Key idea</strong>You describe when to use it; Claude decides to reach for it.</div></section><section><div class="secnum"><span>Section 03</span><div class="line"></div></div><h2>What goes inside a SKILL.md</h2><p>Two parts. Frontmatter at the top: a name and a description (the trigger). Then the body: the actual steps, the rules to follow, and a clear definition of what 'done' looks like. If the skill should use a script or a template, point at it.</p><p>Write it the way you'd brief a smart new teammate who has no context: concrete steps, explicit standards, no guessing.</p><div class="callout c-green"><strong>Rule of thumb</strong>If a new hire couldn't follow it, neither can the skill.</div></section><section><div class="secnum"><span>Section 04</span><div class="line"></div></div><h2>Make it reliable — build in a check</h2><p>The best skills end by verifying their own output against your standards before declaring done — dimensions, brand, format, whatever 'correct' means for that task. Baking the check into the skill is how you catch the recurring mistakes before they ship instead of after.</p><p>A skill that self-checks beats one that just hopes. This is the single biggest quality upgrade you can make.</p><div class="callout c-red"><strong>Non-negotiable</strong>End every important skill with a verification step.</div></section><section><div class="secnum"><span>Section 05</span><div class="line"></div></div><h2>Build your first one</h2><p>Pick a task you repeat weekly. Write the steps you'd give a new hire, save them as SKILL.md with a clear name and description, then enable it in Settings → Capabilities and run it. Iterate the wording until it triggers and behaves the way you want.</p><p>The test is simple: if you've explained the same task twice, it should be a skill.</p><div class="callout c-amber"><strong>Start here</strong>Your most-repeated weekly task is your first skill.</div></section>
+<div class="download"><div class="eyebrow">Free Download</div><h2>The SKILL.md starter (fill-in-the-blank)</h2><p>A clean SKILL.md template with frontmatter, steps, standards, and a verification block — ready to fill in for your first skill.</p><div class="grid"><div class="gp"><b>›</b> Frontmatter</div><div class="gp"><b>›</b> Trigger description</div><div class="gp"><b>›</b> Inputs</div><div class="gp"><b>›</b> Step-by-step</div><div class="gp"><b>›</b> Standards/rules</div><div class="gp"><b>›</b> Verification block</div><div class="gp"><b>›</b> Done definition</div><div class="gp"><b>›</b> Scripts/templates</div><div class="gp"><b>›</b> Install steps</div><div class="gp"><b>›</b> Example</div></div><button class="dlbtn" onclick="downloadAsset()">↓ Download skill-starter-SKILL.md</button><div class="dl-success" id="download-success">✓ Downloaded. Drop it in your skills/ folder and try it in your Claude Code sandbox.</div></div>
+<footer>Made by <a href="https://instagram.com/jaiden.rabatin">@jaiden.rabatin</a> · Claude Code Educational Series</footer></div>
+<script id="download-content" type="text/plain"># [skill-name] — one-line purpose
+Drop this in skills/[skill-name]/SKILL.md, then enable it in Settings &gt; Capabilities.
+
+---
+name: [skill-name]
+description: Use when [the exact situations + trigger phrases that should fire this]. Keep it sharp — this is what makes the skill auto-trigger.
+---
+
+## Inputs
+- [what you need before starting; ask if missing]
+
+## Steps
+1. [first concrete step]
+2. [next step]
+3. [continue...]
+
+## Standards (the rules it must follow)
+- [your brand / format / quality rules]
+- [things it must never do]
+
+## Verification (run before declaring done)
+- [check 1 — e.g., dimensions / format correct?]
+- [check 2 — e.g., meets standards above?]
+- If any check fails: fix, then re-verify. Only deliver on PASS.
+
+## Done means
+- [the clear definition of a finished, correct result]
+
+## Install
+Settings &gt; Capabilities &gt; Skills (on). Put the folder under skills/. Trigger it by intent or by name.</script>
+<script>function downloadAsset(){const c=document.getElementById('download-content').textContent;const b=new Blob([c],{type:'text/markdown;charset=utf-8'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='skill-starter-SKILL.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);document.getElementById('download-success').classList.add('visible');}</script>
+</body></html>
